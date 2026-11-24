@@ -10,7 +10,6 @@ EXAMPLE_PILL = "Example company"
 BANNER = ("You are looking at an example company with made-up figures. "
           "Change them on the Try your own numbers page.")
 FOOTER = "AI Workforce Investment Intelligence. Figures are estimates, not promises."
-SOURCE_LABEL, SOURCE_URL = "See the source code on GitHub", "https://github.com/ishajainbtech24-oss/ai-workforce-intel"
 
 # ---- one mapping from engine names to plain labels (used everywhere) ----
 OUTLOOK = {"downside": "Cautious outlook", "expected": "Expected outlook", "optimistic": "Optimistic outlook"}
