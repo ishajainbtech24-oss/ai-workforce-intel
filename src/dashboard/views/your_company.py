@@ -19,7 +19,6 @@ from dashboard import components as K  # noqa: E402
 from dashboard import copy as C  # noqa: E402
 from dashboard import currency as CUR  # noqa: E402
 from dashboard import data as D  # noqa: E402
-from dashboard import report_pdf as PDF  # noqa: E402
 from dashboard import explain as EX  # noqa: E402
 from dashboard import copy_technical as CT  # noqa: E402
 from dashboard import theme as T  # noqa: E402
@@ -102,6 +101,18 @@ def _same(a: dict, b: dict) -> bool:
     return True
 
 
+def _pdf_module():
+    """The PDF report module, loaded only here: a drawing library that cannot load must never stop the page (the
+    form, results and table download all work without it)."""
+    try:
+        from dashboard import report_pdf
+        return report_pdf
+    except Exception:  # noqa: BLE001 - any import failure only removes the PDF button
+        import logging
+        logging.getLogger(__name__).exception("PDF report unavailable")
+        return None
+
+
 def _runner(inputs: dict, scenario: str) -> dict:
     return D.run_all(inputs)
 
@@ -135,11 +146,14 @@ def _show(res, scenario: str) -> None:
     with st.container(horizontal=True, key="co_downloads"):
         st.download_button(C.DOWNLOAD, D.monthly_result_table(res).to_csv(index=False).encode("utf-8-sig"),
                            file_name="my_results.csv", mime="text/csv", icon=":material/download:")
-        if bundle is not None:
+        pdf = _pdf_module() if bundle is not None else None
+        if pdf is not None:
             # made only when clicked (on its own thread), from the values captured here
-            st.download_button(C.PDF_DOWNLOAD, lambda: PDF.build(res, scenario, bundle, yours),
+            st.download_button(C.PDF_DOWNLOAD, lambda: pdf.build(res, scenario, bundle, yours),
                                file_name="my_results_report.pdf", mime="application/pdf",
                                icon=":material/picture_as_pdf:", key="pdf_btn", on_click="ignore")
+        elif bundle is not None:
+            st.caption(C.PDF_UNAVAILABLE)
 
 
 def render() -> None:

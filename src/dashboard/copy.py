@@ -563,6 +563,7 @@ SIDE_YOURS_HELP = "Show the example company again on every page (a page refresh 
 
 # ---- PDF report of the results (Try your own numbers, next to the table download) ----
 PDF_DOWNLOAD = "Download report (PDF)"
+PDF_UNAVAILABLE = "The PDF report is not available on this server right now; the table download has the same numbers."
 PDF_WORKING = "Preparing the report..."
 PDF_TITLE = "Results report"
 PDF_FOR = {"yours": "For the figures you entered", "example": "For the example company (made-up figures)"}

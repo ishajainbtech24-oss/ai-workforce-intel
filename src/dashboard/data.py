@@ -149,7 +149,22 @@ def payback_counts(scenario: str, k: float) -> tuple[list[int], int, int]:
     return _payback_counts(scenario, float(k), str(root()))
 
 
+@st.cache_resource(show_spinner=False, max_entries=32)
+def _run_all_shared(frozen: tuple, n: int, root_str: str) -> dict:
+    return _run_all(dict(frozen), n)
+
+
 def run_all(inputs: dict, n: int = N_SAVED) -> dict:
+    """`_run_all`, kept in memory for the whole server: the example company (every visit to Try your own numbers
+    starts with it) and any figures a visitor repeats are worked out once, not on every visit. The result is shared
+    read-only, so callers must not change it."""
+    frozen = tuple(sorted((k, v) for k, v in inputs.items() if isinstance(v, (int, float, str, bool))))
+    if len(frozen) != len(inputs):  # an unexpected value type: work it out without the shared memory
+        return _run_all(inputs, n)
+    return _run_all_shared(frozen, int(n), str(root()))
+
+
+def _run_all(inputs: dict, n: int = N_SAVED) -> dict:
     """Every outlook x caution level for these inputs, plus the 'what matters most' runs, exactly as Phase 4 builds
     its saved results (same futures, starting number, draws and table functions from `engine.report`). With the
     example company's inputs this gives the saved tables back. Returns the tables the pages read, the per-month

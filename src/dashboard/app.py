@@ -19,6 +19,12 @@ if str(HERE.parent) not in sys.path:
 
 import streamlit as st  # noqa: E402
 
+if not getattr(sys, "_aiwi_diag", False):  # one line per server start in the host's log (helps when a host differs)
+    import importlib.util
+    sys._aiwi_diag = True
+    print(f"[aiwi] python {sys.version.split()[0]} ({sys.executable}); plistlib found: "
+          f"{importlib.util.find_spec('plistlib') is not None}; path: {sys.path}", file=sys.stderr, flush=True)
+
 # New code and results after every deploy. The hosting service pulls each push to GitHub into this folder while the
 # server keeps running, and Python keeps the modules it already loaded, so a change would otherwise show only after
 # a restart. When any source or result file is newer than what this server loaded, forget our modules and the
