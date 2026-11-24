@@ -1,0 +1,16 @@
+# Render deployment of the dashboard (https://render.com/docs/blueprint-spec).
+# A free web service built from this repository; Render redeploys it on every push to main.
+services:
+  - type: web
+    name: ai-workforce-intel
+    runtime: python
+    plan: free
+    branch: main
+    buildCommand: pip install -r src/dashboard/requirements.txt
+    startCommand: >-
+      streamlit run src/dashboard/app.py --server.port $PORT --server.address 0.0.0.0
+      --server.headless true --browser.gatherUsageStats false
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11

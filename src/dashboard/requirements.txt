@@ -1,11 +1,11 @@
 # What the dashboard needs on Streamlit Community Cloud (it reads this file first, because it sits next to the
 # entry point src/dashboard/app.py). Pinned to the versions the dashboard was built and tested with: its styles
-# target Streamlit 1.67's page structure. Choose Python 3.11 when deploying.
+# target Streamlit 1.67's page structure. Choose Python 3.11 when deploying. Render (render.yaml) uses this file too.
 streamlit==1.67.0
 plotly==7.1.0
 pandas==3.0.5
 numpy==2.4.6
-pyarrow==26.0.0
+pyarrow==24.0.0  # 26 has a known crash (apache/arrow#50471); the live site already runs 24
 matplotlib==3.11.1
 scipy==1.17.1
 statsmodels==0.15.0
