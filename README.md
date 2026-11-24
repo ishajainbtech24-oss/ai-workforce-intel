@@ -186,9 +186,7 @@ The dashboard is deployed on [Render](https://render.com) as a free web service 
 Render installs `src/dashboard/requirements.txt` (the website's packages, pinned to the versions it was tested with),
 starts Streamlit on its port with a health check at `/_stcore/health`, and rebuilds and redeploys on every push to
 `main` (about a minute), so a change merged on GitHub is live without any other step. The theme comes from
-`.streamlit/config.toml`. The same repository also runs on Streamlit Community Cloud (entry point
-`src/dashboard/app.py`, Python 3.11); there `app.py` reloads changed code on the next page visit, because that
-service pulls each push into the running app instead of restarting it. The site needs only what is in the repository: the cleaned data in
+`.streamlit/config.toml`. (`app.py` can also pick up changed code without a restart, on hosts that pull each push into the running app.) The site needs only what is in the repository: the cleaned data in
 `data/processed/` and the saved results in `outputs/phase1` to `outputs/phase4`.
 
 Not in the repository (see `.gitignore`): the raw downloads (`data/raw/`, `ai-workforce-intel/data/`, about 4 GB;
