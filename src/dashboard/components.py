@@ -125,7 +125,9 @@ def _words(name: str) -> str:
 
 def footer() -> None:
     st.markdown(f'<div class="aiwi-footer"><b>{html.escape(C.PRODUCT)}</b><span>{html.escape(_words("FOOTER_NOTE"))}</span>'
-                f'<span>{html.escape(C.FOOTER.split(". ", 1)[1])}</span></div>', unsafe_allow_html=True)
+                f'<span>{html.escape(C.FOOTER.split(". ", 1)[1])}</span>'
+                f'<a href="{html.escape(C.SOURCE_URL)}" target="_blank" rel="noopener">{html.escape(C.SOURCE_LABEL)}</a></div>',
+                unsafe_allow_html=True)
 
 
 def missing() -> None:

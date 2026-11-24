@@ -1,5 +1,7 @@
 # AI Workforce Investment Intelligence (CS3216 TSAF)
 
+**Live website: https://ai-workforce-intel.streamlit.app** (updates itself on every push to `main`)
+
 Download and preprocessing live in `ai-workforce-intel/` (scripts `src/prep_*.py`, notebook
 `TSAF_Data_Preprocessing.ipynb`, see its README). This outer folder holds the processed data
 (`data/processed/`) and the modelling phases.

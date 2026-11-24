@@ -255,6 +255,7 @@ header[data-testid="stHeader"] { background: transparent !important; }
 .aiwi-footer { color: var(--faint); font-size: 12.5px; text-align: center; padding: var(--s5) 0 var(--s2); margin-top: var(--s5);
   border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s1) var(--s3); }
 .aiwi-footer b { color: var(--muted); font-weight: 600; }
+.aiwi-footer a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Streamlit widgets ---------- */
 [data-testid="stButtonGroup"] [role="radiogroup"], [data-testid="stButtonGroup"] > div:last-child { gap: 0; }
