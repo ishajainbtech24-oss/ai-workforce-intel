@@ -1,6 +1,7 @@
 # AI Workforce Investment Intelligence (CS3216 TSAF)
 
-**Live website: https://ai-workforce-intel.streamlit.app** (updates itself on every push to `main`)
+**Live website: https://ai-workforce-intel.onrender.com** (updates itself on every push to `main`; the free
+service sleeps when idle, so the first visit after a quiet spell takes about a minute)
 
 Download and preprocessing live in `ai-workforce-intel/` (scripts `src/prep_*.py`, notebook
 `TSAF_Data_Preprocessing.ipynb`, see its README). This outer folder holds the processed data
@@ -181,11 +182,13 @@ rendered widgets in a browser (skipped when Playwright is not installed).
 
 ## Live website and automatic updates
 
-The dashboard is deployed on [Streamlit Community Cloud](https://streamlit.io/cloud) straight from this repository:
-entry point `src/dashboard/app.py`, branch `main`, Python 3.11. Every push to `main` redeploys the site on its own
-within a few minutes, so a change merged on GitHub is live without any other step. The cloud installs
-`src/dashboard/requirements.txt` (the website's packages, pinned to the versions it was tested with) and reads
-`.streamlit/config.toml` for the theme. The site needs only what is in the repository: the cleaned data in
+The dashboard is deployed on [Render](https://render.com) as a free web service described in `render.yaml`:
+Render installs `src/dashboard/requirements.txt` (the website's packages, pinned to the versions it was tested with),
+starts Streamlit on its port with a health check at `/_stcore/health`, and rebuilds and redeploys on every push to
+`main` (about a minute), so a change merged on GitHub is live without any other step. The theme comes from
+`.streamlit/config.toml`. The same repository also runs on Streamlit Community Cloud (entry point
+`src/dashboard/app.py`, Python 3.11); there `app.py` reloads changed code on the next page visit, because that
+service pulls each push into the running app instead of restarting it. The site needs only what is in the repository: the cleaned data in
 `data/processed/` and the saved results in `outputs/phase1` to `outputs/phase4`.
 
 Not in the repository (see `.gitignore`): the raw downloads (`data/raw/`, `ai-workforce-intel/data/`, about 4 GB;
