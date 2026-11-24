@@ -1,0 +1,215 @@
+{
+ "views": [
+  {
+   "width": 1440,
+   "theme": "light",
+   "default": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Oct 2027 we expect about 128.8 points.",
+    "divider": [],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money"
+    ],
+    "next": "NEXT\nWhat the money is spent on, month by month.",
+    "dollar": false
+   },
+   "after_clicks": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Day 94 we expect about 9.3 lakh usage units.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money"
+    ],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   }
+  },
+  {
+   "width": 1440,
+   "theme": "dark",
+   "default": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Oct 2027 we expect about 128.8 points.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money"
+    ],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   },
+   "after_clicks": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Day 94 we expect about 9.3 lakh usage units.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money"
+    ],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   }
+  },
+  {
+   "width": 768,
+   "theme": "light",
+   "default": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Oct 2027 we expect about 128.8 points.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money",
+     "4 more"
+    ],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   },
+   "after_clicks": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Day 94 we expect about 9.3 lakh usage units.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money",
+     "4 more"
+    ],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   }
+  },
+  {
+   "width": 768,
+   "theme": "dark",
+   "default": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Oct 2027 we expect about 128.8 points.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money",
+     "4 more"
+    ],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   },
+   "after_clicks": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Day 94 we expect about 9.3 lakh usage units.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [
+     "Forecasts"
+    ],
+    "sections": [
+     "Forecasts",
+     "The money",
+     "4 more"
+    ],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   }
+  },
+  {
+   "width": 390,
+   "theme": "light",
+   "default": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Oct 2027 we expect about 128.8 points.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [],
+    "sections": [],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   },
+   "after_clicks": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Day 94 we expect about 9.3 lakh usage units.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [],
+    "sections": [],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   }
+  },
+  {
+   "width": 390,
+   "theme": "dark",
+   "default": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Oct 2027 we expect about 128.8 points.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [],
+    "sections": [],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   },
+   "after_clicks": {
+    "banner": true,
+    "sideways": false,
+    "headline": "By Day 94 we expect about 9.3 lakh usage units.",
+    "divider": [
+     "Latest real value"
+    ],
+    "activeSection": [],
+    "sections": [],
+    "next": "NEXT\npayments\n\nWhere the money goes \u2192\n\nWhat the money is spent on, month by month.",
+    "dollar": false
+   }
+  }
+ ],
+ "errors": []
+}

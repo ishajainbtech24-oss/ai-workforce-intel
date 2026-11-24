@@ -1,0 +1,56 @@
+{
+ "light": {
+  "popover_button": {
+   "text": "menu_book\n\nWord guide\n\nexpand_more",
+   "color": "rgb(28, 34, 48)",
+   "bg": "rgb(255, 255, 255)",
+   "border": "rgba(52, 40, 24, 0.24)"
+  },
+  "popover_label": {
+   "text": "Word guide",
+   "color": "rgb(28, 34, 48)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(28, 34, 48)"
+  },
+  "expander": {
+   "text": "info\n\nAbout these numbers",
+   "color": "rgb(28, 34, 48)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(28, 34, 48)"
+  },
+  "button": null,
+  "toggle_label": {
+   "text": "Dark mode",
+   "color": "rgb(28, 34, 48)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(28, 34, 48)"
+  }
+ },
+ "dark": {
+  "popover_button": {
+   "text": "menu_book\n\nWord guide\n\nexpand_more",
+   "color": "rgb(243, 238, 229)",
+   "bg": "rgb(29, 36, 49)",
+   "border": "rgba(255, 246, 230, 0.22)"
+  },
+  "popover_label": {
+   "text": "Word guide",
+   "color": "rgb(243, 238, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(243, 238, 229)"
+  },
+  "expander": {
+   "text": "info\n\nAbout these numbers",
+   "color": "rgb(243, 238, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(243, 238, 229)"
+  },
+  "button": null,
+  "toggle_label": {
+   "text": "Dark mode",
+   "color": "rgb(243, 238, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(243, 238, 229)"
+  }
+ }
+}

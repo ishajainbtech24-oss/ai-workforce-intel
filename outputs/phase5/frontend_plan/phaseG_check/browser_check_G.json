@@ -1,0 +1,401 @@
+{
+ "views": [
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "Forecasts"
+   ]
+  },
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "The money"
+   ]
+  },
+  {
+   "page": "overview",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "The money"
+   ]
+  },
+  {
+   "page": "data_used",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "The money"
+   ]
+  },
+  {
+   "page": "forecast",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "The money"
+   ]
+  },
+  {
+   "page": "reliability",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "The money"
+   ]
+  },
+  {
+   "page": "timing",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "Forecasts"
+   ]
+  },
+  {
+   "page": "levers",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.18,
+    "Forecasts"
+   ]
+  },
+  {
+   "page": "your_company",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.02,
+    "refresh"
+   ]
+  },
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.04,
+    "event_available"
+   ]
+  },
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "overview",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.04,
+    "fact_check"
+   ]
+  },
+  {
+   "page": "data_used",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.04,
+    "trending_up"
+   ]
+  },
+  {
+   "page": "forecast",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.04,
+    "fact_check"
+   ]
+  },
+  {
+   "page": "reliability",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.04,
+    "payments"
+   ]
+  },
+  {
+   "page": "timing",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.04,
+    "tune"
+   ]
+  },
+  {
+   "page": "levers",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "your_company",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.09,
+    "Update results"
+   ]
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    5.32,
+    "Figures are estimates, not promises."
+   ]
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    4.92,
+    "Not within 12 months"
+   ]
+  },
+  {
+   "page": "overview",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    4.43,
+    "Needs attention"
+   ]
+  },
+  {
+   "page": "data_used",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    5.32,
+    "Figures are estimates, not promises."
+   ]
+  },
+  {
+   "page": "forecast",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    5.32,
+    "Figures are estimates, not promises."
+   ]
+  },
+  {
+   "page": "reliability",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    4.92,
+    "2 of 6"
+   ]
+  },
+  {
+   "page": "timing",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    5.32,
+    "Figures are estimates, not promises."
+   ]
+  },
+  {
+   "page": "levers",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    5.32,
+    "Figures are estimates, not promises."
+   ]
+  },
+  {
+   "page": "your_company",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.02,
+    "refresh"
+   ]
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "overview",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "data_used",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "forecast",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "reliability",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "timing",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "levers",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    2.06,
+    "Skip to main content"
+   ]
+  },
+  {
+   "page": "your_company",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "lowest_text_contrast": [
+    1.09,
+    "Update results"
+   ]
+  }
+ ],
+ "errors": []
+}

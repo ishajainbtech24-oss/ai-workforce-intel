@@ -1,0 +1,4 @@
+# Development tools (not needed in Colab): build and test the Colab notebook
+nbformat>=5.9
+nbclient>=0.10
+ipykernel>=6

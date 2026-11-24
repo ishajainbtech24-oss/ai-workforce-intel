@@ -1,0 +1,72 @@
+{
+  "phase": 3,
+  "note": "Measured inputs for Phase 4; no cost calculations here.",
+  "window": "BurstGPT days 0-86",
+  "input_token_share": 0.8608563439193945,
+  "output_token_share": 0.13914365608060553,
+  "input_token_note": "request_tokens / total_tokens summed over the window (burstgpt_daily)",
+  "api_token_share": 0.8956953691582766,
+  "chat_token_share": 0.10430463084172334,
+  "forecast_files": [
+    {
+      "driver": "burst_tokens_total_daily",
+      "file": "forecasts/burst_tokens_total_daily.parquet",
+      "unit": "tokens",
+      "grain": "day",
+      "horizon": 14
+    },
+    {
+      "driver": "burst_tokens_api_daily",
+      "file": "forecasts/burst_tokens_api_daily.parquet",
+      "unit": "tokens",
+      "grain": "day",
+      "horizon": 14
+    },
+    {
+      "driver": "burst_tokens_chat_daily",
+      "file": "forecasts/burst_tokens_chat_daily.parquet",
+      "unit": "tokens",
+      "grain": "day",
+      "horizon": 14
+    },
+    {
+      "driver": "burst_requests_hourly",
+      "file": "forecasts/burst_requests_hourly.parquet",
+      "unit": "requests",
+      "grain": "hour",
+      "horizon": 168
+    },
+    {
+      "driver": "wildchat_conversations_daily",
+      "file": "forecasts/wildchat_conversations_daily.parquet",
+      "unit": "conversations",
+      "grain": "day",
+      "horizon": 14
+    },
+    {
+      "driver": "eci_wages_quarterly",
+      "file": "forecasts/eci_wages_quarterly.parquet",
+      "unit": "index_points",
+      "grain": "quarter",
+      "horizon": 8
+    },
+    {
+      "driver": "ppi_hosting_monthly",
+      "file": "forecasts/ppi_hosting_monthly.parquet",
+      "unit": "index_points",
+      "grain": "month",
+      "horizon": 12
+    }
+  ],
+  "scenario_file": "forecasts/scenario_tables.csv",
+  "uncertainty_multiplier": 1.0,
+  "uncertainty_sensitivity": {
+    "multipliers": [
+      1.0,
+      1.5,
+      2.0
+    ],
+    "how": "path_m = point + m x (path - point), then clip at 0; sample_id -1 is the point. The saved forecast files are NOT scaled (m = 1.0).",
+    "why": "the holdout check shows bands that are still too narrow for several drivers"
+  }
+}

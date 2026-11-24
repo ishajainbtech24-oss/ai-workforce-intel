@@ -1,0 +1,173 @@
+{
+ "views": [
+  {
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "styles": true,
+   "sideways": false,
+   "title": "The big picture",
+   "hero": false,
+   "cards": [
+    "\u20b92.61 Cr",
+    "\u20b91.7 Cr",
+    "-\u20b991.0 L",
+    "Not within 12 months",
+    "+6.8% by Q3 2028",
+    "+1.5% by Oct 2027"
+   ],
+   "decide": [
+    "Time saved per person",
+    "Share of saved time that becomes value",
+    "Training hours per new user"
+   ],
+   "iframes3d": 2,
+   "dollar": false,
+   "open3d_charts": 1,
+   "timing_text": "Not within 12 months\nNot within 12 months\nMonth 11\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nNotwithin12 months\nOptimistic outlook\nExpected outlook\nCautious outlook\nMonth",
+   "timing_sideways": false,
+   "tech": []
+  },
+  {
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "styles": true,
+   "sideways": false,
+   "title": "The big picture",
+   "hero": false,
+   "cards": [
+    "\u20b92.61 Cr",
+    "\u20b91.7 Cr",
+    "-\u20b991.0 L",
+    "Not within 12 months",
+    "+6.8% by Q3 2028",
+    "+1.5% by Oct 2027"
+   ],
+   "decide": [
+    "Time saved per person",
+    "Share of saved time that becomes value",
+    "Training hours per new user"
+   ],
+   "iframes3d": 2,
+   "dollar": false,
+   "open3d_charts": 1,
+   "timing_text": "Not within 12 months\nNot within 12 months\nMonth 11\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nNotwithin12 months\nOptimistic outlook\nExpected outlook\nCautious outlook\nMonth",
+   "timing_sideways": false,
+   "tech": []
+  },
+  {
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "styles": true,
+   "sideways": false,
+   "title": "The big picture",
+   "hero": false,
+   "cards": [
+    "\u20b92.61 Cr",
+    "\u20b91.7 Cr",
+    "-\u20b991.0 L",
+    "Not within 12 months",
+    "+6.8% by Q3 2028",
+    "+1.5% by Oct 2027"
+   ],
+   "decide": [
+    "Time saved per person",
+    "Share of saved time that becomes value",
+    "Training hours per new user"
+   ],
+   "iframes3d": 2,
+   "dollar": false,
+   "open3d_charts": 1,
+   "timing_text": "Not within 12 months\nNot within 12 months\nMonth 11\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nNotwithin12 months\nOptimistic outlook\nExpected outlook\nCautious outlook\nMonth",
+   "timing_sideways": false,
+   "tech": []
+  },
+  {
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "styles": true,
+   "sideways": false,
+   "title": "The big picture",
+   "hero": false,
+   "cards": [
+    "\u20b92.61 Cr",
+    "\u20b91.7 Cr",
+    "-\u20b991.0 L",
+    "Not within 12 months",
+    "+6.8% by Q3 2028",
+    "+1.5% by Oct 2027"
+   ],
+   "decide": [
+    "Time saved per person",
+    "Share of saved time that becomes value",
+    "Training hours per new user"
+   ],
+   "iframes3d": 2,
+   "dollar": false,
+   "open3d_charts": 1,
+   "timing_text": "Not within 12 months\nNot within 12 months\nMonth 11\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nNotwithin12 months\nOptimistic outlook\nExpected outlook\nCautious outlook\nMonth",
+   "timing_sideways": false,
+   "tech": []
+  },
+  {
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "styles": true,
+   "sideways": false,
+   "title": "The big picture",
+   "hero": false,
+   "cards": [
+    "\u20b92.61 Cr",
+    "\u20b91.7 Cr",
+    "-\u20b991.0 L",
+    "Not within 12 months",
+    "+6.8% by Q3 2028",
+    "+1.5% by Oct 2027"
+   ],
+   "decide": [
+    "Time saved per person",
+    "Share of saved time that becomes value",
+    "Training hours per new user"
+   ],
+   "iframes3d": 2,
+   "dollar": false,
+   "open3d_charts": 1,
+   "timing_text": "Not within 12 months\nNot within 12 months\nMonth 11\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nNotwithin12 months\nOptimistic outlook\nExpected outlook\nCautious outlook\nMonth",
+   "timing_sideways": false,
+   "tech": []
+  },
+  {
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "styles": true,
+   "sideways": false,
+   "title": "The big picture",
+   "hero": false,
+   "cards": [
+    "\u20b92.61 Cr",
+    "\u20b91.7 Cr",
+    "-\u20b991.0 L",
+    "Not within 12 months",
+    "+6.8% by Q3 2028",
+    "+1.5% by Oct 2027"
+   ],
+   "decide": [
+    "Time saved per person",
+    "Share of saved time that becomes value",
+    "Training hours per new user"
+   ],
+   "iframes3d": 2,
+   "dollar": false,
+   "open3d_charts": 1,
+   "timing_text": "Not within 12 months\nNot within 12 months\nMonth 11\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\nNotwithin12 months\nOptimistic outlook\nExpected outlook\nCautious outlook\nMonth",
+   "timing_sideways": false,
+   "tech": []
+  }
+ ],
+ "errors": []
+}

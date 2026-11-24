@@ -1,0 +1,20 @@
+18:32:38 INFO    Phase 3 start (fast=False, growth=sqrt, 200 samples)
+18:32:39 INFO    burst_tokens_total_daily       ensemble         folds=4   relative=True  cover80=1.00 cover95=1.00 [0.5s]
+18:32:39 INFO    burst_tokens_api_daily         ensemble         folds=4   relative=True  cover80=1.00 cover95=1.00 [0.4s]
+18:32:40 INFO    burst_tokens_chat_daily        ensemble         folds=4   relative=True  cover80=0.36 cover95=0.36 [0.3s]
+18:32:43 INFO    burst_requests_hourly          ensemble         folds=8   relative=False cover80=0.32 cover95=0.32 [2.9s]
+18:32:43 INFO    wildchat_conversations_daily   seasonal_ma3     folds=9   relative=True  cover80=0.29 cover95=0.36 [0.1s]
+18:32:43 INFO    eci_wages_quarterly            arima            folds=17  relative=True  cover80=0.25 cover95=0.75 [0.4s]
+18:32:43 INFO    ppi_hosting_monthly: recency weights: half-life 0.25 x 38 folds
+18:32:44 INFO    ppi_hosting_monthly            ensemble         folds=38  relative=True  cover80=0.33 cover95=0.83 [0.7s]
+18:32:46 INFO    validation:
+                                file status problems
+    burst_tokens_total_daily.parquet   PASS         
+      burst_tokens_api_daily.parquet   PASS         
+     burst_tokens_chat_daily.parquet   PASS         
+       burst_requests_hourly.parquet   PASS         
+wildchat_conversations_daily.parquet   PASS         
+         eci_wages_quarterly.parquet   PASS         
+         ppi_hosting_monthly.parquet   PASS         
+                 scenario_tables.csv   PASS         
+18:32:46 INFO    done in 8.1s: 7 simulated, 0 failed, validation 8 PASS / 0 FAIL

@@ -1,0 +1,332 @@
+{
+ "views": [
+  {
+   "width": 1440,
+   "theme": "light",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Dec 2000 to Oct 2026",
+     "311 months",
+     "12",
+     "0"
+    ],
+    "summary": "The first 12 months averaged about 101.5 points and the last 12 about 124.6 points, so the values rose. Long-term trend: strong. Repeating yearly pattern: little.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Day 1 to Day 87",
+     "87 days",
+     "2",
+     "0"
+    ],
+    "summary": "The first 7 days averaged about 24.0 lakh usage units and the last 7 about 14.8 lakh usage units, so the values fell. Long-term trend: some. Repeating weekly pattern: strong.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "tabs": {
+    "What happened": [
+     "10\n20\n30\n40\n50\n60\n70\n80\n10.0 lakh\n20.0 lakh\n30.0 lakh\n40.0 lakh\nWhat happened\nUnusual point\nKnown outage\nDay\nUsage units per day\ndownload\n\nDownload this trend's"
+    ],
+    "Repeating pattern": [
+     "Average for each day of the week\n1\n2\n3\n4\n5\n6\n7\n0\n10.0 lakh\n20.0 lakh\n30.0 lakh\nDay of the week (1 = first day in the source)\nDays are counted from the first day"
+    ],
+    "Unusual points": [
+     "Unusual points are values far from what the usual pattern suggests. They were kept in the data, not removed.\nWhen\tValue\tHow unusual\tCompared with usual\nDay 78\t8"
+    ]
+   },
+   "tech": []
+  },
+  {
+   "width": 1440,
+   "theme": "dark",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Dec 2000 to Oct 2026",
+     "311 months",
+     "12",
+     "0"
+    ],
+    "summary": "The first 12 months averaged about 101.5 points and the last 12 about 124.6 points, so the values rose. Long-term trend: strong. Repeating yearly pattern: little.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Day 1 to Day 87",
+     "87 days",
+     "2",
+     "0"
+    ],
+    "summary": "The first 7 days averaged about 24.0 lakh usage units and the last 7 about 14.8 lakh usage units, so the values fell. Long-term trend: some. Repeating weekly pattern: strong.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "tabs": {
+    "What happened": [
+     "10\n20\n30\n40\n50\n60\n70\n80\n10.0 lakh\n20.0 lakh\n30.0 lakh\n40.0 lakh\nWhat happened\nUnusual point\nKnown outage\nDay\nUsage units per day\ndownload\n\nDownload this trend's"
+    ],
+    "Repeating pattern": [
+     "Average for each day of the week\n1\n2\n3\n4\n5\n6\n7\n0\n10.0 lakh\n20.0 lakh\n30.0 lakh\nDay of the week (1 = first day in the source)\nDays are counted from the first day"
+    ],
+    "Unusual points": [
+     "Unusual points are values far from what the usual pattern suggests. They were kept in the data, not removed.\nWhen\tValue\tHow unusual\tCompared with usual\nDay 78\t8"
+    ]
+   },
+   "tech": []
+  },
+  {
+   "width": 768,
+   "theme": "light",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Dec 2000 to Oct 2026",
+     "311 months",
+     "12",
+     "0"
+    ],
+    "summary": "The first 12 months averaged about 101.5 points and the last 12 about 124.6 points, so the values rose. Long-term trend: strong. Repeating yearly pattern: little.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Day 1 to Day 87",
+     "87 days",
+     "2",
+     "0"
+    ],
+    "summary": "The first 7 days averaged about 24.0 lakh usage units and the last 7 about 14.8 lakh usage units, so the values fell. Long-term trend: some. Repeating weekly pattern: strong.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "tabs": {
+    "What happened": [
+     "10\n20\n30\n40\n50\n60\n70\n80\n90\n10.0 lakh\n20.0 lakh\n30.0 lakh\n40.0 lakh\nWhat happened\nUnusual point\nKnown outage\nDay\nUsage units per day\ndownload\n\nDownload this tren"
+    ],
+    "Repeating pattern": [
+     "Average for each day of the week\n1\n2\n3\n4\n5\n6\n7\n0\n10.0 lakh\n20.0 lakh\n30.0 lakh\nDay of the week (1 = first day in the source)\nDays are counted from the first day"
+    ],
+    "Unusual points": [
+     "Unusual points are values far from what the usual pattern suggests. They were kept in the data, not removed.\nWhen\tValue\tHow unusual\tCompared with usual\nDay 78\t8"
+    ]
+   },
+   "tech": []
+  },
+  {
+   "width": 768,
+   "theme": "dark",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Dec 2000 to Oct 2026",
+     "311 months",
+     "12",
+     "0"
+    ],
+    "summary": "The first 12 months averaged about 101.5 points and the last 12 about 124.6 points, so the values rose. Long-term trend: strong. Repeating yearly pattern: little.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Day 1 to Day 87",
+     "87 days",
+     "2",
+     "0"
+    ],
+    "summary": "The first 7 days averaged about 24.0 lakh usage units and the last 7 about 14.8 lakh usage units, so the values fell. Long-term trend: some. Repeating weekly pattern: strong.",
+    "active": [
+     "Forecasts"
+    ],
+    "dollar": false
+   },
+   "tabs": {
+    "What happened": [
+     "10\n20\n30\n40\n50\n60\n70\n80\n90\n10.0 lakh\n20.0 lakh\n30.0 lakh\n40.0 lakh\nWhat happened\nUnusual point\nKnown outage\nDay\nUsage units per day\ndownload\n\nDownload this tren"
+    ],
+    "Repeating pattern": [
+     "Average for each day of the week\n1\n2\n3\n4\n5\n6\n7\n0\n10.0 lakh\n20.0 lakh\n30.0 lakh\nDay of the week (1 = first day in the source)\nDays are counted from the first day"
+    ],
+    "Unusual points": [
+     "Unusual points are values far from what the usual pattern suggests. They were kept in the data, not removed.\nWhen\tValue\tHow unusual\tCompared with usual\nDay 78\t8"
+    ]
+   },
+   "tech": []
+  },
+  {
+   "width": 390,
+   "theme": "light",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Dec 2000 to Oct 2026",
+     "311 months",
+     "12",
+     "0"
+    ],
+    "summary": "The first 12 months averaged about 101.5 points and the last 12 about 124.6 points, so the values rose. Long-term trend: strong. Repeating yearly pattern: little.",
+    "active": [],
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Day 1 to Day 87",
+     "87 days",
+     "2",
+     "0"
+    ],
+    "summary": "The first 7 days averaged about 24.0 lakh usage units and the last 7 about 14.8 lakh usage units, so the values fell. Long-term trend: some. Repeating weekly pattern: strong.",
+    "active": [],
+    "dollar": false
+   },
+   "tabs": {
+    "What happened": [
+     "20\n40\n60\n80\n10.0 lakh\n20.0 lakh\n30.0 lakh\n40.0 lakh\nWhat happened\nUnusual point\nKnown outage\nDay\nUsage units per day\ndownload\n\nDownload this trend's data"
+    ],
+    "Repeating pattern": [
+     "Average for each day of the week\n1\n2\n3\n4\n5\n6\n7\n0\n10.0 lakh\n20.0 lakh\n30.0 lakh\nDay of the week (1 = first day in the source)\nDays are counted from the first day"
+    ],
+    "Unusual points": [
+     "Unusual points are values far from what the usual pattern suggests. They were kept in the data, not removed.\nWhen\tValue\tHow unusual\tCompared with usual\nDay 78\t8"
+    ]
+   },
+   "tech": []
+  },
+  {
+   "width": 390,
+   "theme": "dark",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Dec 2000 to Oct 2026",
+     "311 months",
+     "12",
+     "0"
+    ],
+    "summary": "The first 12 months averaged about 101.5 points and the last 12 about 124.6 points, so the values rose. Long-term trend: strong. Repeating yearly pattern: little.",
+    "active": [],
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "tiles": [
+     "Day 1 to Day 87",
+     "87 days",
+     "2",
+     "0"
+    ],
+    "summary": "The first 7 days averaged about 24.0 lakh usage units and the last 7 about 14.8 lakh usage units, so the values fell. Long-term trend: some. Repeating weekly pattern: strong.",
+    "active": [],
+    "dollar": false
+   },
+   "tabs": {
+    "What happened": [
+     "20\n40\n60\n80\n10.0 lakh\n20.0 lakh\n30.0 lakh\n40.0 lakh\nWhat happened\nUnusual point\nKnown outage\nDay\nUsage units per day\ndownload\n\nDownload this trend's data"
+    ],
+    "Repeating pattern": [
+     "Average for each day of the week\n1\n2\n3\n4\n5\n6\n7\n0\n10.0 lakh\n20.0 lakh\n30.0 lakh\nDay of the week (1 = first day in the source)\nDays are counted from the first day"
+    ],
+    "Unusual points": [
+     "Unusual points are values far from what the usual pattern suggests. They were kept in the data, not removed.\nWhen\tValue\tHow unusual\tCompared with usual\nDay 78\t8"
+    ]
+   },
+   "tech": []
+  }
+ ],
+ "menu_forecasts": [
+  "The data we used",
+  "What we expect next",
+  "How reliable it is"
+ ],
+ "next_chain": [
+  [
+   "welcome",
+   "The big picture \u2192",
+   "overview"
+  ],
+  [
+   "overview",
+   "The data we used \u2192",
+   "data_used"
+  ],
+  [
+   "data_used",
+   "What we expect next \u2192",
+   "forecast"
+  ],
+  [
+   "forecast",
+   "How reliable it is \u2192",
+   "reliability"
+  ],
+  [
+   "reliability",
+   "Where the money goes \u2192",
+   "costs"
+  ],
+  [
+   "costs",
+   "When it pays for itself \u2192",
+   "timing"
+  ],
+  [
+   "timing",
+   "What matters most \u2192",
+   "levers"
+  ],
+  [
+   "levers",
+   "Try your own numbers \u2192",
+   "your_company"
+  ]
+ ],
+ "errors": []
+}

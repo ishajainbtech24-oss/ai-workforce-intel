@@ -1,0 +1,201 @@
+{
+  "phase": 1,
+  "modelling_window": "BurstGPT days 0-86 (in_model_window == True, 87 days); dated sources use their full span",
+  "drivers": [
+    {
+      "name": "burst_tokens_total_daily",
+      "file": "burstgpt_daily_wide",
+      "value_col": "total_tokens",
+      "grain": "daily",
+      "n_obs": 87,
+      "season": 7,
+      "extra_seasons": [],
+      "decomposition": "multiplicative",
+      "d": 0,
+      "D": 0,
+      "tests_agree": true,
+      "log_candidate": true,
+      "cv_settings": {
+        "initial": 42,
+        "h": 7,
+        "step": 7,
+        "holdout": 14
+      },
+      "best_baseline": "mean",
+      "best_baseline_cv_mase": 0.5029674537365092,
+      "best_baseline_holdout_mase": 0.8734048646419781,
+      "seasonal_naive_cv_mase": 0.5288233351341011,
+      "notes": "All BurstGPT traffic (ChatGPT + GPT-4, API + chat)."
+    },
+    {
+      "name": "burst_tokens_api_daily",
+      "file": "burstgpt_daily_wide",
+      "value_col": "ChatGPT_api_total_tokens+GPT-4_api_total_tokens",
+      "grain": "daily",
+      "n_obs": 87,
+      "season": 7,
+      "extra_seasons": [],
+      "decomposition": "multiplicative",
+      "d": 0,
+      "D": 0,
+      "tests_agree": true,
+      "log_candidate": true,
+      "cv_settings": {
+        "initial": 42,
+        "h": 7,
+        "step": 7,
+        "holdout": 14
+      },
+      "best_baseline": "mean",
+      "best_baseline_cv_mase": 0.49537803298091826,
+      "best_baseline_holdout_mase": 0.9085630388044342,
+      "seasonal_naive_cv_mase": 0.5296161119089865,
+      "notes": "API segment = ChatGPT_api + GPT-4_api tokens."
+    },
+    {
+      "name": "burst_tokens_chat_daily",
+      "file": "burstgpt_daily_wide",
+      "value_col": "ChatGPT_conversation_total_tokens+GPT-4_conversation_total_tokens",
+      "grain": "daily",
+      "n_obs": 87,
+      "season": 7,
+      "extra_seasons": [],
+      "decomposition": "additive",
+      "d": 0,
+      "D": 1,
+      "tests_agree": true,
+      "log_candidate": false,
+      "cv_settings": {
+        "initial": 42,
+        "h": 7,
+        "step": 7,
+        "holdout": 14
+      },
+      "best_baseline": "seasonal_naive",
+      "best_baseline_cv_mase": 1.0147153105788618,
+      "best_baseline_holdout_mase": 2.001812744026294,
+      "seasonal_naive_cv_mase": 1.0147153105788618,
+      "notes": "Chat segment = ChatGPT_conversation + GPT-4_conversation tokens."
+    },
+    {
+      "name": "burst_requests_hourly",
+      "file": "burstgpt_hourly_total",
+      "value_col": "requests",
+      "grain": "hourly",
+      "n_obs": 2088,
+      "season": 24,
+      "extra_seasons": [
+        168
+      ],
+      "decomposition": "additive",
+      "d": 0,
+      "D": 1,
+      "tests_agree": true,
+      "log_candidate": false,
+      "cv_settings": {
+        "initial": 336,
+        "h": 24,
+        "step": 72,
+        "holdout": 168
+      },
+      "best_baseline": "seasonal_naive",
+      "best_baseline_cv_mase": 0.8218020127992989,
+      "best_baseline_holdout_mase": 2.412811467343135,
+      "seasonal_naive_cv_mase": 0.8218020127992989,
+      "notes": "All BurstGPT requests per hour; 43 empty hours in the window are true zeros."
+    },
+    {
+      "name": "wildchat_conversations_daily",
+      "file": "wildchat_daily",
+      "value_col": "conversations",
+      "grain": "daily",
+      "n_obs": 121,
+      "season": 7,
+      "extra_seasons": [],
+      "decomposition": "multiplicative",
+      "d": 0,
+      "D": 1,
+      "tests_agree": true,
+      "log_candidate": true,
+      "cv_settings": {
+        "initial": 42,
+        "h": 7,
+        "step": 7,
+        "holdout": 14
+      },
+      "best_baseline": "seasonal_ma3",
+      "best_baseline_cv_mase": 1.430176021264421,
+      "best_baseline_holdout_mase": 2.4509182491992254,
+      "seasonal_naive_cv_mase": 1.5065429989652976,
+      "notes": "Added (not in the prompt's table) because WildChat weekly cannot be analysed. Summed over model families. Some dates have no data at all and GPT-4 is absent from late June to early November 2023, so only the longest run with both families present is used. The file's last date is cut off by the shard download and is dropped. last date in the file (2024-07-03 00:00:00) is partial (download cut-off): dropped modelling window = longest run without missing data: 2024-03-04 00:00:00 to 2024-07-03 00:00:00 (122 points; 159 flagged point(s) in the file) dropped 1 NaN value(s) at the series ends"
+    },
+    {
+      "name": "eci_wages_quarterly",
+      "file": "eci_quarterly",
+      "value_col": "eci_wages_sa",
+      "grain": "quarterly",
+      "n_obs": 103,
+      "season": 4,
+      "extra_seasons": [],
+      "decomposition": "multiplicative",
+      "d": 1,
+      "D": 1,
+      "tests_agree": true,
+      "log_candidate": true,
+      "cv_settings": {
+        "initial": 62,
+        "h": 4,
+        "step": 2,
+        "holdout": 4
+      },
+      "best_baseline": "drift",
+      "best_baseline_cv_mase": 0.5289229602418821,
+      "best_baseline_holdout_mase": 0.20012256573889023,
+      "seasonal_naive_cv_mase": 1.7374153179140417,
+      "notes": "Seasonally adjusted ECI wages. eci_monthly is interpolated and never analysed. D=1 comes from the decision order (seasonal differencing is tried before d=2), but STL seasonal strength is only 0.00: risk of over-differencing; Phase 2 should also compare d=2, D=0 by AICc and residual checks."
+    },
+    {
+      "name": "ppi_hosting_monthly",
+      "file": "ppi_hosting_monthly",
+      "value_col": "ppi_hosting",
+      "grain": "monthly",
+      "n_obs": 311,
+      "season": 12,
+      "extra_seasons": [],
+      "decomposition": "multiplicative",
+      "d": 1,
+      "D": 1,
+      "tests_agree": true,
+      "log_candidate": true,
+      "cv_settings": {
+        "initial": 187,
+        "h": 6,
+        "step": 3,
+        "holdout": 6
+      },
+      "best_baseline": "drift",
+      "best_baseline_cv_mase": 0.6898816550113739,
+      "best_baseline_holdout_mase": 2.6491775626479703,
+      "seasonal_naive_cv_mase": 2.108673553743063,
+      "notes": "PPI data processing and hosting. D=1 comes from the decision order (seasonal differencing is tried before d=2), but STL seasonal strength is only 0.08: risk of over-differencing; Phase 2 should also compare d=2, D=0 by AICc and residual checks."
+    }
+  ],
+  "skipped": [
+    {
+      "name": "wildchat_conversations_weekly",
+      "reason": "2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points"
+    },
+    {
+      "name": "wildchat_new_users_weekly",
+      "reason": "2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points"
+    },
+    {
+      "name": "wildchat_returning_share_weekly",
+      "reason": "2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points"
+    },
+    {
+      "name": "epoch_cheapest_price_monthly",
+      "reason": "file 'epoch_prices_monthly' not found in data/processed"
+    }
+  ]
+}

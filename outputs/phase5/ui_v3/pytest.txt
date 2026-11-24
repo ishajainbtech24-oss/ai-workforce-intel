@@ -1,0 +1,62 @@
+........................................................................ [ 21%]
+........................................................................ [ 42%]
+........................................................................ [ 63%]
+........................................................................ [ 84%]
+.......................................F..............                   [100%]
+================================== FAILURES ===================================
+______________________ test_controls_are_readable[light] ______________________
+
+browser_app = (<Browser type=<BrowserType name=chromium executable_path=C:\Users\Isha Jain\AppData\Local\ms-playwright\chromium-1248\chrome-win64\chrome.exe> version=156.0.8078.4>, 'http://localhost:59778')
+theme = 'light'
+
+    @pytest.mark.parametrize("theme", ["light", "dark"])
+    def test_controls_are_readable(browser_app, theme):
+        browser, base = browser_app
+        failures, seen = [], set()
+        for name, page, sel, action in CHECKS:
+            pg = browser.new_page(viewport={"width": 1440, "height": 900})
+            pg.goto(f"{base}/{page}?theme={theme}")
+            pg.wait_for_selector(".aiwi-banner", timeout=120000)
+>           pg.wait_for_selector('[data-testid="stPlotlyChart"], [data-testid="stForm"]', timeout=120000)
+
+tests\test_ui_contrast.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py:21370: in wait_for_selector
+    self._sync(
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_page.py:431: in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py:395: in wait_for_selector
+    await self._channel.send(
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <playwright._impl._connection.Connection object at 0x000001A7210B10D0>
+cb = <function Channel.send.<locals>.<lambda> at 0x000001A72077B600>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 120000ms exceeded.
+E           Call log:
+E             - waiting for locator("[data-testid=\"stPlotlyChart\"], [data-testid=\"stForm\"]") to be visible
+
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py:636: TimeoutError
+=========================== short test summary info ===========================
+FAILED tests/test_ui_contrast.py::test_controls_are_readable[light] - playwri...
+1 failed, 341 passed in 326.41s (0:05:26)

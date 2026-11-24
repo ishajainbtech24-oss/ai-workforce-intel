@@ -1,0 +1,265 @@
+{
+  "errors": {
+    "main": [],
+    "cdn_blocked": [
+      "console.error: Failed to load resource: net::ERR_FAILED @ https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    ],
+    "reduced_motion": [],
+    "no_webgl": [],
+    "phone": [
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/costs/_stcore/host-config",
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/costs/_stcore/health",
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/timing/_stcore/health",
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/timing/_stcore/host-config",
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/levers/_stcore/health",
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/levers/_stcore/host-config",
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/your_company/_stcore/health",
+      "console.error: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:8501/your_company/_stcore/host-config"
+    ]
+  },
+  "steps": [
+    {
+      "step": "drag the 3D columns",
+      "picture_changed": true
+    },
+    {
+      "step": "dark mode on",
+      "bg": "rgb(11, 13, 26)"
+    },
+    {
+      "step": "open costs (dark)",
+      "charts": 2
+    },
+    {
+      "step": "open timing (dark)",
+      "charts": 1
+    },
+    {
+      "step": "open levers (dark)",
+      "charts": 1
+    },
+    {
+      "step": "open your_company (dark)",
+      "charts": 2
+    },
+    {
+      "step": "costs: optimistic, flat view then 3D view",
+      "flat_donut_shown": true,
+      "3d_back": true
+    },
+    {
+      "step": "your company: 1,000 employees, Update results",
+      "cards": [
+        "$422.0K",
+        "$360.0K",
+        "-$61.6K",
+        "Not within 12 months"
+      ]
+    },
+    {
+      "step": "reset to example",
+      "cards": [
+        "$276.9K",
+        "$180.0K",
+        "-$96.6K",
+        "Not within 12 months"
+      ]
+    }
+  ],
+  "notes": [],
+  "webgl_renderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x0000A7A8) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "frames_overview": {
+    "hero": {
+      "live": true,
+      "canvas": true,
+      "fallback": true
+    },
+    "flow": {
+      "live": true,
+      "canvas": true,
+      "fallback": true
+    }
+  },
+  "frame_time_overview": {
+    "frames": 297,
+    "mean_ms": 16.849158249118112,
+    "p95_ms": 16.799999999999272,
+    "max_ms": 50
+  },
+  "frames_costs": {
+    "donut": {
+      "live": true,
+      "canvas": true,
+      "fallback": true
+    }
+  },
+  "frames_cdn_blocked": {
+    "overview": {
+      "hero": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      },
+      "flow": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      }
+    },
+    "costs": {
+      "donut": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      }
+    }
+  },
+  "frames_reduced_motion": {
+    "overview": {
+      "hero": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      },
+      "flow": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      }
+    },
+    "costs": {
+      "donut": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      }
+    }
+  },
+  "frames_no_webgl": {
+    "overview": {
+      "hero": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      },
+      "flow": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      }
+    },
+    "costs": {
+      "donut": {
+        "live": false,
+        "canvas": false,
+        "fallback": true
+      }
+    }
+  },
+  "phone_375_scroll_width": {
+    "overview": 375,
+    "costs": 375,
+    "timing": 375,
+    "levers": 375,
+    "your_company": 375
+  },
+  "banned_word_hits": {},
+  "numbers": [
+    {
+      "page": "overview",
+      "what": "Total cost (expected)",
+      "expected_text": "$276.9K",
+      "on_screen": true
+    },
+    {
+      "page": "overview",
+      "what": "Estimated benefit (expected)",
+      "expected_text": "$180.3K",
+      "on_screen": true
+    },
+    {
+      "page": "overview",
+      "what": "Running balance at year end (expected)",
+      "expected_text": "-$96.6K",
+      "on_screen": true
+    },
+    {
+      "page": "overview",
+      "what": "3D columns: cautious year-end balance",
+      "expected_text": "-$683.3K",
+      "on_screen": true
+    },
+    {
+      "page": "overview",
+      "what": "3D columns: optimistic year-end balance",
+      "expected_text": "$60.9K",
+      "on_screen": true
+    },
+    {
+      "page": "overview",
+      "what": "Lowest point of the expected line",
+      "expected_text": "-$165.7K",
+      "on_screen": true
+    },
+    {
+      "page": "overview",
+      "what": "Training and support share",
+      "expected_text": "65%",
+      "on_screen": true
+    },
+    {
+      "page": "costs",
+      "what": "3D donut: training and support (optimistic outlook shown)",
+      "expected_text": "$180.9K",
+      "on_screen": true
+    },
+    {
+      "page": "timing_standard",
+      "what": "Expected most money tied up",
+      "expected_text": "$165.7K",
+      "on_screen": true
+    },
+    {
+      "page": "timing_standard",
+      "what": "Optimistic likely year-end balance",
+      "expected_text": "$59.2K to $63.4K",
+      "on_screen": true
+    },
+    {
+      "page": "timing_standard",
+      "what": "Optimistic pays for itself",
+      "expected_text": "Month 11",
+      "on_screen": true
+    },
+    {
+      "page": "levers",
+      "what": "Top lever gap (depth bars)",
+      "expected_text": "$72.0K",
+      "on_screen": true
+    },
+    {
+      "page": "levers",
+      "what": "Expected year-end balance in the box",
+      "expected_text": "-$96.6K",
+      "on_screen": true
+    }
+  ],
+  "banner_on_every_page": {
+    "overview": true,
+    "costs": true,
+    "timing": true,
+    "timing_standard": true,
+    "levers": true,
+    "your_company": true,
+    "overview_again": true
+  },
+  "errors_excluding_streamlit_health_404": {
+    "main": [],
+    "cdn_blocked": [
+      "console.error: Failed to load resource: net::ERR_FAILED @ https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    ],
+    "reduced_motion": [],
+    "no_webgl": [],
+    "phone": []
+  }
+}

@@ -1,0 +1,1 @@
+run_rate_30d = sum of the 14 simulated days + 16 x the mean of the last 7 simulated days of the same path. The last 16 days are EXTRAPOLATED, not forecast (extrapolated = True on every row). sample_id -1 is the point forecast; summary percentiles use the 200 paths only.

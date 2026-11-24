@@ -1,0 +1,58 @@
+[
+ {
+  "page": "forecast",
+  "banner": true,
+  "styles": true,
+  "topnav": 3,
+  "next": true,
+  "url": "/forecast"
+ },
+ {
+  "page": "costs",
+  "banner": true,
+  "styles": true,
+  "topnav": 3,
+  "next": false,
+  "url": "/costs"
+ },
+ {
+  "page": "timing",
+  "banner": true,
+  "styles": true,
+  "topnav": 3,
+  "next": true,
+  "url": "/timing"
+ },
+ {
+  "page": "levers",
+  "banner": true,
+  "styles": true,
+  "topnav": 3,
+  "next": true,
+  "url": "/levers"
+ },
+ {
+  "page": "your_company",
+  "banner": true,
+  "styles": true,
+  "topnav": 3,
+  "next": false,
+  "url": "/your_company"
+ },
+ {
+  "page": "overview",
+  "banner": true,
+  "styles": true,
+  "topnav": 3,
+  "next": false,
+  "url": "/overview"
+ },
+ {
+  "page": "welcome",
+  "banner": true,
+  "styles": true,
+  "topnav": 3,
+  "next": true,
+  "url": "/"
+ }
+]

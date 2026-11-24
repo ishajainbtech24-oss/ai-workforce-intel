@@ -1,0 +1,377 @@
+{
+ "pages": [
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "waving_hand\n\nWelcome"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "overview",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "space_dashboard\n\nThe big picture"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "timing",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "levers",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "your_company",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": false,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "edit_note\n\nTry your own numbers"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "waving_hand\n\nWelcome"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "welcome",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "waving_hand\n\nWelcome"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "overview",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "space_dashboard\n\nThe big picture"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "costs",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "timing",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "levers",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "your_company",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": false,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "edit_note\n\nTry your own numbers"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "welcome",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [],
+   "activeLink": [
+    "waving_hand\n\nWelcome"
+   ],
+   "dollar": false
+  },
+  {
+   "page": "costs",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [
+    "The money",
+    "3 more"
+   ],
+   "activeSection": [
+    "The money"
+   ],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "overview",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "timing",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "levers",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "your_company",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "sideways": false,
+   "next": false,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "sideways": false,
+   "next": true,
+   "sections": [],
+   "activeSection": [],
+   "activeLink": [],
+   "dollar": false
+  }
+ ],
+ "menu_items": [
+  "payments\n\nWhere the money goes",
+  "event_available\n\nWhen it pays for itself",
+  "tune\n\nWhat matters most"
+ ],
+ "after_menu_click": {
+  "url": "/timing",
+  "activeSection": [
+   "The money"
+  ]
+ },
+ "cta_goes_to": "/overview",
+ "errors": []
+}

@@ -1,0 +1,5 @@
+method,slope_per_step,how,slope_pct_of_mean
+semi_averages,124918.96617336156,difference of the two half means / distance between their centres,0.5716974796891928
+centred_moving_average,140803.75568783082,least squares slope of the 7-point centred MA,0.6443949603760922
+least_squares_linear,193462.14533061167,b in y = a + b t,0.885388538576942
+least_squares_quadratic,647357.1232875853,"slope b + 2ct at the end of the window (t=86), c=5278; at the middle it equals the linear slope",2.962660092213277

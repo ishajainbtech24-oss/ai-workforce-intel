@@ -1,0 +1,10 @@
+scenario,multiplier,prob_break_even_within_T,p10_month,p50_month,p90_month,share_no_break_even,T
+downside,1.0,0.0,,,,1.0,12
+downside,1.5,0.0,,,,1.0,12
+downside,2.0,0.0,,,,1.0,12
+expected,1.0,0.0,,,,1.0,12
+expected,1.5,0.0,,,,1.0,12
+expected,2.0,0.0,,,,1.0,12
+optimistic,1.0,1.0,11.0,11.0,11.0,0.0,12
+optimistic,1.5,1.0,11.0,11.0,11.0,0.0,12
+optimistic,2.0,1.0,11.0,11.0,11.0,0.0,12

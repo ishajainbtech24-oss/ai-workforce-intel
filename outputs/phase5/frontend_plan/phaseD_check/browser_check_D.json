@@ -1,0 +1,237 @@
+{
+ "views": [
+  {
+   "width": 1440,
+   "theme": "light",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 6 months we held back, the prediction missed by about 2.5 points on average, about 2.0% of the typical level.",
+    "tiles": [
+     "2.5 points",
+     "2 of 6",
+     "67% smaller miss"
+    ],
+    "bars": 9,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 14 days we held back, the prediction missed by about 967 conversations on average, about 43% of the typical level.",
+    "tiles": [
+     "967 conversations",
+     "4 of 14",
+     "6.8% smaller miss"
+    ],
+    "bars": 18,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "bars_before_all": 8,
+   "tech_words": []
+  },
+  {
+   "width": 1440,
+   "theme": "dark",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 6 months we held back, the prediction missed by about 2.5 points on average, about 2.0% of the typical level.",
+    "tiles": [
+     "2.5 points",
+     "2 of 6",
+     "67% smaller miss"
+    ],
+    "bars": 9,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 14 days we held back, the prediction missed by about 967 conversations on average, about 43% of the typical level.",
+    "tiles": [
+     "967 conversations",
+     "4 of 14",
+     "6.8% smaller miss"
+    ],
+    "bars": 18,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "bars_before_all": 8,
+   "tech_words": []
+  },
+  {
+   "width": 768,
+   "theme": "light",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 6 months we held back, the prediction missed by about 2.5 points on average, about 2.0% of the typical level.",
+    "tiles": [
+     "2.5 points",
+     "2 of 6",
+     "67% smaller miss"
+    ],
+    "bars": 9,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 14 days we held back, the prediction missed by about 967 conversations on average, about 43% of the typical level.",
+    "tiles": [
+     "967 conversations",
+     "4 of 14",
+     "6.8% smaller miss"
+    ],
+    "bars": 18,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "bars_before_all": 8,
+   "tech_words": []
+  },
+  {
+   "width": 768,
+   "theme": "dark",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 6 months we held back, the prediction missed by about 2.5 points on average, about 2.0% of the typical level.",
+    "tiles": [
+     "2.5 points",
+     "2 of 6",
+     "67% smaller miss"
+    ],
+    "bars": 9,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 14 days we held back, the prediction missed by about 967 conversations on average, about 43% of the typical level.",
+    "tiles": [
+     "967 conversations",
+     "4 of 14",
+     "6.8% smaller miss"
+    ],
+    "bars": 18,
+    "active": [
+     "Forecasts"
+    ],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "bars_before_all": 8,
+   "tech_words": []
+  },
+  {
+   "width": 390,
+   "theme": "light",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 6 months we held back, the prediction missed by about 2.5 points on average, about 2.0% of the typical level.",
+    "tiles": [
+     "2.5 points",
+     "2 of 6",
+     "67% smaller miss"
+    ],
+    "bars": 9,
+    "active": [],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 14 days we held back, the prediction missed by about 967 conversations on average, about 43% of the typical level.",
+    "tiles": [
+     "967 conversations",
+     "4 of 14",
+     "6.8% smaller miss"
+    ],
+    "bars": 18,
+    "active": [],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "bars_before_all": 8,
+   "tech_words": []
+  },
+  {
+   "width": 390,
+   "theme": "dark",
+   "first": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 6 months we held back, the prediction missed by about 2.5 points on average, about 2.0% of the typical level.",
+    "tiles": [
+     "2.5 points",
+     "2 of 6",
+     "67% smaller miss"
+    ],
+    "bars": 9,
+    "active": [],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "after": {
+    "banner": true,
+    "styles": true,
+    "sideways": false,
+    "verdict": "Over the last 14 days we held back, the prediction missed by about 967 conversations on average, about 43% of the typical level.",
+    "tiles": [
+     "967 conversations",
+     "4 of 14",
+     "6.8% smaller miss"
+    ],
+    "bars": 18,
+    "active": [],
+    "next": "payments\n\nWhere the money goes \u2192",
+    "dollar": false
+   },
+   "bars_before_all": 8,
+   "tech_words": []
+  }
+ ],
+ "errors": []
+}

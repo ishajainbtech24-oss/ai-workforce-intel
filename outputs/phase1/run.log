@@ -1,0 +1,25 @@
+14:23:55 INFO    Phase 1 start (fast=False) data=C:\Users\Isha Jain\Downloads\ai-workforce-intel\data\processed
+14:23:57 INFO    burst_tokens_total_daily           OK   n=87    folds=4 best=mean (CV MASE 0.503) [1.4s]
+14:23:58 INFO    burst_tokens_api_daily             OK   n=87    folds=4 best=mean (CV MASE 0.495) [1.3s]
+14:24:00 INFO    burst_tokens_chat_daily            OK   n=87    folds=4 best=seasonal_naive (CV MASE 1.015) [1.5s]
+14:24:03 INFO    burst_requests_hourly              OK   n=2088  folds=8 best=seasonal_naive (CV MASE 0.822) [2.7s]
+14:24:05 INFO    wildchat_conversations_daily       OK   n=121   folds=9 best=seasonal_ma3 (CV MASE 1.430) [1.9s]
+14:24:05 INFO    wildchat_conversations_weekly      SKIPPED: 2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points
+14:24:05 INFO    wildchat_new_users_weekly          SKIPPED: 2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points
+14:24:05 INFO    wildchat_returning_share_weekly    SKIPPED: 2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points
+14:24:06 INFO    eci_wages_quarterly                OK   n=103   folds=17 best=drift (CV MASE 0.529) [1.7s]
+14:24:08 INFO    ppi_hosting_monthly                OK   n=311   folds=38 best=drift (CV MASE 0.690) [1.7s]
+14:24:08 INFO    epoch_cheapest_price_monthly       SKIPPED: file 'epoch_prices_monthly' not found in data/processed
+14:24:09 INFO    cross-correlation: max |r| 0.76 at lag 0
+14:24:09 WARNING day-77 anomaly check: FAIL (day 77 not flagged; |robust z| = 3.16 vs threshold 3.5, rank 1 of 80 days, log scale)
+14:24:09 INFO    handoff.json written and schema-checked (7 drivers)
+14:24:09 INFO    
+ rank                       driver  best_baseline  cv_mase  holdout_mase  seasonal_naive_cv_mase  n_folds
+    1       burst_tokens_api_daily           mean    0.495         0.909                   0.530        4
+    2     burst_tokens_total_daily           mean    0.503         0.873                   0.529        4
+    3          eci_wages_quarterly          drift    0.529         0.200                   1.737       17
+    4          ppi_hosting_monthly          drift    0.690         2.649                   2.109       38
+    5        burst_requests_hourly seasonal_naive    0.822         2.413                   0.822        8
+    6      burst_tokens_chat_daily seasonal_naive    1.015         2.002                   1.015        4
+    7 wildchat_conversations_daily   seasonal_ma3    1.430         2.451                   1.507        9
+14:24:09 INFO    done in 13.3s: 7 analysed, 4 skipped

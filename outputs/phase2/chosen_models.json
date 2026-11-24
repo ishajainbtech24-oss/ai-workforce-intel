@@ -1,0 +1,497 @@
+{
+  "phase": 2,
+  "drivers": [
+    {
+      "name": "burst_tokens_total_daily",
+      "file": "burstgpt_daily_wide",
+      "value_col": "total_tokens",
+      "grain": "daily",
+      "season": 7,
+      "chosen_model": "ensemble",
+      "family": "ensemble",
+      "params": {
+        "components": [
+          {
+            "model": "sarima",
+            "family": "arima",
+            "params": {
+              "selected": {
+                "order": [
+                  0,
+                  0,
+                  2
+                ],
+                "seasonal_order": [
+                  0,
+                  0,
+                  1,
+                  7
+                ],
+                "trend": "c",
+                "aicc": 1182.3890737001364,
+                "exog": "none",
+                "D_used": 0,
+                "candidates_tried": 24,
+                "candidates_converged": 24,
+                "grid_stopped_early": false,
+                "selection": "AICc on first training window"
+              },
+              "season": 7,
+              "d": 0,
+              "D": 0,
+              "decomposition": "multiplicative",
+              "forecasts_clipped_at_zero": true,
+              "fit_on_pre_holdout": {
+                "converged": true
+              }
+            }
+          },
+          {
+            "model": "ridge",
+            "family": "ml",
+            "params": {
+              "selected": {
+                "alpha": 10.0,
+                "validation_mae": 8285165.07251927,
+                "validation_rows": 6
+              },
+              "season": 7,
+              "d": 0,
+              "D": 0,
+              "decomposition": "multiplicative",
+              "forecasts_clipped_at_zero": true,
+              "features": {
+                "lags": [
+                  1,
+                  2,
+                  7,
+                  14
+                ],
+                "rolling_window": 7,
+                "is_weekend": true,
+                "cycle_sin_cos": true,
+                "trend_index": true,
+                "extra_series": null,
+                "extra_lag": null,
+                "multi_step": "recursive"
+              },
+              "fit_on_pre_holdout": {
+                "n_train_rows": 59
+              }
+            }
+          }
+        ],
+        "weights": [
+          0.5,
+          0.5
+        ]
+      },
+      "beats_seasonal_naive": true,
+      "cv_mase": 0.42390970787545323,
+      "holdout_mase": 1.0034456593077947,
+      "interval_coverage_80": 0.6428571428571429,
+      "horizon_for_forecast": 14,
+      "notes": "lowest mean CV MASE 0.424, below seasonal naive 0.529"
+    },
+    {
+      "name": "burst_tokens_api_daily",
+      "file": "burstgpt_daily_wide",
+      "value_col": "ChatGPT_api_total_tokens+GPT-4_api_total_tokens",
+      "grain": "daily",
+      "season": 7,
+      "chosen_model": "ensemble",
+      "family": "ensemble",
+      "params": {
+        "components": [
+          {
+            "model": "sarima",
+            "family": "arima",
+            "params": {
+              "selected": {
+                "order": [
+                  0,
+                  0,
+                  2
+                ],
+                "seasonal_order": [
+                  0,
+                  0,
+                  1,
+                  7
+                ],
+                "trend": "c",
+                "aicc": 1182.1962422051001,
+                "exog": "none",
+                "D_used": 0,
+                "candidates_tried": 24,
+                "candidates_converged": 24,
+                "grid_stopped_early": false,
+                "selection": "AICc on first training window"
+              },
+              "season": 7,
+              "d": 0,
+              "D": 0,
+              "decomposition": "multiplicative",
+              "forecasts_clipped_at_zero": true,
+              "fit_on_pre_holdout": {
+                "converged": true
+              }
+            }
+          },
+          {
+            "model": "ridge",
+            "family": "ml",
+            "params": {
+              "selected": {
+                "alpha": 10.0,
+                "validation_mae": 8083099.281112806,
+                "validation_rows": 6
+              },
+              "season": 7,
+              "d": 0,
+              "D": 0,
+              "decomposition": "multiplicative",
+              "forecasts_clipped_at_zero": true,
+              "features": {
+                "lags": [
+                  1,
+                  2,
+                  7,
+                  14
+                ],
+                "rolling_window": 7,
+                "is_weekend": true,
+                "cycle_sin_cos": true,
+                "trend_index": true,
+                "extra_series": null,
+                "extra_lag": null,
+                "multi_step": "recursive"
+              },
+              "fit_on_pre_holdout": {
+                "n_train_rows": 59
+              }
+            }
+          }
+        ],
+        "weights": [
+          0.5,
+          0.5
+        ]
+      },
+      "beats_seasonal_naive": true,
+      "cv_mase": 0.4240927688789242,
+      "holdout_mase": 1.030368931856445,
+      "interval_coverage_80": 0.6428571428571429,
+      "horizon_for_forecast": 14,
+      "notes": "lowest mean CV MASE 0.424, below seasonal naive 0.530"
+    },
+    {
+      "name": "burst_tokens_chat_daily",
+      "file": "burstgpt_daily_wide",
+      "value_col": "ChatGPT_conversation_total_tokens+GPT-4_conversation_total_tokens",
+      "grain": "daily",
+      "season": 7,
+      "chosen_model": "ensemble",
+      "family": "ensemble",
+      "params": {
+        "components": [
+          {
+            "model": "seasonal_naive",
+            "family": "baseline",
+            "params": {
+              "selected": {},
+              "season": 7,
+              "d": 0,
+              "D": 1,
+              "decomposition": "additive",
+              "forecasts_clipped_at_zero": true
+            }
+          },
+          {
+            "model": "ridge",
+            "family": "ml",
+            "params": {
+              "selected": {
+                "alpha": 1.0,
+                "validation_mae": 173382.71985453498,
+                "validation_rows": 6
+              },
+              "season": 7,
+              "d": 0,
+              "D": 1,
+              "decomposition": "additive",
+              "forecasts_clipped_at_zero": true,
+              "features": {
+                "lags": [
+                  1,
+                  2,
+                  7,
+                  14
+                ],
+                "rolling_window": 7,
+                "is_weekend": true,
+                "cycle_sin_cos": true,
+                "trend_index": true,
+                "extra_series": null,
+                "extra_lag": null,
+                "multi_step": "recursive"
+              },
+              "fit_on_pre_holdout": {
+                "n_train_rows": 59
+              }
+            }
+          }
+        ],
+        "weights": [
+          0.5,
+          0.5
+        ]
+      },
+      "beats_seasonal_naive": true,
+      "cv_mase": 0.9801457170142922,
+      "holdout_mase": 2.000812868165864,
+      "interval_coverage_80": 0.75,
+      "horizon_for_forecast": 14,
+      "notes": "lowest mean CV MASE 0.980, below seasonal naive 1.015"
+    },
+    {
+      "name": "burst_requests_hourly",
+      "file": "burstgpt_hourly_total",
+      "value_col": "requests",
+      "grain": "hourly",
+      "season": 24,
+      "chosen_model": "ensemble",
+      "family": "ensemble",
+      "params": {
+        "components": [
+          {
+            "model": "moving_average",
+            "family": "smoothing",
+            "params": {
+              "selected": {
+                "window": 8,
+                "validation_mae": 206.82276119402985,
+                "candidates": "[3, 4, 8]"
+              },
+              "season": 24,
+              "d": 0,
+              "D": 1,
+              "decomposition": "additive",
+              "forecasts_clipped_at_zero": true,
+              "fit_on_pre_holdout": {
+                "window": 8
+              }
+            }
+          },
+          {
+            "model": "ridge",
+            "family": "ml",
+            "params": {
+              "selected": {
+                "alpha": 1.0,
+                "validation_mae": 502.5358607831023,
+                "validation_rows": 34
+              },
+              "season": 24,
+              "d": 0,
+              "D": 1,
+              "decomposition": "additive",
+              "forecasts_clipped_at_zero": true,
+              "features": {
+                "lags": [
+                  1,
+                  2,
+                  24,
+                  168
+                ],
+                "rolling_window": 24,
+                "is_weekend": false,
+                "cycle_sin_cos": true,
+                "trend_index": true,
+                "extra_series": null,
+                "extra_lag": null,
+                "multi_step": "recursive"
+              },
+              "fit_on_pre_holdout": {
+                "n_train_rows": 1752
+              }
+            }
+          }
+        ],
+        "weights": [
+          0.5,
+          0.5
+        ]
+      },
+      "beats_seasonal_naive": true,
+      "cv_mase": 0.7546782794315804,
+      "holdout_mase": 1.8335483432834883,
+      "interval_coverage_80": 0.71875,
+      "horizon_for_forecast": 168,
+      "notes": "lowest mean CV MASE 0.755, below seasonal naive 0.822"
+    },
+    {
+      "name": "wildchat_conversations_daily",
+      "file": "wildchat_daily",
+      "value_col": "conversations",
+      "grain": "daily",
+      "season": 7,
+      "chosen_model": "seasonal_ma3",
+      "family": "baseline",
+      "params": {
+        "selected": {},
+        "season": 7,
+        "d": 0,
+        "D": 1,
+        "decomposition": "multiplicative",
+        "forecasts_clipped_at_zero": true
+      },
+      "beats_seasonal_naive": true,
+      "cv_mase": 1.430176021264421,
+      "holdout_mase": 2.4509182491992254,
+      "interval_coverage_80": 0.7619047619047619,
+      "horizon_for_forecast": 14,
+      "notes": "lowest mean CV MASE 1.430 (within 1% of the best, 1.423; simpler family preferred), below seasonal naive 1.507"
+    },
+    {
+      "name": "eci_wages_quarterly",
+      "file": "eci_quarterly",
+      "value_col": "eci_wages_sa",
+      "grain": "quarterly",
+      "season": 4,
+      "chosen_model": "arima",
+      "family": "arima",
+      "params": {
+        "selected": {
+          "order": [
+            1,
+            1,
+            1
+          ],
+          "seasonal_order": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trend": "t",
+          "aicc": 95.13359156193897,
+          "exog": "none",
+          "D_used": 0,
+          "candidates_tried": 9,
+          "candidates_converged": 9,
+          "grid_stopped_early": false,
+          "selection": "AICc on first training window"
+        },
+        "season": 4,
+        "d": 1,
+        "D": 1,
+        "decomposition": "multiplicative",
+        "forecasts_clipped_at_zero": true,
+        "fit_on_pre_holdout": {
+          "converged": true
+        }
+      },
+      "beats_seasonal_naive": true,
+      "cv_mase": 0.3283163803203953,
+      "holdout_mase": 0.35343519453214245,
+      "interval_coverage_80": 0.7647058823529411,
+      "horizon_for_forecast": 8,
+      "notes": "lowest mean CV MASE 0.328, below seasonal naive 1.737"
+    },
+    {
+      "name": "ppi_hosting_monthly",
+      "file": "ppi_hosting_monthly",
+      "value_col": "ppi_hosting",
+      "grain": "monthly",
+      "season": 12,
+      "chosen_model": "ensemble",
+      "family": "ensemble",
+      "params": {
+        "components": [
+          {
+            "model": "hw_multiplicative",
+            "family": "smoothing",
+            "params": {
+              "selected": {},
+              "season": 12,
+              "d": 1,
+              "D": 1,
+              "decomposition": "multiplicative",
+              "forecasts_clipped_at_zero": true,
+              "fit_on_pre_holdout": {
+                "alpha": 0.8309998510368005,
+                "beta": 0.0,
+                "gamma": 0.0
+              }
+            }
+          },
+          {
+            "model": "arima",
+            "family": "arima",
+            "params": {
+              "selected": {
+                "order": [
+                  0,
+                  1,
+                  1
+                ],
+                "seasonal_order": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "trend": "t",
+                "aicc": 70.33688276334456,
+                "exog": "none",
+                "D_used": 0,
+                "candidates_tried": 9,
+                "candidates_converged": 4,
+                "grid_stopped_early": false,
+                "selection": "AICc on first training window"
+              },
+              "season": 12,
+              "d": 1,
+              "D": 1,
+              "decomposition": "multiplicative",
+              "forecasts_clipped_at_zero": true,
+              "fit_on_pre_holdout": {
+                "converged": true
+              }
+            }
+          }
+        ],
+        "weights": [
+          0.5,
+          0.5
+        ]
+      },
+      "beats_seasonal_naive": true,
+      "cv_mase": 0.6786546270304455,
+      "holdout_mase": 2.376392138921128,
+      "interval_coverage_80": 0.7850877192982456,
+      "horizon_for_forecast": 12,
+      "notes": "lowest mean CV MASE 0.679, below seasonal naive 2.109"
+    }
+  ],
+  "skipped": [
+    {
+      "name": "wildchat_conversations_weekly",
+      "reason": "skipped in Phase 1: 2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points"
+    },
+    {
+      "name": "wildchat_new_users_weekly",
+      "reason": "skipped in Phase 1: 2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points"
+    },
+    {
+      "name": "wildchat_returning_share_weekly",
+      "reason": "skipped in Phase 1: 2 missing or partial value(s) inside the series (2023-10-09, 2024-01-15); no filling allowed, and the longest complete run is 26 points"
+    },
+    {
+      "name": "epoch_cheapest_price_monthly",
+      "reason": "skipped in Phase 1: file 'epoch_prices_monthly' not found in data/processed"
+    }
+  ],
+  "how_to_use": "Refit `chosen_model` with `params` on the full clean window, forecast `horizon_for_forecast` steps, and resample the out-of-sample errors in tables/cv_residuals.parquet (same driver and model)."
+}

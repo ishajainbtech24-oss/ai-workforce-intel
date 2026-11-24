@@ -1,0 +1,956 @@
+{
+ "views": [
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Welcome"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "overview",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "The big picture"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "data",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "The data we used"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "forecast",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "What we expect next"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "reliable",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "How reliable it is"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Where the money goes"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "timing",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "When it pays for itself"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "levers",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "What matters most"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "company",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Try your own numbers"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Welcome"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "overview",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "The big picture"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "data",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "The data we used"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "forecast",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "What we expect next"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "reliable",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "How reliable it is"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Where the money goes"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "timing",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "When it pays for itself"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "levers",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "What matters most"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "company",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Try your own numbers"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "welcome",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Welcome"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "overview",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "The big picture"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "data",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "The data we used"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "forecast",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "What we expect next"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "reliable",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "How reliable it is"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "costs",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Where the money goes"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "timing",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "When it pays for itself"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "levers",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "What matters most"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "company",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Try your own numbers"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "welcome",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Welcome"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "overview",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "The big picture"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "data",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "The data we used"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "forecast",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "What we expect next"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "reliable",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "How reliable it is"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "costs",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Where the money goes"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "timing",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "When it pays for itself"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "levers",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "What matters most"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "company",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Try your own numbers"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Welcome"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "overview",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "The big picture"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "data",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "The data we used"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "forecast",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "What we expect next"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "reliable",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "How reliable it is"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Where the money goes"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "timing",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "When it pays for itself"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "levers",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "What matters most"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "company",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "current": [
+    "Try your own numbers"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Welcome"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "overview",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "The big picture"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "data",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "The data we used"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "forecast",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "What we expect next"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "reliable",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "How reliable it is"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Where the money goes"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "timing",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "When it pays for itself"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "levers",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "What matters most"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  },
+  {
+   "page": "company",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "current": [
+    "Try your own numbers"
+   ],
+   "sideways": false,
+   "current_ok": true,
+   "dollar": false,
+   "nan_or_none": false,
+   "banned": [],
+   "filler": []
+  }
+ ],
+ "problems": [],
+ "word_guide": {
+  "1440_light": 13,
+  "1440_dark": 13,
+  "768_light": 13,
+  "768_dark": 13,
+  "390_light": 13,
+  "390_dark": 13
+ },
+ "errors": {
+  "1440_light": [],
+  "1440_dark": [],
+  "768_light": [],
+  "768_dark": [],
+  "390_light": [],
+  "390_dark": [],
+  "checks_1440": [],
+  "hero": []
+ },
+ "startup_404s": 96,
+ "choices": {
+  "outlook_changes_story": true,
+  "caution_level_ok": true,
+  "trend_pill_changes_view": true
+ },
+ "your_numbers": {
+  "example": "TOTAL COST\n₹2.61 Cr\nEverything the programme costs over the project.",
+  "after_update": "TOTAL COST\n₹3.97 Cr\nEverything the programme costs over the project.",
+  "after_reset": "TOTAL COST\n₹2.61 Cr\nEverything the programme costs over the project.",
+  "update_changes": true,
+  "reset_restores": true,
+  "employees_after_reset": "500"
+ },
+ "overview_frame_ms": 16.56,
+ "numbers": [
+  {
+   "what": "total cost (expected)",
+   "page": "overview",
+   "phase4_usd": 276899.32,
+   "expected_on_screen": "₹2.61 Cr",
+   "found": true
+  },
+  {
+   "what": "benefit (expected)",
+   "page": "overview",
+   "phase4_usd": 180270.66,
+   "expected_on_screen": "₹1.7 Cr",
+   "found": true
+  },
+  {
+   "what": "year-end balance (expected)",
+   "page": "overview",
+   "phase4_usd": -96640.81,
+   "expected_on_screen": "-₹91.0 L",
+   "found": true
+  },
+  {
+   "what": "largest lever swing",
+   "page": "overview",
+   "phase4_usd": 72011.3,
+   "expected_on_screen": "₹67.8 L",
+   "found": true
+  },
+  {
+   "what": "training and support",
+   "page": "costs",
+   "phase4_usd": 180900.71,
+   "expected_on_screen": "₹1.7 Cr",
+   "found": true
+  },
+  {
+   "what": "setup and connection work",
+   "page": "costs",
+   "phase4_usd": 71526.82,
+   "expected_on_screen": "₹67.3 L",
+   "found": true
+  },
+  {
+   "what": "technology running costs",
+   "page": "costs",
+   "phase4_usd": 24170.72,
+   "expected_on_screen": "₹22.7 L",
+   "found": true
+  },
+  {
+   "what": "most money tied up (expected)",
+   "page": "timing",
+   "phase4_usd": 165662.25,
+   "expected_on_screen": "₹1.56 Cr",
+   "found": true
+  },
+  {
+   "what": "most money tied up (cautious)",
+   "page": "timing",
+   "phase4_usd": 683306.13,
+   "expected_on_screen": "₹6.43 Cr",
+   "found": true
+  },
+  {
+   "what": "most money tied up (optimistic)",
+   "page": "timing",
+   "phase4_usd": 127968.32,
+   "expected_on_screen": "₹1.2 Cr",
+   "found": true
+  }
+ ],
+ "hero_3d": {
+  "canvas": true,
+  "fallback_visible": false
+ },
+ "hero_reduced_motion": {
+  "canvas": false,
+  "fallback_visible": true,
+  "still_marker": true
+ },
+ "hero_library_blocked": {
+  "canvas": false,
+  "fallback_visible": true,
+  "page_errors": []
+ },
+ "server_tracebacks": [
+  "Traceback (most recent call last): |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\events.py\", line 84, in _run |     self._context.run(self._callback, *self._args) |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\proactor_events.py\", line 165, in _call_connection_lost |     self._sock.shutdown(socket.SHUT_RDWR) | ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host | Exception in callback _ProactorBasePipeTransport._call_connection_lost(None) | handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)> | Traceback (most recent call last): |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\events.py\", line 84, in _run |     self._context.run(self._callback, *self._args) |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\proactor_events.py\", line 165, in _call_connection_lost |     self._sock.shutdown(socket.SHUT_RDWR) | ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "Traceback (most recent call last): |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\events.py\", line 84, in _run |     self._context.run(self._callback, *self._args) |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\proactor_events.py\", line 165, in _call_connection_lost |     self._sock.shutdown(socket.SHUT_RDWR) | ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host | Exception in callback _ProactorBasePipeTransport._call_connection_lost(None) | handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)> | Traceback (most recent call last): |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\events.py\", line 84, in _run |     self._context.run(self._callback, *self._args) |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\proactor_events.py\", line 165, in _call_connection_lost |     self._sock.shutdown(socket.SHUT_RDWR) | ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "Traceback (most recent call last): |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\events.py\", line 84, in _run |     self._context.run(self._callback, *self._args) |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\proactor_events.py\", line 165, in _call_connection_lost |     self._sock.shutdown(socket.SHUT_RDWR) | ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host | Exception in callback _ProactorBasePipeTransport._call_connection_lost(None) | handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)> | Traceback (most recent call last): |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\events.py\", line 84, in _run |     self._context.run(self._callback, *self._args) |   File \"C:\\Users\\Isha Jain\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\proactor_events.py\", line 165, in _call_connection_lost |     self._sock.shutdown(socket.SHUT_RDWR) | ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host"
+ ],
+ "server_exceptions_while_pages_ran": [],
+ "summary": {
+  "views": 54,
+  "view_problems": 0,
+  "word_guide_ok": true,
+  "choices_ok": true,
+  "your_numbers_ok": true,
+  "hero_3d_draws": true,
+  "reduced_motion_still": true,
+  "blocked_library_falls_back": true,
+  "numbers_found": "10/10",
+  "overview_frame_ms": 16.56,
+  "errors": {},
+  "startup_404s_ignored": 96,
+  "server_tracebacks": 3,
+  "server_exceptions_while_pages_ran": 0
+ }
+}

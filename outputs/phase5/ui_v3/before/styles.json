@@ -1,0 +1,56 @@
+{
+ "light": {
+  "popover_button": {
+   "text": "menu_book\n\nWhat do these words mean?\n\nex",
+   "color": "rgb(15, 18, 34)",
+   "bg": "rgb(255, 255, 255)",
+   "border": "rgba(15, 18, 34, 0.2)"
+  },
+  "popover_label": {
+   "text": "What do these words mean?",
+   "color": "rgb(15, 18, 34)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(15, 18, 34)"
+  },
+  "expander": {
+   "text": "info\n\nAbout these numbers",
+   "color": "rgb(15, 18, 34)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(15, 18, 34)"
+  },
+  "button": null,
+  "toggle_label": {
+   "text": "Dark mode",
+   "color": "rgb(74, 79, 102)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(74, 79, 102)"
+  }
+ },
+ "dark": {
+  "popover_button": {
+   "text": "menu_book\n\nWhat do these words mean?\n\nex",
+   "color": "rgb(236, 238, 248)",
+   "bg": "rgb(255, 255, 255)",
+   "border": "rgba(15, 18, 34, 0.2)"
+  },
+  "popover_label": {
+   "text": "What do these words mean?",
+   "color": "rgb(236, 238, 248)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(236, 238, 248)"
+  },
+  "expander": {
+   "text": "info\n\nAbout these numbers",
+   "color": "rgb(236, 238, 248)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(236, 238, 248)"
+  },
+  "button": null,
+  "toggle_label": {
+   "text": "Dark mode",
+   "color": "rgb(179, 184, 209)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(179, 184, 209)"
+  }
+ }
+}

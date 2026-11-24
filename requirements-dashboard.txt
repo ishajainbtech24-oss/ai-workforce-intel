@@ -1,0 +1,3 @@
+# Dashboard (Phase 5) only: pip install -r requirements.txt -r requirements-dashboard.txt
+streamlit>=1.50
+plotly>=5.20

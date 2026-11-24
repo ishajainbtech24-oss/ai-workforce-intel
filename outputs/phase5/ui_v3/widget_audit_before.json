@@ -1,0 +1,252 @@
+{
+ "top bar word guide (closed)": {
+  "light": {
+   "text": "What do these words mean?",
+   "ratio": 18.59,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "255,255,255,1"
+  },
+  "dark": {
+   "text": "What do these words mean?",
+   "ratio": 1.16,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "255,255,255,1"
+  }
+ },
+ "word guide (open)": {
+  "light": {
+   "text": "Benefit minus cost, added up m",
+   "ratio": 7.48,
+   "fg": "rgb(74, 79, 102)",
+   "bg": "245,246,251,1"
+  },
+  "dark": {
+   "text": "Running balance",
+   "ratio": 1.07,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "245,246,251,1"
+  }
+ },
+ "toggles (labels)": {
+  "light": {
+   "text": "Dark mode",
+   "ratio": 7.48,
+   "fg": "rgb(74, 79, 102)",
+   "bg": "245,246,251,1"
+  },
+  "dark": {
+   "text": "Dark mode",
+   "ratio": 9.84,
+   "fg": "rgb(179, 184, 209)",
+   "bg": "11,13,26,1"
+  }
+ },
+ "expander": {
+  "light": {
+   "text": "About these numbers",
+   "ratio": 18.2,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "252,252,254"
+  },
+  "dark": {
+   "text": "About these numbers",
+   "ratio": 15.39,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "20,22,42"
+  }
+ },
+ "primary link button": {
+  "light": {
+   "text": "Explore the results \u2192",
+   "ratio": 7.9,
+   "fg": "rgb(255, 255, 255)",
+   "bg": "67,56,202,1"
+  },
+  "dark": {
+   "text": "Explore the results \u2192",
+   "ratio": 6.48,
+   "fg": "rgb(11, 13, 26)",
+   "bg": "129,140,248,1"
+  }
+ },
+ "secondary button": {
+  "light": {
+   "text": "Reset to example",
+   "ratio": 17.22,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "245,246,251,1"
+  },
+  "dark": "not found"
+ },
+ "form submit (primary)": {
+  "light": {
+   "text": "Update results",
+   "ratio": 1.02,
+   "fg": "rgb(255, 255, 255)",
+   "bg": "252,252,254"
+  },
+  "dark": {
+   "text": "Update results",
+   "ratio": 1.09,
+   "fg": "rgb(11, 13, 26)",
+   "bg": "20,22,42"
+  }
+ },
+ "number input": {
+  "light": "not found",
+  "dark": {
+   "text": "0",
+   "ratio": 13.58,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "29,33,60"
+  }
+ },
+ "slider labels/value": {
+  "light": "not found",
+  "dark": "not found"
+ },
+ "selectbox (closed)": {
+  "light": {
+   "text": "Time saved outlook",
+   "ratio": 18.2,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "252,252,254"
+  },
+  "dark": {
+   "text": "Expected outlook",
+   "ratio": 13.58,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "29,33,60"
+  }
+ },
+ "selectbox list (open)": {
+  "light": "could not open: Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"[dat",
+  "dark": "could not open: Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"[dat"
+ },
+ "segmented control": {
+  "light": {
+   "text": "Expected",
+   "ratio": 14.68,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "227,227,246"
+  },
+  "dark": {
+   "text": "Expected",
+   "ratio": 13.95,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "28,31,57"
+  }
+ },
+ "pills": {
+  "light": {
+   "text": "Pay levels",
+   "ratio": 18.59,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "255,255,255,1"
+  },
+  "dark": {
+   "text": "Pay levels",
+   "ratio": 14.8,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "23,26,48,1"
+  }
+ },
+ "download button": {
+  "light": {
+   "text": "Download what we expect",
+   "ratio": 18.59,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "255,255,255,1"
+  },
+  "dark": {
+   "text": "Download what we expect",
+   "ratio": 14.8,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "23,26,48,1"
+  }
+ },
+ "toggle (page)": {
+  "light": {
+   "text": "Show every approach",
+   "ratio": 17.22,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "245,246,251,1"
+  },
+  "dark": {
+   "text": "Show every approach",
+   "ratio": 16.7,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "11,13,26,1"
+  }
+ },
+ "tabs": {
+  "light": {
+   "text": "What happened",
+   "ratio": 17.22,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "245,246,251,1"
+  },
+  "dark": {
+   "text": "What happened",
+   "ratio": 16.7,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "11,13,26,1"
+  }
+ },
+ "tooltip (help)": {
+  "light": {
+   "text": "Switch between a light and a d",
+   "ratio": 18.53,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "255,255,255"
+  },
+  "dark": {
+   "text": "Switch between a light and a d",
+   "ratio": 14.88,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "23,25,47"
+  }
+ },
+ "page link / next card": {
+  "light": {
+   "text": "The data we used \u2192",
+   "ratio": 7.74,
+   "fg": "rgb(67, 56, 202)",
+   "bg": "252,252,254"
+  },
+  "dark": {
+   "text": "The data we used \u2192",
+   "ratio": 5.97,
+   "fg": "rgb(129, 140, 248)",
+   "bg": "20,22,42"
+  }
+ },
+ "alert (warning)": {
+  "light": {
+   "text": "Employees cannot be negative.",
+   "ratio": 18.47,
+   "fg": "rgb(15, 18, 34)",
+   "bg": "254,254,255"
+  },
+  "dark": {
+   "text": "Employees cannot be negative.",
+   "ratio": 13.71,
+   "fg": "rgb(236, 238, 248)",
+   "bg": "28,32,59"
+  }
+ },
+ "table": {
+  "light": {
+   "text": "Outlook",
+   "ratio": 7.9,
+   "fg": "rgb(74, 79, 102)",
+   "bg": "252,252,254"
+  },
+  "dark": {
+   "text": "Outlook",
+   "ratio": 9.06,
+   "fg": "rgb(179, 184, 209)",
+   "bg": "20,22,42"
+  }
+ }
+}

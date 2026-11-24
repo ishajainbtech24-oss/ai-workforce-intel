@@ -1,0 +1,20 @@
+# Python and tools
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.ipynb_checkpoints/
+
+# Raw downloads and the request-level tables (gigabytes; GitHub rejects files over 100 MB).
+# Re-create them with ai-workforce-intel/src/download.py and the prep_*.py scripts; nothing in
+# Phases 1-5 or the dashboard reads them.
+data/raw/
+ai-workforce-intel/data/
+data/processed/burstgpt_requests_clean.*
+data/processed/wildchat_conversations.*
+
+# Rebuilt by `python src/make_colab_bundle.py` (attach it to a GitHub release instead)
+ai-workforce-intel_colab.zip
+
+# Local logs of the browser checks
+outputs/phase5/ui_v3/browser_check_server.log

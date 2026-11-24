@@ -1,0 +1,396 @@
+{
+  "rate": 94.1159,
+  "pages": [
+    {
+      "page": "overview",
+      "theme": "light",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 47,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "costs",
+      "theme": "light",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 5,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "timing",
+      "theme": "light",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 1,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "levers",
+      "theme": "light",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 0,
+      "rate_note_shown": false,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "your_company",
+      "theme": "light",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 4,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "overview",
+      "theme": "light",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 47,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "costs",
+      "theme": "light",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 5,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "timing",
+      "theme": "light",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 1,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "levers",
+      "theme": "light",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 19,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "your_company",
+      "theme": "light",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 4,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "overview",
+      "theme": "dark",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 47,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "costs",
+      "theme": "dark",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 5,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "timing",
+      "theme": "dark",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 10,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "levers",
+      "theme": "dark",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 20,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "your_company",
+      "theme": "dark",
+      "width": 1440,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 10,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "overview",
+      "theme": "dark",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 47,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "costs",
+      "theme": "dark",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 5,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "timing",
+      "theme": "dark",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 10,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "levers",
+      "theme": "dark",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 19,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    },
+    {
+      "page": "your_company",
+      "theme": "dark",
+      "width": 390,
+      "dollar_hits": [],
+      "km_hits": [],
+      "rupee_amounts": 10,
+      "rate_note_shown": true,
+      "sideways_px": 0,
+      "clipped": []
+    }
+  ],
+  "numbers": [
+    {
+      "page": "overview",
+      "what": "Total cost over the year (expected)",
+      "phase4_usd": 276899.32,
+      "x_rate_inr": 26060628.64,
+      "expected_on_screen": "₹2.61 Cr",
+      "found": true
+    },
+    {
+      "page": "overview",
+      "what": "Estimated benefit (expected)",
+      "phase4_usd": 180270.66,
+      "x_rate_inr": 16966335.68,
+      "expected_on_screen": "₹1.7 Cr",
+      "found": true
+    },
+    {
+      "page": "overview",
+      "what": "Running balance at year end (expected)",
+      "phase4_usd": -96640.81,
+      "x_rate_inr": -9095437.04,
+      "expected_on_screen": "-₹91.0 L",
+      "found": true
+    },
+    {
+      "page": "overview",
+      "what": "Year-end balance, cautious (3D / bars)",
+      "phase4_usd": -683306.13,
+      "x_rate_inr": -64309971.78,
+      "expected_on_screen": "-₹6.43 Cr",
+      "found": true
+    },
+    {
+      "page": "overview",
+      "what": "Year-end balance, optimistic (3D / bars)",
+      "phase4_usd": 60928.15,
+      "x_rate_inr": 5734307.68,
+      "expected_on_screen": "₹57.3 L",
+      "found": true
+    },
+    {
+      "page": "overview",
+      "what": "Top choice swing / 2 (finding)",
+      "phase4_usd": 36005.65,
+      "x_rate_inr": 3388704.29,
+      "expected_on_screen": "₹33.9 L",
+      "found": true
+    },
+    {
+      "page": "timing",
+      "what": "Expected: most money tied up",
+      "phase4_usd": 165662.25,
+      "x_rate_inr": 15591451.56,
+      "expected_on_screen": "₹1.56 Cr",
+      "found": true
+    },
+    {
+      "page": "timing",
+      "what": "Optimistic: most money tied up",
+      "phase4_usd": 127968.32,
+      "x_rate_inr": 12043853.88,
+      "expected_on_screen": "₹1.2 Cr",
+      "found": true
+    },
+    {
+      "page": "timing",
+      "what": "Expected: likely year-end balance, low end",
+      "phase4_usd": -97405.42,
+      "x_rate_inr": -9167399.04,
+      "expected_on_screen": "-₹91.7 L",
+      "found": true
+    },
+    {
+      "page": "timing",
+      "what": "Optimistic: likely year-end balance, high end",
+      "phase4_usd": 63445.58,
+      "x_rate_inr": 5971238.03,
+      "expected_on_screen": "₹59.7 L",
+      "found": true
+    },
+    {
+      "page": "levers",
+      "what": "Year-end balance in the box (expected)",
+      "phase4_usd": -96640.81,
+      "x_rate_inr": -9095437.04,
+      "expected_on_screen": "-₹91.0 L",
+      "found": true
+    },
+    {
+      "page": "levers",
+      "what": "Largest swing (depth bar)",
+      "phase4_usd": 72011.3,
+      "x_rate_inr": 6777408.58,
+      "expected_on_screen": "₹67.8 L",
+      "found": true
+    },
+    {
+      "page": "levers",
+      "what": "Second swing (depth bar)",
+      "phase4_usd": 72011.3,
+      "x_rate_inr": 6777408.58,
+      "expected_on_screen": "₹67.8 L",
+      "found": true
+    }
+  ],
+  "countup": {
+    "frames": [
+      "₹2.61 Cr"
+    ],
+    "final": [
+      "₹2.61 Cr",
+      "₹1.7 Cr",
+      "-₹91.0 L"
+    ]
+  },
+  "company": {
+    "input_labels": [
+      "Dark mode",
+      "Reduce motion",
+      "Employees (people)",
+      "Share using AI at the end (%)",
+      "Months to reach it (months)",
+      "Training hours per new user (hours)",
+      "Setup effort (hours)",
+      "How much saved time becomes value (%)",
+      "Monthly training and support budget (₹ per month)",
+      "Hourly pay for staff (₹ per hour)",
+      "Hourly pay for engineers (₹ per hour)",
+      "AI usage per person per month (units)",
+      "AI usage price (₹ per million units)",
+      "Technology running cost (₹ per month)",
+      "Project length (months)",
+      "Time saved outlook"
+    ],
+    "defaults": {
+      "Hourly pay for staff (₹ per hour)": "4235",
+      "Hourly pay for engineers (₹ per hour)": "7059",
+      "Monthly training and support budget (₹ per month)": "282348",
+      "AI usage price (₹ per million units)": "470.58",
+      "Technology running cost (₹ per month)": "188232"
+    },
+    "cards_example": [
+      "₹2.61 Cr",
+      "₹1.69 Cr",
+      "-₹91.0 L",
+      "Not within 12 months"
+    ],
+    "cards_staff_pay_8470": [
+      "₹3.97 Cr",
+      "₹3.39 Cr",
+      "-₹57.8 L",
+      "Not within 12 months"
+    ],
+    "cards_after_reset": [
+      "₹2.61 Cr",
+      "₹1.69 Cr",
+      "-₹91.0 L",
+      "Not within 12 months"
+    ],
+    "staff_after_reset": "4235"
+  },
+  "errors": [],
+  "three_d": {
+    "overview_frames_with_rupees": [
+      "Year-end running balance, by outlook\nDrag to turn. Columns below the floor have not paid for themselves yet.\nCautious outlook: -₹6.43 Cr\nExpected outlook: -₹91.0 L\nOptimistic outlook: ₹57.3 L\nCautious"
+    ],
+    "costs_frames_with_rupees": [
+      "Share of total cost\nPoint at a slice to see its amount.\nAI usage cost\nBased on trends\n₹24,122\n0.1%\nTechnology running costs\nBased on trends\n₹22.7 L\n8.7%\nTraining and support\nOur estimate\n₹1.7 Cr\n65%\nSetup and connection work\nOur estimate\n₹67.3 L\n26%"
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+driver,model,family,n_folds,coverage_80,coverage_95,flags
+burst_tokens_total_daily,naive,baseline,4,0.7142857142857143,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,seasonal_naive,baseline,4,0.6428571428571429,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,mean,baseline,4,0.6428571428571429,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,drift,baseline,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,seasonal_ma3,baseline,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,moving_average,smoothing,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,ses,smoothing,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,holt,smoothing,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,damped_holt,smoothing,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,hw_additive,smoothing,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,hw_multiplicative,smoothing,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,arima,arima,4,0.5714285714285714,0.6785714285714286,"80% interval coverage 57.1% < 60%; 95% interval coverage 67.9% < 85%; fallback used in 1 fit(s): ['hold-out fit: ARIMA(1,0,0) (explosive forecast (moves more than 5.0x the training range))']"
+burst_tokens_total_daily,sarima,arima,4,0.6071428571428571,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,sarimax,arima,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,ridge,ml,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,random_forest,ml,4,0.6071428571428571,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,xgboost,ml,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,ridge_with_requests,ml,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,random_forest_with_requests,ml,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_total_daily,xgboost_with_requests,ml,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_total_daily,ensemble,ensemble,4,0.6428571428571429,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,naive,baseline,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,seasonal_naive,baseline,4,0.6428571428571429,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,mean,baseline,4,0.6428571428571429,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,drift,baseline,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,seasonal_ma3,baseline,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,moving_average,smoothing,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,ses,smoothing,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,holt,smoothing,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,damped_holt,smoothing,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,hw_additive,smoothing,4,0.7142857142857143,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,hw_multiplicative,smoothing,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,arima,arima,4,0.6071428571428571,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,sarima,arima,4,0.6428571428571429,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,sarimax,arima,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,ridge,ml,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_api_daily,random_forest,ml,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,xgboost,ml,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_api_daily,ensemble,ensemble,4,0.6428571428571429,0.6785714285714286,95% interval coverage 67.9% < 85%
+burst_tokens_chat_daily,naive,baseline,4,0.7142857142857143,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_chat_daily,seasonal_naive,baseline,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,mean,baseline,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,drift,baseline,4,0.7142857142857143,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_chat_daily,seasonal_ma3,baseline,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,moving_average,smoothing,4,0.6428571428571429,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,ses,smoothing,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,holt,smoothing,4,0.6071428571428571,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,damped_holt,smoothing,4,0.6785714285714286,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,hw_additive,smoothing,4,0.6071428571428571,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,arima,arima,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,sarima,arima,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,sarimax,arima,4,0.6785714285714286,0.7142857142857143,95% interval coverage 71.4% < 85%
+burst_tokens_chat_daily,ridge,ml,4,0.7142857142857143,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,random_forest,ml,4,0.6428571428571429,0.75,95% interval coverage 75.0% < 85%
+burst_tokens_chat_daily,xgboost,ml,4,0.6428571428571429,0.6785714285714286,95% interval coverage 67.9% < 85%
+burst_tokens_chat_daily,ensemble,ensemble,4,0.75,0.75,95% interval coverage 75.0% < 85%
+burst_requests_hourly,naive,baseline,8,0.7395833333333334,0.8697916666666666,
+burst_requests_hourly,seasonal_naive,baseline,8,0.7291666666666666,0.859375,
+burst_requests_hourly,mean,baseline,8,0.7395833333333334,0.8697916666666666,
+burst_requests_hourly,drift,baseline,8,0.7395833333333334,0.8697916666666666,
+burst_requests_hourly,seasonal_ma3,baseline,8,0.7291666666666666,0.8645833333333334,
+burst_requests_hourly,moving_average,smoothing,8,0.734375,0.8541666666666666,
+burst_requests_hourly,ses,smoothing,8,0.7395833333333334,0.8697916666666666,
+burst_requests_hourly,holt,smoothing,8,0.7395833333333334,0.8697916666666666,
+burst_requests_hourly,damped_holt,smoothing,8,0.7395833333333334,0.8697916666666666,
+burst_requests_hourly,hw_additive,smoothing,8,0.734375,0.8697916666666666,
+burst_requests_hourly,arima,arima,8,0.7395833333333334,0.875,
+burst_requests_hourly,sarimax,arima,8,0.734375,0.8541666666666666,
+burst_requests_hourly,ridge,ml,8,0.7395833333333334,0.875,
+burst_requests_hourly,random_forest,ml,8,0.7239583333333334,0.8541666666666666,
+burst_requests_hourly,xgboost,ml,8,0.7291666666666666,0.8489583333333334,95% interval coverage 84.9% < 85%
+burst_requests_hourly,ensemble,ensemble,8,0.71875,0.8489583333333334,95% interval coverage 84.9% < 85%
+wildchat_conversations_daily,naive,baseline,9,0.746031746031746,0.8095238095238095,95% interval coverage 81.0% < 85%
+wildchat_conversations_daily,seasonal_naive,baseline,9,0.7142857142857143,0.8253968253968254,95% interval coverage 82.5% < 85%
+wildchat_conversations_daily,mean,baseline,9,0.7619047619047619,0.8571428571428571,
+wildchat_conversations_daily,drift,baseline,9,0.7619047619047619,0.8095238095238095,95% interval coverage 81.0% < 85%
+wildchat_conversations_daily,seasonal_ma3,baseline,9,0.7619047619047619,0.8412698412698413,95% interval coverage 84.1% < 85%
+wildchat_conversations_daily,moving_average,smoothing,9,0.7777777777777778,0.8253968253968254,95% interval coverage 82.5% < 85%
+wildchat_conversations_daily,ses,smoothing,9,0.7301587301587301,0.8253968253968254,95% interval coverage 82.5% < 85%
+wildchat_conversations_daily,holt,smoothing,9,0.7301587301587301,0.8412698412698413,95% interval coverage 84.1% < 85%
+wildchat_conversations_daily,damped_holt,smoothing,9,0.7301587301587301,0.8412698412698413,95% interval coverage 84.1% < 85%
+wildchat_conversations_daily,hw_additive,smoothing,9,0.7301587301587301,0.8412698412698413,95% interval coverage 84.1% < 85%
+wildchat_conversations_daily,hw_multiplicative,smoothing,9,0.746031746031746,0.8412698412698413,95% interval coverage 84.1% < 85%
+wildchat_conversations_daily,arima,arima,9,0.746031746031746,0.873015873015873,
+wildchat_conversations_daily,sarima,arima,9,0.7301587301587301,0.873015873015873,
+wildchat_conversations_daily,sarimax,arima,9,0.7301587301587301,0.8412698412698413,95% interval coverage 84.1% < 85%
+wildchat_conversations_daily,ridge,ml,9,0.7777777777777778,0.8253968253968254,95% interval coverage 82.5% < 85%
+wildchat_conversations_daily,random_forest,ml,9,0.7619047619047619,0.8571428571428571,
+wildchat_conversations_daily,xgboost,ml,9,0.746031746031746,0.8253968253968254,95% interval coverage 82.5% < 85%
+wildchat_conversations_daily,ensemble,ensemble,9,0.746031746031746,0.873015873015873,
+eci_wages_quarterly,naive,baseline,17,0.7647058823529411,0.9117647058823529,
+eci_wages_quarterly,seasonal_naive,baseline,17,0.7647058823529411,0.8823529411764706,
+eci_wages_quarterly,mean,baseline,17,0.7647058823529411,0.8823529411764706,
+eci_wages_quarterly,drift,baseline,17,0.7647058823529411,0.8823529411764706,
+eci_wages_quarterly,seasonal_ma3,baseline,17,0.7941176470588235,0.9117647058823529,
+eci_wages_quarterly,moving_average,smoothing,17,0.7647058823529411,0.8823529411764706,
+eci_wages_quarterly,ses,smoothing,17,0.7647058823529411,0.9117647058823529,
+eci_wages_quarterly,holt,smoothing,17,0.7647058823529411,0.9117647058823529,
+eci_wages_quarterly,damped_holt,smoothing,17,0.7647058823529411,0.8970588235294118,
+eci_wages_quarterly,hw_additive,smoothing,17,0.7647058823529411,0.9117647058823529,
+eci_wages_quarterly,hw_multiplicative,smoothing,17,0.7647058823529411,0.9117647058823529,
+eci_wages_quarterly,arima,arima,17,0.7647058823529411,0.8823529411764706,
+eci_wages_quarterly,sarima,arima,17,0.7647058823529411,0.8970588235294118,
+eci_wages_quarterly,ensemble,ensemble,17,0.7647058823529411,0.8970588235294118,
+ppi_hosting_monthly,naive,baseline,38,0.7763157894736842,0.9298245614035088,
+ppi_hosting_monthly,seasonal_naive,baseline,38,0.7850877192982456,0.9298245614035088,
+ppi_hosting_monthly,mean,baseline,38,0.7894736842105263,0.9210526315789473,
+ppi_hosting_monthly,drift,baseline,38,0.7894736842105263,0.9298245614035088,
+ppi_hosting_monthly,seasonal_ma3,baseline,38,0.7894736842105263,0.9342105263157895,
+ppi_hosting_monthly,moving_average,smoothing,38,0.7807017543859649,0.9342105263157895,
+ppi_hosting_monthly,ses,smoothing,38,0.7850877192982456,0.9254385964912281,
+ppi_hosting_monthly,holt,smoothing,38,0.7850877192982456,0.9342105263157895,
+ppi_hosting_monthly,damped_holt,smoothing,38,0.7850877192982456,0.9254385964912281,
+ppi_hosting_monthly,hw_additive,smoothing,38,0.7894736842105263,0.9298245614035088,
+ppi_hosting_monthly,hw_multiplicative,smoothing,38,0.7894736842105263,0.9298245614035088,
+ppi_hosting_monthly,arima,arima,38,0.7807017543859649,0.9342105263157895,
+ppi_hosting_monthly,sarima,arima,38,0.7850877192982456,0.9342105263157895,
+ppi_hosting_monthly,ensemble,ensemble,38,0.7850877192982456,0.9298245614035088,

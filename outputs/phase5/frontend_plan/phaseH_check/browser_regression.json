@@ -1,0 +1,1141 @@
+{
+ "views": [
+  {
+   "page": "reliability",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "costs",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "overview",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "overview",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "data_used",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "data_used",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "forecast",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "forecast",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "reliability",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "timing",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "timing",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "levers",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "levers",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "your_company",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "your_company",
+   "width": 1440,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "reliability",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "costs",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "welcome",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "overview",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "overview",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "data_used",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "data_used",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "forecast",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "forecast",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "reliability",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "costs",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "timing",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "timing",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "levers",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "levers",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "your_company",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "your_company",
+   "width": 1440,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "reliability",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "costs",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "welcome",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "overview",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "overview",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "data_used",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "data_used",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "forecast",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "forecast",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "reliability",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "costs",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "timing",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "timing",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "levers",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "levers",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "your_company",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "your_company",
+   "width": 768,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "reliability",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "costs",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "welcome",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "overview",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "overview",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "data_used",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "data_used",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "forecast",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "forecast",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "reliability",
+   "active": [
+    "Forecasts"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "costs",
+   "width": 768,
+   "theme": "dark",
+   "timeout": "Page.wait_for_selector: Timeout 120000ms exceeded.\nCall log:\n  - waiting for locator(\".aiwi-banner\") to be visible\n"
+  },
+  {
+   "page": "timing",
+   "width": 768,
+   "theme": "dark",
+   "timeout": "Page.wait_for_selector: Timeout 120000ms exceeded.\nCall log:\n  - waiting for locator(\".aiwi-banner\") to be visible\n    - locator resolved to visible <div role=\"note\" class=\"aiwi-banner\">…</div>\n"
+  },
+  {
+   "page": "levers",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "your_company",
+   "active": [
+    "The money"
+   ],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "your_company",
+   "width": 768,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "reliability",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "costs",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "overview",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "overview",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "data_used",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "data_used",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "forecast",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "forecast",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "reliability",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "timing",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "timing",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "levers",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "levers",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "your_company",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "your_company",
+   "width": 390,
+   "theme": "light",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "reliability",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "costs",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "welcome",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "overview",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "overview",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "data_used",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "data_used",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "forecast",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "forecast",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "reliability",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "costs",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "timing",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "timing",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "levers",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "levers",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "your_company",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  },
+  {
+   "page": "your_company",
+   "width": 390,
+   "theme": "dark",
+   "banner": true,
+   "rate_note": true,
+   "styles": true,
+   "sideways": false,
+   "next": "",
+   "active": [],
+   "dollar": false,
+   "jargon": "",
+   "none_or_nan": false,
+   "next_ok": true,
+   "menu_ok": true
+  }
+ ],
+ "numbers": [
+  {
+   "page": "reliability",
+   "theme": "light",
+   "value": "2.5 points",
+   "on_screen": true
+  },
+  {
+   "page": "reliability",
+   "theme": "light",
+   "value": "2 of 6",
+   "on_screen": true
+  },
+  {
+   "page": "welcome",
+   "theme": "light",
+   "value": "₹2.61 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "welcome",
+   "theme": "light",
+   "value": "₹1.7 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "welcome",
+   "theme": "light",
+   "value": "128.8 by Oct 2027",
+   "on_screen": true
+  },
+  {
+   "page": "overview",
+   "theme": "light",
+   "value": "₹2.61 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "overview",
+   "theme": "light",
+   "value": "₹1.7 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "overview",
+   "theme": "light",
+   "value": "-₹91.0 L",
+   "on_screen": true
+  },
+  {
+   "page": "data_used",
+   "theme": "light",
+   "value": "311 months",
+   "on_screen": true
+  },
+  {
+   "page": "data_used",
+   "theme": "light",
+   "value": "Dec 2000 to Oct 2026",
+   "on_screen": true
+  },
+  {
+   "page": "forecast",
+   "theme": "light",
+   "value": "about 128.8 points",
+   "on_screen": true
+  },
+  {
+   "page": "forecast",
+   "theme": "light",
+   "value": "between 127.0 and 131.3",
+   "on_screen": true
+  },
+  {
+   "page": "timing",
+   "theme": "light",
+   "value": "Month 11",
+   "on_screen": true
+  },
+  {
+   "page": "reliability",
+   "theme": "dark",
+   "value": "2.5 points",
+   "on_screen": true
+  },
+  {
+   "page": "reliability",
+   "theme": "dark",
+   "value": "2 of 6",
+   "on_screen": true
+  },
+  {
+   "page": "welcome",
+   "theme": "dark",
+   "value": "₹2.61 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "welcome",
+   "theme": "dark",
+   "value": "₹1.7 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "welcome",
+   "theme": "dark",
+   "value": "128.8 by Oct 2027",
+   "on_screen": true
+  },
+  {
+   "page": "overview",
+   "theme": "dark",
+   "value": "₹2.61 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "overview",
+   "theme": "dark",
+   "value": "₹1.7 Cr",
+   "on_screen": true
+  },
+  {
+   "page": "overview",
+   "theme": "dark",
+   "value": "-₹91.0 L",
+   "on_screen": true
+  },
+  {
+   "page": "data_used",
+   "theme": "dark",
+   "value": "311 months",
+   "on_screen": true
+  },
+  {
+   "page": "data_used",
+   "theme": "dark",
+   "value": "Dec 2000 to Oct 2026",
+   "on_screen": true
+  },
+  {
+   "page": "forecast",
+   "theme": "dark",
+   "value": "about 128.8 points",
+   "on_screen": true
+  },
+  {
+   "page": "forecast",
+   "theme": "dark",
+   "value": "between 127.0 and 131.3",
+   "on_screen": true
+  },
+  {
+   "page": "timing",
+   "theme": "dark",
+   "value": "Month 11",
+   "on_screen": true
+  }
+ ],
+ "still_versions": {
+  "reduce_motion": {
+   "overview": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 2
+   },
+   "costs": {
+    "canvases": 0,
+    "stills": 0,
+    "charts": 3
+   },
+   "forecast": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 1
+   },
+   "welcome": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 1
+   },
+   "page_errors": []
+  },
+  "cdn_blocked": {
+   "overview": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 2
+   },
+   "costs": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 2
+   },
+   "forecast": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 1
+   },
+   "welcome": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 1
+   },
+   "page_errors": []
+  },
+  "no_webgl": {
+   "overview": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 2
+   },
+   "costs": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 2
+   },
+   "forecast": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 1
+   },
+   "welcome": {
+    "canvases": 0,
+    "stills": 1,
+    "charts": 1
+   },
+   "page_errors": []
+  }
+ },
+ "company": {
+  "cost_1000_shown": true,
+  "expect_about": "₹3.97 Cr",
+  "download_button": true
+ },
+ "errors": [],
+ "server_errors": [
+  "Traceback (most recent call last):",
+  "ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "Traceback (most recent call last):",
+  "ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "Traceback (most recent call last):",
+  "ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "Traceback (most recent call last):",
+  "ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "Traceback (most recent call last):",
+  "ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host",
+  "Traceback (most recent call last):",
+  "ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host"
+ ]
+}

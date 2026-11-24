@@ -1,0 +1,65 @@
+date,series_id,description,time_saved_pct_hours,group_type
+2024-10-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,2.0177331373,occupation
+2025-01-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,1.5323219981,occupation
+2025-04-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,1.7825477377,occupation
+2025-07-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,2.5292274759,occupation
+2025-10-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,3.2332133778,occupation
+2026-01-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,3.1955012656,occupation
+2026-04-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,2.8935796522,occupation
+2026-07-01,RPSGENAITSOCC2,GenAI time savings: business & financial operations occ.,2.7387720741,occupation
+2024-10-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,1.53139194,occupation
+2025-01-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,1.8156701093,occupation
+2025-04-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,3.2456118053,occupation
+2025-07-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,1.4496319243,occupation
+2025-10-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,2.5301514844,occupation
+2026-01-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,3.2733416382,occupation
+2026-04-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,3.157813371,occupation
+2026-07-01,RPSGENAITSOCC4,GenAI time savings: architecture & engineering occ.,1.987602851,occupation
+2024-10-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,1.2933972028,occupation
+2025-01-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,1.4723569389,occupation
+2025-04-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,1.6707557297,occupation
+2025-07-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,0.7703920716,occupation
+2025-10-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,1.6994829129,occupation
+2026-01-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,2.6425379243,occupation
+2026-04-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,2.2001360818,occupation
+2026-07-01,RPSGENAITSOCC6,GenAI time savings: community & social service occ.,2.6949306545,occupation
+2024-10-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,0.2844783341,occupation
+2025-01-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,1.0895430732,occupation
+2025-04-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,1.4503922234,occupation
+2025-07-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,0.3951438231,occupation
+2025-10-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,0.9549712222,occupation
+2026-01-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,1.6717533745,occupation
+2026-04-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,1.029037289,occupation
+2026-07-01,RPSGENAITSOCC11,GenAI time savings: healthcare support occ.,1.1461490592,occupation
+2024-10-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,3.9078089975,industry
+2025-01-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,1.2890876557,industry
+2025-04-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,1.4954809143,industry
+2025-07-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,2.3943663517,industry
+2025-10-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,2.6663179424,industry
+2026-01-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,1.2019095951,industry
+2026-04-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,1.9142074329,industry
+2026-07-01,RPSGENAITSIND5,GenAI time savings: wholesale trade,2.0464197491,industry
+2024-10-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,0.9868165775,industry
+2025-01-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,0.6488128164,industry
+2025-04-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,1.198293609,industry
+2025-07-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,1.5507268484,industry
+2025-10-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,1.2737612583,industry
+2026-01-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,1.0607448238,industry
+2026-04-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,1.2473540356,industry
+2026-07-01,RPSGENAITSIND7,GenAI time savings: transportation & warehousing,0.9813440583,industry
+2024-10-01,RPSGENAITSIND14,GenAI time savings: admin & support services,0.7422211953,industry
+2025-01-01,RPSGENAITSIND14,GenAI time savings: admin & support services,1.0092094592,industry
+2025-04-01,RPSGENAITSIND14,GenAI time savings: admin & support services,1.2764736453,industry
+2025-07-01,RPSGENAITSIND14,GenAI time savings: admin & support services,1.1427325588,industry
+2025-10-01,RPSGENAITSIND14,GenAI time savings: admin & support services,0.6503253093,industry
+2026-01-01,RPSGENAITSIND14,GenAI time savings: admin & support services,1.2261804662,industry
+2026-04-01,RPSGENAITSIND14,GenAI time savings: admin & support services,3.489938682,industry
+2026-07-01,RPSGENAITSIND14,GenAI time savings: admin & support services,1.997365439,industry
+2024-10-01,RPSGENAITSIND19,GenAI time savings: other services,0.7872370092,industry
+2025-01-01,RPSGENAITSIND19,GenAI time savings: other services,1.8265127133,industry
+2025-04-01,RPSGENAITSIND19,GenAI time savings: other services,1.0174564395,industry
+2025-07-01,RPSGENAITSIND19,GenAI time savings: other services,0.7128310866,industry
+2025-10-01,RPSGENAITSIND19,GenAI time savings: other services,1.4801267257,industry
+2026-01-01,RPSGENAITSIND19,GenAI time savings: other services,1.4198890097,industry
+2026-04-01,RPSGENAITSIND19,GenAI time savings: other services,1.2756860965,industry
+2026-07-01,RPSGENAITSIND19,GenAI time savings: other services,1.1155756409,industry

@@ -1,0 +1,410 @@
+driver,model,family,stage,param,value
+burst_tokens_total_daily,moving_average,smoothing,selected on first training window,window,3
+burst_tokens_total_daily,moving_average,smoothing,selected on first training window,validation_mae,8079241.375
+burst_tokens_total_daily,moving_average,smoothing,selected on first training window,candidates,"[3, 7, 14]"
+burst_tokens_total_daily,moving_average,smoothing,fitted on data before the hold-out,window,3
+burst_tokens_total_daily,ses,smoothing,fitted on data before the hold-out,alpha,0.5070276563645937
+burst_tokens_total_daily,holt,smoothing,fitted on data before the hold-out,alpha,0.5581710114875347
+burst_tokens_total_daily,holt,smoothing,fitted on data before the hold-out,beta,0.026446412271531886
+burst_tokens_total_daily,damped_holt,smoothing,fitted on data before the hold-out,alpha,0.4753548837762244
+burst_tokens_total_daily,damped_holt,smoothing,fitted on data before the hold-out,beta,0.0
+burst_tokens_total_daily,damped_holt,smoothing,fitted on data before the hold-out,phi,0.9042661425393452
+burst_tokens_total_daily,hw_additive,smoothing,fitted on data before the hold-out,alpha,0.5353571428571429
+burst_tokens_total_daily,hw_additive,smoothing,fitted on data before the hold-out,beta,0.025493197278911566
+burst_tokens_total_daily,hw_additive,smoothing,fitted on data before the hold-out,gamma,0.14672932330827065
+burst_tokens_total_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,alpha,0.6100542129168199
+burst_tokens_total_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,beta,0.016571588272940252
+burst_tokens_total_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,gamma,0.0
+burst_tokens_total_daily,arima,arima,selected on first training window,order,"[2, 0, 2]"
+burst_tokens_total_daily,arima,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+burst_tokens_total_daily,arima,arima,selected on first training window,trend,c
+burst_tokens_total_daily,arima,arima,selected on first training window,aicc,1428.0968538303148
+burst_tokens_total_daily,arima,arima,selected on first training window,exog,none
+burst_tokens_total_daily,arima,arima,selected on first training window,D_used,0
+burst_tokens_total_daily,arima,arima,selected on first training window,candidates_tried,9
+burst_tokens_total_daily,arima,arima,selected on first training window,candidates_converged,9
+burst_tokens_total_daily,arima,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_total_daily,arima,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_total_daily,arima,arima,fitted on data before the hold-out,fallback,"ARIMA(1,0,0) (explosive forecast (moves more than 5.0x the training range))"
+burst_tokens_total_daily,arima,arima,fitted on data before the hold-out,converged,True
+burst_tokens_total_daily,arima,arima,backtest folds,fallbacks,"[""hold-out fit: ARIMA(1,0,0) (explosive forecast (moves more than 5.0x the training range))""]"
+burst_tokens_total_daily,sarima,arima,selected on first training window,order,"[0, 0, 2]"
+burst_tokens_total_daily,sarima,arima,selected on first training window,seasonal_order,"[0, 0, 1, 7]"
+burst_tokens_total_daily,sarima,arima,selected on first training window,trend,c
+burst_tokens_total_daily,sarima,arima,selected on first training window,aicc,1182.3890737001364
+burst_tokens_total_daily,sarima,arima,selected on first training window,exog,none
+burst_tokens_total_daily,sarima,arima,selected on first training window,D_used,0
+burst_tokens_total_daily,sarima,arima,selected on first training window,candidates_tried,24
+burst_tokens_total_daily,sarima,arima,selected on first training window,candidates_converged,24
+burst_tokens_total_daily,sarima,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_total_daily,sarima,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_total_daily,sarima,arima,fitted on data before the hold-out,converged,True
+burst_tokens_total_daily,sarimax,arima,selected on first training window,order,"[0, 0, 2]"
+burst_tokens_total_daily,sarimax,arima,selected on first training window,seasonal_order,"[0, 0, 1, 7]"
+burst_tokens_total_daily,sarimax,arima,selected on first training window,trend,c
+burst_tokens_total_daily,sarimax,arima,selected on first training window,aicc,1189.5252792779445
+burst_tokens_total_daily,sarimax,arima,selected on first training window,exog,weekend
+burst_tokens_total_daily,sarimax,arima,selected on first training window,D_used,0
+burst_tokens_total_daily,sarimax,arima,selected on first training window,candidates_tried,24
+burst_tokens_total_daily,sarimax,arima,selected on first training window,candidates_converged,23
+burst_tokens_total_daily,sarimax,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_total_daily,sarimax,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_total_daily,sarimax,arima,selected on first training window,is_weekend,inferred: day_of_cycle 4-5
+burst_tokens_total_daily,sarimax,arima,fitted on data before the hold-out,converged,True
+burst_tokens_total_daily,ridge,ml,selected on first training window,alpha,10.0
+burst_tokens_total_daily,ridge,ml,selected on first training window,validation_mae,8285165.07251927
+burst_tokens_total_daily,ridge,ml,selected on first training window,validation_rows,6
+burst_tokens_total_daily,ridge,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_total_daily,random_forest,ml,selected on first training window,n_estimators,200
+burst_tokens_total_daily,random_forest,ml,selected on first training window,max_depth,6
+burst_tokens_total_daily,random_forest,ml,selected on first training window,random_state,42
+burst_tokens_total_daily,random_forest,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_total_daily,xgboost,ml,selected on first training window,n_estimators,200
+burst_tokens_total_daily,xgboost,ml,selected on first training window,max_depth,3
+burst_tokens_total_daily,xgboost,ml,selected on first training window,learning_rate,0.05
+burst_tokens_total_daily,xgboost,ml,selected on first training window,random_state,42
+burst_tokens_total_daily,xgboost,ml,selected on first training window,backend,xgboost
+burst_tokens_total_daily,xgboost,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_total_daily,ridge_with_requests,ml,selected on first training window,alpha,10.0
+burst_tokens_total_daily,ridge_with_requests,ml,selected on first training window,validation_mae,6685690.744709765
+burst_tokens_total_daily,ridge_with_requests,ml,selected on first training window,validation_rows,6
+burst_tokens_total_daily,ridge_with_requests,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_total_daily,random_forest_with_requests,ml,selected on first training window,n_estimators,200
+burst_tokens_total_daily,random_forest_with_requests,ml,selected on first training window,max_depth,6
+burst_tokens_total_daily,random_forest_with_requests,ml,selected on first training window,random_state,42
+burst_tokens_total_daily,random_forest_with_requests,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_total_daily,xgboost_with_requests,ml,selected on first training window,n_estimators,200
+burst_tokens_total_daily,xgboost_with_requests,ml,selected on first training window,max_depth,3
+burst_tokens_total_daily,xgboost_with_requests,ml,selected on first training window,learning_rate,0.05
+burst_tokens_total_daily,xgboost_with_requests,ml,selected on first training window,random_state,42
+burst_tokens_total_daily,xgboost_with_requests,ml,selected on first training window,backend,xgboost
+burst_tokens_total_daily,xgboost_with_requests,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_total_daily,ensemble,ensemble,selected on first training window,components,"[""sarima"", ""ridge""]"
+burst_tokens_total_daily,ensemble,ensemble,selected on first training window,weights,"[0.5, 0.5]"
+burst_tokens_api_daily,moving_average,smoothing,selected on first training window,window,3
+burst_tokens_api_daily,moving_average,smoothing,selected on first training window,validation_mae,7752093.625
+burst_tokens_api_daily,moving_average,smoothing,selected on first training window,candidates,"[3, 7, 14]"
+burst_tokens_api_daily,moving_average,smoothing,fitted on data before the hold-out,window,3
+burst_tokens_api_daily,ses,smoothing,fitted on data before the hold-out,alpha,0.4993002227852681
+burst_tokens_api_daily,holt,smoothing,fitted on data before the hold-out,alpha,0.5235714285714286
+burst_tokens_api_daily,holt,smoothing,fitted on data before the hold-out,beta,0.033778801843317975
+burst_tokens_api_daily,damped_holt,smoothing,fitted on data before the hold-out,alpha,0.46811312269299127
+burst_tokens_api_daily,damped_holt,smoothing,fitted on data before the hold-out,beta,0.0
+burst_tokens_api_daily,damped_holt,smoothing,fitted on data before the hold-out,phi,0.905708435495119
+burst_tokens_api_daily,hw_additive,smoothing,fitted on data before the hold-out,alpha,0.5707142851488225
+burst_tokens_api_daily,hw_additive,smoothing,fitted on data before the hold-out,beta,0.0001000005652650768
+burst_tokens_api_daily,hw_additive,smoothing,fitted on data before the hold-out,gamma,0.15815789521380388
+burst_tokens_api_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,alpha,0.5395072856108063
+burst_tokens_api_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,beta,0.006404519593012245
+burst_tokens_api_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,gamma,0.0
+burst_tokens_api_daily,arima,arima,selected on first training window,order,"[2, 0, 2]"
+burst_tokens_api_daily,arima,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+burst_tokens_api_daily,arima,arima,selected on first training window,trend,c
+burst_tokens_api_daily,arima,arima,selected on first training window,aicc,1427.8645649194814
+burst_tokens_api_daily,arima,arima,selected on first training window,exog,none
+burst_tokens_api_daily,arima,arima,selected on first training window,D_used,0
+burst_tokens_api_daily,arima,arima,selected on first training window,candidates_tried,9
+burst_tokens_api_daily,arima,arima,selected on first training window,candidates_converged,9
+burst_tokens_api_daily,arima,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_api_daily,arima,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_api_daily,arima,arima,fitted on data before the hold-out,converged,True
+burst_tokens_api_daily,sarima,arima,selected on first training window,order,"[0, 0, 2]"
+burst_tokens_api_daily,sarima,arima,selected on first training window,seasonal_order,"[0, 0, 1, 7]"
+burst_tokens_api_daily,sarima,arima,selected on first training window,trend,c
+burst_tokens_api_daily,sarima,arima,selected on first training window,aicc,1182.1962422051001
+burst_tokens_api_daily,sarima,arima,selected on first training window,exog,none
+burst_tokens_api_daily,sarima,arima,selected on first training window,D_used,0
+burst_tokens_api_daily,sarima,arima,selected on first training window,candidates_tried,24
+burst_tokens_api_daily,sarima,arima,selected on first training window,candidates_converged,24
+burst_tokens_api_daily,sarima,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_api_daily,sarima,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_api_daily,sarima,arima,fitted on data before the hold-out,converged,True
+burst_tokens_api_daily,sarimax,arima,selected on first training window,order,"[0, 0, 2]"
+burst_tokens_api_daily,sarimax,arima,selected on first training window,seasonal_order,"[0, 0, 1, 7]"
+burst_tokens_api_daily,sarimax,arima,selected on first training window,trend,c
+burst_tokens_api_daily,sarimax,arima,selected on first training window,aicc,1188.5949548110195
+burst_tokens_api_daily,sarimax,arima,selected on first training window,exog,weekend
+burst_tokens_api_daily,sarimax,arima,selected on first training window,D_used,0
+burst_tokens_api_daily,sarimax,arima,selected on first training window,candidates_tried,24
+burst_tokens_api_daily,sarimax,arima,selected on first training window,candidates_converged,24
+burst_tokens_api_daily,sarimax,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_api_daily,sarimax,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_api_daily,sarimax,arima,selected on first training window,is_weekend,inferred: day_of_cycle 4-5
+burst_tokens_api_daily,sarimax,arima,fitted on data before the hold-out,converged,True
+burst_tokens_api_daily,ridge,ml,selected on first training window,alpha,10.0
+burst_tokens_api_daily,ridge,ml,selected on first training window,validation_mae,8083099.281112806
+burst_tokens_api_daily,ridge,ml,selected on first training window,validation_rows,6
+burst_tokens_api_daily,ridge,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_api_daily,random_forest,ml,selected on first training window,n_estimators,200
+burst_tokens_api_daily,random_forest,ml,selected on first training window,max_depth,6
+burst_tokens_api_daily,random_forest,ml,selected on first training window,random_state,42
+burst_tokens_api_daily,random_forest,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_api_daily,xgboost,ml,selected on first training window,n_estimators,200
+burst_tokens_api_daily,xgboost,ml,selected on first training window,max_depth,3
+burst_tokens_api_daily,xgboost,ml,selected on first training window,learning_rate,0.05
+burst_tokens_api_daily,xgboost,ml,selected on first training window,random_state,42
+burst_tokens_api_daily,xgboost,ml,selected on first training window,backend,xgboost
+burst_tokens_api_daily,xgboost,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_api_daily,ensemble,ensemble,selected on first training window,components,"[""sarima"", ""ridge""]"
+burst_tokens_api_daily,ensemble,ensemble,selected on first training window,weights,"[0.5, 0.5]"
+burst_tokens_chat_daily,moving_average,smoothing,selected on first training window,window,14
+burst_tokens_chat_daily,moving_average,smoothing,selected on first training window,validation_mae,433966.0714285715
+burst_tokens_chat_daily,moving_average,smoothing,selected on first training window,candidates,"[3, 7, 14]"
+burst_tokens_chat_daily,moving_average,smoothing,fitted on data before the hold-out,window,14
+burst_tokens_chat_daily,ses,smoothing,fitted on data before the hold-out,alpha,1.4901161193847656e-08
+burst_tokens_chat_daily,holt,smoothing,fitted on data before the hold-out,alpha,0.07218624627856514
+burst_tokens_chat_daily,holt,smoothing,fitted on data before the hold-out,beta,0.07216781985569522
+burst_tokens_chat_daily,damped_holt,smoothing,fitted on data before the hold-out,alpha,1.4901161193847656e-08
+burst_tokens_chat_daily,damped_holt,smoothing,fitted on data before the hold-out,beta,1.4892982228397248e-08
+burst_tokens_chat_daily,damped_holt,smoothing,fitted on data before the hold-out,phi,0.8
+burst_tokens_chat_daily,hw_additive,smoothing,fitted on data before the hold-out,alpha,0.058913283233975676
+burst_tokens_chat_daily,hw_additive,smoothing,fitted on data before the hold-out,beta,0.058913283233975676
+burst_tokens_chat_daily,hw_additive,smoothing,fitted on data before the hold-out,gamma,0.09994870219109342
+burst_tokens_chat_daily,arima,arima,selected on first training window,order,"[0, 0, 2]"
+burst_tokens_chat_daily,arima,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+burst_tokens_chat_daily,arima,arima,selected on first training window,trend,c
+burst_tokens_chat_daily,arima,arima,selected on first training window,aicc,1151.5884621886826
+burst_tokens_chat_daily,arima,arima,selected on first training window,exog,none
+burst_tokens_chat_daily,arima,arima,selected on first training window,D_used,0
+burst_tokens_chat_daily,arima,arima,selected on first training window,candidates_tried,9
+burst_tokens_chat_daily,arima,arima,selected on first training window,candidates_converged,8
+burst_tokens_chat_daily,arima,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_chat_daily,arima,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_chat_daily,arima,arima,fitted on data before the hold-out,converged,True
+burst_tokens_chat_daily,sarima,arima,selected on first training window,order,"[0, 0, 2]"
+burst_tokens_chat_daily,sarima,arima,selected on first training window,seasonal_order,"[0, 1, 1, 7]"
+burst_tokens_chat_daily,sarima,arima,selected on first training window,trend,n
+burst_tokens_chat_daily,sarima,arima,selected on first training window,aicc,713.4925277449934
+burst_tokens_chat_daily,sarima,arima,selected on first training window,exog,none
+burst_tokens_chat_daily,sarima,arima,selected on first training window,D_used,1
+burst_tokens_chat_daily,sarima,arima,selected on first training window,candidates_tried,24
+burst_tokens_chat_daily,sarima,arima,selected on first training window,candidates_converged,24
+burst_tokens_chat_daily,sarima,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_chat_daily,sarima,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_chat_daily,sarima,arima,fitted on data before the hold-out,converged,True
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,order,"[0, 0, 2]"
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,seasonal_order,"[0, 0, 1, 7]"
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,trend,c
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,aicc,976.2184830881941
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,exog,weekend
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,D_used,0
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,candidates_tried,24
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,candidates_converged,23
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,grid_stopped_early,False
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,selection,AICc on first training window
+burst_tokens_chat_daily,sarimax,arima,selected on first training window,is_weekend,inferred: day_of_cycle 4-5
+burst_tokens_chat_daily,sarimax,arima,fitted on data before the hold-out,converged,True
+burst_tokens_chat_daily,ridge,ml,selected on first training window,alpha,1.0
+burst_tokens_chat_daily,ridge,ml,selected on first training window,validation_mae,173382.71985453498
+burst_tokens_chat_daily,ridge,ml,selected on first training window,validation_rows,6
+burst_tokens_chat_daily,ridge,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_chat_daily,random_forest,ml,selected on first training window,n_estimators,200
+burst_tokens_chat_daily,random_forest,ml,selected on first training window,max_depth,6
+burst_tokens_chat_daily,random_forest,ml,selected on first training window,random_state,42
+burst_tokens_chat_daily,random_forest,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_chat_daily,xgboost,ml,selected on first training window,n_estimators,200
+burst_tokens_chat_daily,xgboost,ml,selected on first training window,max_depth,3
+burst_tokens_chat_daily,xgboost,ml,selected on first training window,learning_rate,0.05
+burst_tokens_chat_daily,xgboost,ml,selected on first training window,random_state,42
+burst_tokens_chat_daily,xgboost,ml,selected on first training window,backend,xgboost
+burst_tokens_chat_daily,xgboost,ml,fitted on data before the hold-out,n_train_rows,59
+burst_tokens_chat_daily,ensemble,ensemble,selected on first training window,components,"[""seasonal_naive"", ""ridge""]"
+burst_tokens_chat_daily,ensemble,ensemble,selected on first training window,weights,"[0.5, 0.5]"
+burst_requests_hourly,moving_average,smoothing,selected on first training window,window,8
+burst_requests_hourly,moving_average,smoothing,selected on first training window,validation_mae,206.82276119402985
+burst_requests_hourly,moving_average,smoothing,selected on first training window,candidates,"[3, 4, 8]"
+burst_requests_hourly,moving_average,smoothing,fitted on data before the hold-out,window,8
+burst_requests_hourly,ses,smoothing,fitted on data before the hold-out,alpha,0.34109631190665035
+burst_requests_hourly,holt,smoothing,fitted on data before the hold-out,alpha,0.34106708281079734
+burst_requests_hourly,holt,smoothing,fitted on data before the hold-out,beta,0.0
+burst_requests_hourly,damped_holt,smoothing,fitted on data before the hold-out,alpha,0.34108900650206636
+burst_requests_hourly,damped_holt,smoothing,fitted on data before the hold-out,beta,0.0
+burst_requests_hourly,damped_holt,smoothing,fitted on data before the hold-out,phi,0.995
+burst_requests_hourly,hw_additive,smoothing,fitted on data before the hold-out,alpha,0.337052602611605
+burst_requests_hourly,hw_additive,smoothing,fitted on data before the hold-out,beta,0.005658775844761032
+burst_requests_hourly,hw_additive,smoothing,fitted on data before the hold-out,gamma,0.0
+burst_requests_hourly,arima,arima,selected on first training window,order,"[2, 0, 2]"
+burst_requests_hourly,arima,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+burst_requests_hourly,arima,arima,selected on first training window,trend,c
+burst_requests_hourly,arima,arima,selected on first training window,aicc,5972.546552552738
+burst_requests_hourly,arima,arima,selected on first training window,exog,none
+burst_requests_hourly,arima,arima,selected on first training window,D_used,0
+burst_requests_hourly,arima,arima,selected on first training window,candidates_tried,9
+burst_requests_hourly,arima,arima,selected on first training window,candidates_converged,9
+burst_requests_hourly,arima,arima,selected on first training window,grid_stopped_early,False
+burst_requests_hourly,arima,arima,selected on first training window,selection,AICc on first training window
+burst_requests_hourly,arima,arima,fitted on data before the hold-out,converged,True
+burst_requests_hourly,sarimax,arima,selected on first training window,order,"[1, 0, 2]"
+burst_requests_hourly,sarimax,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+burst_requests_hourly,sarimax,arima,selected on first training window,trend,c
+burst_requests_hourly,sarimax,arima,selected on first training window,aicc,5984.086701766845
+burst_requests_hourly,sarimax,arima,selected on first training window,exog,fourier
+burst_requests_hourly,sarimax,arima,selected on first training window,D_used,0
+burst_requests_hourly,sarimax,arima,selected on first training window,candidates_tried,9
+burst_requests_hourly,sarimax,arima,selected on first training window,candidates_converged,9
+burst_requests_hourly,sarimax,arima,selected on first training window,grid_stopped_early,False
+burst_requests_hourly,sarimax,arima,selected on first training window,selection,AICc on first training window
+burst_requests_hourly,sarimax,arima,selected on first training window,fourier_K,"{""24"": 3, ""168"": 3}"
+burst_requests_hourly,sarimax,arima,fitted on data before the hold-out,converged,True
+burst_requests_hourly,ridge,ml,selected on first training window,alpha,1.0
+burst_requests_hourly,ridge,ml,selected on first training window,validation_mae,502.5358607831023
+burst_requests_hourly,ridge,ml,selected on first training window,validation_rows,34
+burst_requests_hourly,ridge,ml,fitted on data before the hold-out,n_train_rows,1752
+burst_requests_hourly,random_forest,ml,selected on first training window,n_estimators,200
+burst_requests_hourly,random_forest,ml,selected on first training window,max_depth,6
+burst_requests_hourly,random_forest,ml,selected on first training window,random_state,42
+burst_requests_hourly,random_forest,ml,fitted on data before the hold-out,n_train_rows,1752
+burst_requests_hourly,xgboost,ml,selected on first training window,n_estimators,200
+burst_requests_hourly,xgboost,ml,selected on first training window,max_depth,3
+burst_requests_hourly,xgboost,ml,selected on first training window,learning_rate,0.05
+burst_requests_hourly,xgboost,ml,selected on first training window,random_state,42
+burst_requests_hourly,xgboost,ml,selected on first training window,backend,xgboost
+burst_requests_hourly,xgboost,ml,fitted on data before the hold-out,n_train_rows,1752
+burst_requests_hourly,ensemble,ensemble,selected on first training window,components,"[""moving_average"", ""ridge""]"
+burst_requests_hourly,ensemble,ensemble,selected on first training window,weights,"[0.5, 0.5]"
+wildchat_conversations_daily,moving_average,smoothing,selected on first training window,window,7
+wildchat_conversations_daily,moving_average,smoothing,selected on first training window,validation_mae,339.1428571428571
+wildchat_conversations_daily,moving_average,smoothing,selected on first training window,candidates,"[3, 7, 14]"
+wildchat_conversations_daily,moving_average,smoothing,fitted on data before the hold-out,window,7
+wildchat_conversations_daily,ses,smoothing,fitted on data before the hold-out,alpha,0.9012223568931459
+wildchat_conversations_daily,holt,smoothing,fitted on data before the hold-out,alpha,0.9005261689213968
+wildchat_conversations_daily,holt,smoothing,fitted on data before the hold-out,beta,0.0
+wildchat_conversations_daily,damped_holt,smoothing,fitted on data before the hold-out,alpha,0.9005297808020929
+wildchat_conversations_daily,damped_holt,smoothing,fitted on data before the hold-out,beta,0.0
+wildchat_conversations_daily,damped_holt,smoothing,fitted on data before the hold-out,phi,0.995
+wildchat_conversations_daily,hw_additive,smoothing,fitted on data before the hold-out,alpha,0.20069936258213775
+wildchat_conversations_daily,hw_additive,smoothing,fitted on data before the hold-out,beta,0.0
+wildchat_conversations_daily,hw_additive,smoothing,fitted on data before the hold-out,gamma,0.4685403925162241
+wildchat_conversations_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,alpha,0.20064101687608807
+wildchat_conversations_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,beta,0.0
+wildchat_conversations_daily,hw_multiplicative,smoothing,fitted on data before the hold-out,gamma,0.42619011377469335
+wildchat_conversations_daily,arima,arima,selected on first training window,order,"[1, 0, 2]"
+wildchat_conversations_daily,arima,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+wildchat_conversations_daily,arima,arima,selected on first training window,trend,c
+wildchat_conversations_daily,arima,arima,selected on first training window,aicc,549.6296225812546
+wildchat_conversations_daily,arima,arima,selected on first training window,exog,none
+wildchat_conversations_daily,arima,arima,selected on first training window,D_used,0
+wildchat_conversations_daily,arima,arima,selected on first training window,candidates_tried,9
+wildchat_conversations_daily,arima,arima,selected on first training window,candidates_converged,8
+wildchat_conversations_daily,arima,arima,selected on first training window,grid_stopped_early,False
+wildchat_conversations_daily,arima,arima,selected on first training window,selection,AICc on first training window
+wildchat_conversations_daily,arima,arima,fitted on data before the hold-out,converged,True
+wildchat_conversations_daily,sarima,arima,selected on first training window,order,"[0, 0, 2]"
+wildchat_conversations_daily,sarima,arima,selected on first training window,seasonal_order,"[0, 1, 1, 7]"
+wildchat_conversations_daily,sarima,arima,selected on first training window,trend,n
+wildchat_conversations_daily,sarima,arima,selected on first training window,aicc,360.10340679231734
+wildchat_conversations_daily,sarima,arima,selected on first training window,exog,none
+wildchat_conversations_daily,sarima,arima,selected on first training window,D_used,1
+wildchat_conversations_daily,sarima,arima,selected on first training window,candidates_tried,24
+wildchat_conversations_daily,sarima,arima,selected on first training window,candidates_converged,24
+wildchat_conversations_daily,sarima,arima,selected on first training window,grid_stopped_early,False
+wildchat_conversations_daily,sarima,arima,selected on first training window,selection,AICc on first training window
+wildchat_conversations_daily,sarima,arima,fitted on data before the hold-out,converged,True
+wildchat_conversations_daily,sarimax,arima,selected on first training window,order,"[1, 0, 0]"
+wildchat_conversations_daily,sarimax,arima,selected on first training window,seasonal_order,"[1, 0, 0, 7]"
+wildchat_conversations_daily,sarimax,arima,selected on first training window,trend,c
+wildchat_conversations_daily,sarimax,arima,selected on first training window,aicc,510.7307856459551
+wildchat_conversations_daily,sarimax,arima,selected on first training window,exog,weekend
+wildchat_conversations_daily,sarimax,arima,selected on first training window,D_used,0
+wildchat_conversations_daily,sarimax,arima,selected on first training window,candidates_tried,24
+wildchat_conversations_daily,sarimax,arima,selected on first training window,candidates_converged,5
+wildchat_conversations_daily,sarimax,arima,selected on first training window,grid_stopped_early,False
+wildchat_conversations_daily,sarimax,arima,selected on first training window,selection,AICc on first training window
+wildchat_conversations_daily,sarimax,arima,selected on first training window,is_weekend,calendar Saturday/Sunday
+wildchat_conversations_daily,sarimax,arima,fitted on data before the hold-out,converged,True
+wildchat_conversations_daily,ridge,ml,selected on first training window,alpha,1.0
+wildchat_conversations_daily,ridge,ml,selected on first training window,validation_mae,131.76470623516988
+wildchat_conversations_daily,ridge,ml,selected on first training window,validation_rows,6
+wildchat_conversations_daily,ridge,ml,fitted on data before the hold-out,n_train_rows,93
+wildchat_conversations_daily,random_forest,ml,selected on first training window,n_estimators,200
+wildchat_conversations_daily,random_forest,ml,selected on first training window,max_depth,6
+wildchat_conversations_daily,random_forest,ml,selected on first training window,random_state,42
+wildchat_conversations_daily,random_forest,ml,fitted on data before the hold-out,n_train_rows,93
+wildchat_conversations_daily,xgboost,ml,selected on first training window,n_estimators,200
+wildchat_conversations_daily,xgboost,ml,selected on first training window,max_depth,3
+wildchat_conversations_daily,xgboost,ml,selected on first training window,learning_rate,0.05
+wildchat_conversations_daily,xgboost,ml,selected on first training window,random_state,42
+wildchat_conversations_daily,xgboost,ml,selected on first training window,backend,xgboost
+wildchat_conversations_daily,xgboost,ml,fitted on data before the hold-out,n_train_rows,93
+wildchat_conversations_daily,ensemble,ensemble,selected on first training window,components,"[""seasonal_ma3"", ""sarima""]"
+wildchat_conversations_daily,ensemble,ensemble,selected on first training window,weights,"[0.5, 0.5]"
+eci_wages_quarterly,moving_average,smoothing,selected on first training window,window,3
+eci_wages_quarterly,moving_average,smoothing,selected on first training window,validation_mae,4.4666666666666694
+eci_wages_quarterly,moving_average,smoothing,selected on first training window,candidates,"[3, 4, 8]"
+eci_wages_quarterly,moving_average,smoothing,fitted on data before the hold-out,window,3
+eci_wages_quarterly,ses,smoothing,fitted on data before the hold-out,alpha,0.9999999850988388
+eci_wages_quarterly,holt,smoothing,fitted on data before the hold-out,alpha,0.8751088080707218
+eci_wages_quarterly,holt,smoothing,fitted on data before the hold-out,beta,0.19483092793909423
+eci_wages_quarterly,damped_holt,smoothing,fitted on data before the hold-out,alpha,0.8613844999526268
+eci_wages_quarterly,damped_holt,smoothing,fitted on data before the hold-out,beta,0.22475768854828787
+eci_wages_quarterly,damped_holt,smoothing,fitted on data before the hold-out,phi,0.995
+eci_wages_quarterly,hw_additive,smoothing,fitted on data before the hold-out,alpha,0.880797316021673
+eci_wages_quarterly,hw_additive,smoothing,fitted on data before the hold-out,beta,0.1939230193136199
+eci_wages_quarterly,hw_additive,smoothing,fitted on data before the hold-out,gamma,0.0
+eci_wages_quarterly,hw_multiplicative,smoothing,fitted on data before the hold-out,alpha,0.8789025932766026
+eci_wages_quarterly,hw_multiplicative,smoothing,fitted on data before the hold-out,beta,0.1942863892172421
+eci_wages_quarterly,hw_multiplicative,smoothing,fitted on data before the hold-out,gamma,0.0
+eci_wages_quarterly,arima,arima,selected on first training window,order,"[1, 1, 1]"
+eci_wages_quarterly,arima,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+eci_wages_quarterly,arima,arima,selected on first training window,trend,t
+eci_wages_quarterly,arima,arima,selected on first training window,aicc,95.13359156193897
+eci_wages_quarterly,arima,arima,selected on first training window,exog,none
+eci_wages_quarterly,arima,arima,selected on first training window,D_used,0
+eci_wages_quarterly,arima,arima,selected on first training window,candidates_tried,9
+eci_wages_quarterly,arima,arima,selected on first training window,candidates_converged,9
+eci_wages_quarterly,arima,arima,selected on first training window,grid_stopped_early,False
+eci_wages_quarterly,arima,arima,selected on first training window,selection,AICc on first training window
+eci_wages_quarterly,arima,arima,fitted on data before the hold-out,converged,True
+eci_wages_quarterly,sarima,arima,selected on first training window,order,"[0, 1, 2]"
+eci_wages_quarterly,sarima,arima,selected on first training window,seasonal_order,"[0, 1, 1, 4]"
+eci_wages_quarterly,sarima,arima,selected on first training window,trend,n
+eci_wages_quarterly,sarima,arima,selected on first training window,aicc,83.92632835377998
+eci_wages_quarterly,sarima,arima,selected on first training window,exog,none
+eci_wages_quarterly,sarima,arima,selected on first training window,D_used,1
+eci_wages_quarterly,sarima,arima,selected on first training window,candidates_tried,24
+eci_wages_quarterly,sarima,arima,selected on first training window,candidates_converged,22
+eci_wages_quarterly,sarima,arima,selected on first training window,grid_stopped_early,False
+eci_wages_quarterly,sarima,arima,selected on first training window,selection,AICc on first training window
+eci_wages_quarterly,sarima,arima,fitted on data before the hold-out,converged,True
+eci_wages_quarterly,ensemble,ensemble,selected on first training window,components,"[""arima"", ""hw_multiplicative""]"
+eci_wages_quarterly,ensemble,ensemble,selected on first training window,weights,"[0.5, 0.5]"
+ppi_hosting_monthly,moving_average,smoothing,selected on first training window,window,8
+ppi_hosting_monthly,moving_average,smoothing,selected on first training window,validation_mae,0.952364864864874
+ppi_hosting_monthly,moving_average,smoothing,selected on first training window,candidates,"[3, 4, 8]"
+ppi_hosting_monthly,moving_average,smoothing,fitted on data before the hold-out,window,8
+ppi_hosting_monthly,ses,smoothing,fitted on data before the hold-out,alpha,0.8708557391752558
+ppi_hosting_monthly,holt,smoothing,fitted on data before the hold-out,alpha,0.8274768255324255
+ppi_hosting_monthly,holt,smoothing,fitted on data before the hold-out,beta,0.0
+ppi_hosting_monthly,damped_holt,smoothing,fitted on data before the hold-out,alpha,0.822944934344359
+ppi_hosting_monthly,damped_holt,smoothing,fitted on data before the hold-out,beta,0.014349661191787388
+ppi_hosting_monthly,damped_holt,smoothing,fitted on data before the hold-out,phi,0.995
+ppi_hosting_monthly,hw_additive,smoothing,fitted on data before the hold-out,alpha,0.8302560518589043
+ppi_hosting_monthly,hw_additive,smoothing,fitted on data before the hold-out,beta,0.0
+ppi_hosting_monthly,hw_additive,smoothing,fitted on data before the hold-out,gamma,0.0
+ppi_hosting_monthly,hw_multiplicative,smoothing,fitted on data before the hold-out,alpha,0.8309998510368005
+ppi_hosting_monthly,hw_multiplicative,smoothing,fitted on data before the hold-out,beta,0.0
+ppi_hosting_monthly,hw_multiplicative,smoothing,fitted on data before the hold-out,gamma,0.0
+ppi_hosting_monthly,arima,arima,selected on first training window,order,"[0, 1, 1]"
+ppi_hosting_monthly,arima,arima,selected on first training window,seasonal_order,"[0, 0, 0, 0]"
+ppi_hosting_monthly,arima,arima,selected on first training window,trend,t
+ppi_hosting_monthly,arima,arima,selected on first training window,aicc,70.33688276334456
+ppi_hosting_monthly,arima,arima,selected on first training window,exog,none
+ppi_hosting_monthly,arima,arima,selected on first training window,D_used,0
+ppi_hosting_monthly,arima,arima,selected on first training window,candidates_tried,9
+ppi_hosting_monthly,arima,arima,selected on first training window,candidates_converged,4
+ppi_hosting_monthly,arima,arima,selected on first training window,grid_stopped_early,False
+ppi_hosting_monthly,arima,arima,selected on first training window,selection,AICc on first training window
+ppi_hosting_monthly,arima,arima,fitted on data before the hold-out,converged,True
+ppi_hosting_monthly,sarima,arima,selected on first training window,order,"[1, 1, 1]"
+ppi_hosting_monthly,sarima,arima,selected on first training window,seasonal_order,"[0, 1, 1, 12]"
+ppi_hosting_monthly,sarima,arima,selected on first training window,trend,n
+ppi_hosting_monthly,sarima,arima,selected on first training window,aicc,63.211625872367954
+ppi_hosting_monthly,sarima,arima,selected on first training window,exog,none
+ppi_hosting_monthly,sarima,arima,selected on first training window,D_used,1
+ppi_hosting_monthly,sarima,arima,selected on first training window,candidates_tried,24
+ppi_hosting_monthly,sarima,arima,selected on first training window,candidates_converged,24
+ppi_hosting_monthly,sarima,arima,selected on first training window,grid_stopped_early,False
+ppi_hosting_monthly,sarima,arima,selected on first training window,selection,AICc on first training window
+ppi_hosting_monthly,sarima,arima,fitted on data before the hold-out,converged,True
+ppi_hosting_monthly,ensemble,ensemble,selected on first training window,components,"[""hw_multiplicative"", ""arima""]"
+ppi_hosting_monthly,ensemble,ensemble,selected on first training window,weights,"[0.5, 0.5]"

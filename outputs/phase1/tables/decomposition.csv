@@ -1,0 +1,8 @@
+driver,type,roll_corr,reason,strictly_positive,log_roll_corr,log_reduces_corr,log_candidate,period,classical,method,stl_scale,seasonal_strength,trend_strength,seasonal_strength_24,seasonal_strength_168
+burst_tokens_total_daily,multiplicative,0.7504318785276829,rolling std rises with rolling mean (corr 0.75 > 0.5),True,0.07037749022588295,True,True,7,multiplicative,STL (robust),log,0.12739035022927758,0.368431983435603,,
+burst_tokens_api_daily,multiplicative,0.7454952061564712,rolling std rises with rolling mean (corr 0.75 > 0.5),True,-0.5686103353011556,True,True,7,multiplicative,STL (robust),log,0.05651757824352033,0.6832628426675884,,
+burst_tokens_chat_daily,additive,-0.003146424882645941,rolling std does not track rolling mean (corr -0.00 <= 0.5),True,-0.7166831210881898,False,False,7,additive,STL (robust),raw,0.7231410695227096,0.5048226846168727,,
+burst_requests_hourly,additive,0.8667688078774359,"series has zero or negative values, so multiplicative is not possible",False,,False,False,24,skipped,"MSTL(24, 168)",raw,0.3655694442462408,0.3838592140064143,0.18824248768356033,0.25397173186308275
+wildchat_conversations_daily,multiplicative,0.8412875723057893,rolling std rises with rolling mean (corr 0.84 > 0.5),True,0.584397197023038,True,True,7,multiplicative,STL (robust),log,0.5111343033742426,0.4906412624019221,,
+eci_wages_quarterly,multiplicative,0.6743347457861016,rolling std rises with rolling mean (corr 0.67 > 0.5),True,0.3147893029295328,True,True,4,multiplicative,STL (robust),log,0.0,0.9996945515741011,,
+ppi_hosting_monthly,multiplicative,0.6271642257171005,rolling std rises with rolling mean (corr 0.63 > 0.5),True,0.571027516448109,True,True,12,multiplicative,STL (robust),log,0.07602809814911571,0.9934345206245357,,

@@ -1,0 +1,8 @@
+driver,chosen_model,family,why,cv_mase,holdout_mase,seasonal_naive_cv_mase,beats_seasonal_naive
+burst_tokens_total_daily,ensemble,ensemble,"lowest mean CV MASE 0.424, below seasonal naive 0.529",0.42390970787545323,1.0034456593077947,0.5288233351341011,True
+burst_tokens_api_daily,ensemble,ensemble,"lowest mean CV MASE 0.424, below seasonal naive 0.530",0.4240927688789242,1.030368931856445,0.5296161119089865,True
+burst_tokens_chat_daily,ensemble,ensemble,"lowest mean CV MASE 0.980, below seasonal naive 1.015",0.9801457170142922,2.000812868165864,1.0147153105788618,True
+burst_requests_hourly,ensemble,ensemble,"lowest mean CV MASE 0.755, below seasonal naive 0.822",0.7546782794315804,1.8335483432834883,0.8218020127992989,True
+wildchat_conversations_daily,seasonal_ma3,baseline,"lowest mean CV MASE 1.430 (within 1% of the best, 1.423; simpler family preferred), below seasonal naive 1.507",1.430176021264421,2.4509182491992254,1.5065429989652976,True
+eci_wages_quarterly,arima,arima,"lowest mean CV MASE 0.328, below seasonal naive 1.737",0.3283163803203953,0.35343519453214245,1.7374153179140417,True
+ppi_hosting_monthly,ensemble,ensemble,"lowest mean CV MASE 0.679, below seasonal naive 2.109",0.6786546270304455,2.376392138921128,2.108673553743063,True

@@ -1,0 +1,90 @@
+{
+ "pages": {
+  "welcome": {
+   "banner_s": 1.07,
+   "first_chart_s": 4.0,
+   "fcp_s": 0.85,
+   "script_kb": 7146,
+   "three_kb": 0
+  },
+  "overview": {
+   "banner_s": 1.61,
+   "first_chart_s": 4.49,
+   "fcp_s": 1.29,
+   "script_kb": 7151,
+   "three_kb": 0
+  },
+  "data_used": {
+   "banner_s": 2.27,
+   "first_chart_s": 4.52,
+   "fcp_s": 1.48,
+   "script_kb": 7155,
+   "three_kb": 0
+  },
+  "forecast": {
+   "banner_s": 1.78,
+   "first_chart_s": 4.53,
+   "fcp_s": 1.49,
+   "script_kb": 7155,
+   "three_kb": 0
+  },
+  "reliability": {
+   "banner_s": 2.17,
+   "first_chart_s": 4.53,
+   "fcp_s": 1.46,
+   "script_kb": 7151,
+   "three_kb": 0
+  },
+  "costs": {
+   "banner_s": 1.65,
+   "first_chart_s": 4.46,
+   "fcp_s": 1.36,
+   "script_kb": 7151,
+   "three_kb": 0
+  },
+  "timing": {
+   "banner_s": 1.74,
+   "first_chart_s": 4.67,
+   "fcp_s": 1.56,
+   "script_kb": 7151,
+   "three_kb": 0
+  },
+  "levers": {
+   "banner_s": 3.85,
+   "first_chart_s": 3.87,
+   "fcp_s": 1.5,
+   "script_kb": 7146,
+   "three_kb": 0
+  },
+  "your_company": {
+   "banner_s": 1.0,
+   "first_chart_s": 1.02,
+   "fcp_s": 1.2,
+   "script_kb": 7428,
+   "three_kb": 0
+  }
+ },
+ "frames": {
+  "welcome": {
+   "frames": 275,
+   "mean_ms": 16.7,
+   "p95_ms": 16.8
+  },
+  "overview": {
+   "frames": 267,
+   "mean_ms": 18.8,
+   "p95_ms": 16.8
+  },
+  "costs": {
+   "frames": 298,
+   "mean_ms": 16.8,
+   "p95_ms": 16.8
+  },
+  "forecast (cone)": {
+   "frames": 280,
+   "mean_ms": 17.9,
+   "p95_ms": 16.8
+  }
+ },
+ "renderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x0000A7A8) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+}

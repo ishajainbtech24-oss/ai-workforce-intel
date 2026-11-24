@@ -1,0 +1,223 @@
+{
+  "illustrative_example_company": true,
+  "inputs": {
+    "employees": {
+      "value": 500,
+      "unit": "people",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "people in scope of the AI programme"
+    },
+    "adoption_start": {
+      "value": 0.05,
+      "unit": "share",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "pilot group already using AI in month 1"
+    },
+    "adoption_target": {
+      "value": 0.6,
+      "unit": "share",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "share of employees using AI at the end of the ramp"
+    },
+    "ramp_months": {
+      "value": 6,
+      "unit": "months",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "months to reach the adoption target"
+    },
+    "ramp_shape": {
+      "value": "linear",
+      "unit": "",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "linear or logistic adoption curve"
+    },
+    "tokens_per_active_user_per_month": {
+      "value": 17600,
+      "unit": "tokens",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "from WildChat consumer chats (about 4,060 output tokens per active user per week x 52/12, output tokens only); replace with your own usage data"
+    },
+    "price_multiplier_vs_frontier": {
+      "value": 1.0,
+      "unit": "x",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "only used with an Epoch price forecast (not available yet)"
+    },
+    "fixed_token_price_per_mtok": {
+      "value": 5.0,
+      "unit": "USD per million tokens",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "flat blended price used because there is no Epoch price forecast; replace with your contract price"
+    },
+    "base_monthly_hosting_cost": {
+      "value": 2000.0,
+      "unit": "USD per month",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "infrastructure cost today; moves with the PPI hosting forecast"
+    },
+    "base_hourly_wage_staff": {
+      "value": 45.0,
+      "unit": "USD per hour",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "fully loaded staff wage today; moves with the ECI wage forecast"
+    },
+    "base_hourly_wage_engineer": {
+      "value": 75.0,
+      "unit": "USD per hour",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "fully loaded engineer wage today; moves with the ECI wage forecast"
+    },
+    "training_hours_per_new_user": {
+      "value": 8.0,
+      "unit": "hours",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "one-off training per new user"
+    },
+    "refresher_hours_per_user_per_year": {
+      "value": 4.0,
+      "unit": "hours per year",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "refresher training per active user"
+    },
+    "fixed_enablement_cost_per_month": {
+      "value": 3000.0,
+      "unit": "USD per month",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "trainers, licences, community of practice"
+    },
+    "engineering_hours_build": {
+      "value": 800.0,
+      "unit": "hours",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "one-off integration work"
+    },
+    "build_months": {
+      "value": 3,
+      "unit": "months",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "the build hours are spread evenly over these months"
+    },
+    "maintenance_share_per_month": {
+      "value": 0.02,
+      "unit": "share of build hours",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "maintenance after the build, per month"
+    },
+    "maintenance_during_build": {
+      "value": false,
+      "unit": "",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "also pay maintenance during the build months"
+    },
+    "work_hours_per_user_per_month": {
+      "value": 160.0,
+      "unit": "hours",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "working hours per person per month"
+    },
+    "realisation_rate": {
+      "value": 0.5,
+      "unit": "share",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "share of saved time that becomes economic value"
+    },
+    "benefit_lag_months": {
+      "value": 3,
+      "unit": "months",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "months after adoption before a user's saving reaches full value"
+    },
+    "ai_assisted_share_of_hours": {
+      "value": 0.25,
+      "unit": "share",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "share of an active user's hours spent on AI-assisted tasks; converts METR's task-time change (downside) to a share of work hours"
+    },
+    "horizon_months": {
+      "value": 12,
+      "unit": "months",
+      "evidence_type": "illustrative",
+      "source": "example_company.json",
+      "note": "engine horizon T (6 to 24)"
+    }
+  },
+  "forecast_drivers": {
+    "token_demand": {
+      "driver": "burst_tokens_total_daily",
+      "evidence_type": "forecast",
+      "covered_months": 1,
+      "extrapolated_months": 11,
+      "used_fallback": false,
+      "note": "demand factor = 30-day run-rate / median simulated run-rate (relative variation only)"
+    },
+    "wages": {
+      "driver": "eci_wages_quarterly",
+      "evidence_type": "forecast",
+      "covered_months": 12,
+      "extrapolated_months": 0,
+      "used_fallback": false,
+      "note": "ECI(m)/ECI(0), ECI(0) = 178.145 (last observed); monthly by linear interpolation"
+    },
+    "hosting": {
+      "driver": "ppi_hosting_monthly",
+      "evidence_type": "forecast",
+      "covered_months": 12,
+      "extrapolated_months": 0,
+      "used_fallback": false,
+      "note": "PPI(m)/PPI(0), PPI(0) = 126.911 (last observed)"
+    },
+    "token_price": {
+      "driver": "fixed_token_price_per_mtok",
+      "evidence_type": "estimate",
+      "covered_months": 12,
+      "extrapolated_months": 0,
+      "used_fallback": true,
+      "note": "no Epoch price forecast: flat fixed_token_price_per_mtok from the inputs (an estimate)"
+    }
+  },
+  "scenarios": {
+    "downside": {
+      "parameter": "task_time_change_with_ai",
+      "raw": 18.8,
+      "unit": "pct_change_in_task_time",
+      "conversion": "-(18.8% / 100) x ai_assisted_share_of_hours 0.25 = -0.04700",
+      "time_saved_fraction": -0.047
+    },
+    "expected": {
+      "parameter": "time_saved_share_of_work_hours",
+      "raw": 2.084485382,
+      "unit": "pct_of_work_hours",
+      "conversion": "2.08449% of work hours / 100 = 0.02084",
+      "time_saved_fraction": 0.02084485382
+    },
+    "optimistic": {
+      "parameter": "time_saved_share_of_work_hours",
+      "raw": 3.9078089975,
+      "unit": "pct_of_work_hours",
+      "conversion": "3.90781% of work hours / 100 = 0.03908",
+      "time_saved_fraction": 0.039078089975
+    }
+  }
+}
