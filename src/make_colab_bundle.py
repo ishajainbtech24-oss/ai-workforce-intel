@@ -60,8 +60,8 @@ def collect() -> dict[str, list[Path]]:
         "outputs/phase3": _tree(ROOT / "outputs" / "phase3"),
         "outputs/phase4": _tree(ROOT / "outputs" / "phase4"),
         "outputs/phase5": _tree(ROOT / "outputs" / "phase5"),
-        "dashboard extras": [p for p in [ROOT / "src" / "dashboard" / "styles.css", ROOT / ".streamlit" / "config.toml",
-                                         ROOT / "requirements-dashboard.txt", *_tree(ROOT / "src" / "dashboard" / "assets")]
+        "dashboard extras": [p for p in [ROOT / "src" / "dashboard" / "ui" / "styles.css", ROOT / ".streamlit" / "config.toml",
+                                         ROOT / "requirements-dashboard.txt", *_tree(ROOT / "src" / "dashboard" / "ui" / "assets")]
                              if p.exists()],
         "config": _tree(ROOT / "config", "*.json"),
     }

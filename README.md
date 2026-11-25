@@ -159,7 +159,7 @@ rail; at 640 px and below it folds away behind a **Menu** button. The example-co
 every page.
 
 **Your own figures and the PDF report.** On *Try your own numbers*, **Update results** runs the engine on the
-visitor's figures for every outlook and caution level, plus the "what matters most" runs (`dashboard.data.run_all`:
+visitor's figures for every outlook and caution level, plus the "what matters most" runs (`dashboard.core.data.run_all`:
 the same 5,000 futures, starting number and table functions as `run_phase4.py`, so the example company's inputs give
 the saved tables back). When the figures differ from the example's, every results page (Welcome cards, The big
 picture, Where the money goes, When it pays for itself, What matters most) shows them, with "Your figures" in the
@@ -176,7 +176,7 @@ dark uses ink navy `#141A24` with cream text `#F3EEE5`. Headlines are Fraunces (
 cannot switch its own theme per visitor, so `.streamlit/config.toml` fixes its built-in theme to the light palette
 and the **Dark mode** switch (or `?theme=dark` in the address) swaps the CSS custom properties that
 `components.inject_css` writes from those tokens; `styles.css` repaints every widget Streamlit draws (pop-ups,
-drop-down lists, buttons, inputs) from the same properties. `python -m dashboard.colour_check` (from `src/`) checks
+drop-down lists, buttons, inputs) from the same properties. `python -m dashboard.ui.colour_check` (from `src/`) checks
 every text and chart colour for contrast and colour-blind separation; `tests/test_ui_contrast.py` measures the
 rendered widgets in a browser (skipped when Playwright is not installed).
 

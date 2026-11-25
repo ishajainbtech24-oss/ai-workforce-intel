@@ -11,10 +11,10 @@ import math
 import numpy as np
 import pandas as pd
 
-from dashboard import copy as C
-from dashboard import currency as CUR
-from dashboard import data as D
-from dashboard import theme as T
+from dashboard.ui import copy as C
+from dashboard.core import currency as CUR
+from dashboard.core import data as D
+from dashboard.ui import theme as T
 
 PCT_FIELDS = ("adoption_target", "realisation_rate")
 # typed and shown in rupees on "Try your own numbers"; the engine takes dollars

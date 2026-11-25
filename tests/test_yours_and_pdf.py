@@ -19,11 +19,11 @@ pytest.importorskip("matplotlib")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import logic  # noqa: E402
-from dashboard import report_pdf as PDF  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import report_pdf as PDF  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 from test_phase5_dashboard import APP, TABLES  # noqa: E402
 from test_phase5d_loaders import needs  # noqa: E402
@@ -59,7 +59,7 @@ def test_payback_counts_follow_the_runs():
 
 
 def _company(at: AppTest, **change) -> AppTest:
-    at.switch_page("views/your_company.py")
+    at.switch_page("app_pages/your_company.py")
     at.run()
     for f, v in change.items():
         box = at.slider(key=f"co_{f}") if f in ("realisation_rate", "adoption_target") else at.number_input(key=f"co_{f}")
@@ -83,14 +83,14 @@ def test_own_figures_show_on_every_results_page_until_back_to_the_example():
     tot = mine["totals_summary"].query("scenario == 'expected' and multiplier == 1.0").iloc[0]
     saved = pd.read_csv(TABLES / "totals_summary.csv").query("scenario == 'expected' and multiplier == 1.0").iloc[0]
     assert T.money(tot["total_cost_p50"]) != T.money(saved["total_cost_p50"])
-    for page in ("views/welcome.py", "views/overview.py", "views/costs.py", "views/timing.py", "views/levers.py"):
+    for page in ("app_pages/welcome.py", "app_pages/overview.py", "app_pages/costs.py", "app_pages/timing.py", "app_pages/levers.py"):
         at.switch_page(page)
         at.run()
         assert not at.exception, (page, [e.value for e in at.exception])
         text = _text(at)
         assert C.YOURS["BANNER"] in text and C.YOURS["EXAMPLE_PILL"] in text and C.BANNER not in text, page
         assert C.SIDE_YOURS in text, page
-    at.switch_page("views/overview.py")
+    at.switch_page("app_pages/overview.py")
     at.run()
     text = _text(at)
     assert T.money(tot["total_cost_p50"]) in text and T.money(tot["cum_net_T_p50"]) in text
@@ -113,7 +113,7 @@ def test_reset_and_a_new_session_bring_the_example_back():
     assert C.BANNER in _text(at) and D.YOURS_KEY not in at.session_state
     _company(at, **OTHER)
     fresh = AppTest.from_file(APP, default_timeout=240)  # a page refresh starts a new session
-    fresh.switch_page("views/overview.py")
+    fresh.switch_page("app_pages/overview.py")
     fresh.run()
     assert C.BANNER in _text(fresh) and C.YOURS["BANNER"] not in _text(fresh)
 
@@ -130,10 +130,10 @@ def test_update_with_the_example_figures_keeps_the_example():
 @needs
 def test_company_page_offers_the_table_and_the_pdf():
     at = AppTest.from_file(APP, default_timeout=240)
-    at.switch_page("views/your_company.py")
+    at.switch_page("app_pages/your_company.py")
     at.run()
     assert not at.exception, [e.value for e in at.exception]
-    labels = [b.proto.label for b in at.get("download_button")]
+    labels = [b.proto.label for b in at.get("download_button") if b.proto.label != C.DOWNLOAD_CSV]  # charts add their own
     assert labels == [C.DOWNLOAD, C.PDF_DOWNLOAD]
 
 

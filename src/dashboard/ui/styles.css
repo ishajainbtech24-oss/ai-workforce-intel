@@ -158,7 +158,6 @@ header[data-testid="stHeader"] { background: transparent !important; }
 .insight.idea .insight-icon { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
 .insight.idea:first-child { background: var(--surface-solid) !important; }
 .insight-text { font-size: 14.5px; line-height: 1.55; color: var(--text); }
-.ideas-note { font-size: 13px; color: var(--muted); margin: -2px 0 var(--s2); font-style: italic; }
 .steps-title { margin-top: var(--s2) !important; border-top: 0 !important; padding-top: 0 !important; }
 
 /* verdicts and notes */
@@ -424,6 +423,23 @@ html:not(.aiwi-icons) body [data-testid="stIconMaterial"] { opacity: 0 !importan
   .glossary dd { margin-bottom: var(--s2); }
 }
 
+
+/* ---------- MVP design system: source line, assumption chips, loading skeleton ---------- */
+.aiwi-source { font-size: 12.5px; color: var(--faint); margin: var(--s1) 0 var(--s3); }
+.aiwi-source a { color: var(--accent); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin: var(--s2) 0 var(--s3); }
+.chip.assumption { display: inline-flex; gap: 6px; align-items: baseline; font-size: 12.5px; padding: 3px 10px;
+  border-radius: var(--r-pill); background: var(--bg-2); border: 1px solid var(--border); color: var(--muted); }
+.chip.assumption b { color: var(--text); font-weight: 600; }
+.chip.assumption.trend { border-color: color-mix(in srgb, var(--accent-2) 45%, transparent); }
+.chip.assumption.input { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.aiwi-skeleton { display: grid; gap: 10px; padding: var(--s3) 0; }
+.aiwi-skeleton .sk-line { height: 14px; border-radius: 7px; background: var(--bg-2); }
+.aiwi-skeleton .sk-line:nth-child(2n) { width: 80%; }
+.aiwi-skeleton .sk-line:last-child { width: 55%; }
+
+.kpi-delta { font-size: 13px; font-weight: 600; margin-top: 2px; color: var(--muted); }
+.kpi-delta.up { color: var(--good); } .kpi-delta.down { color: var(--warm-text); }
 /*REDUCE*/
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

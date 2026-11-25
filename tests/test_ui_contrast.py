@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pytest
 
-from dashboard import colour_check as K
+from dashboard.ui import colour_check as K
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = ROOT / "src" / "dashboard" / "app.py"
@@ -134,7 +134,7 @@ SIDEBAR = r"""() => ({
 
 
 def test_side_navigation_lists_every_page_and_marks_the_current_one(browser_app):
-    from dashboard import copy as C
+    from dashboard.ui import copy as C
     browser, base = browser_app
     pg = browser.new_page(viewport={"width": 1440, "height": 900})
     pg.goto(f"{base}/timing")

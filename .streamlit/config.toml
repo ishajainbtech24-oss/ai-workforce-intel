@@ -1,12 +1,21 @@
-# Dashboard theme (UI v3): deep blue primary on a warm off-white page. Streamlit cannot switch themes per visitor, so this
-# is the light base; the in-app Dark mode is drawn by src/dashboard/styles.css from the tokens in theme.py.
+# Dashboard theme: deep blue primary on a warm off-white page (light) and ink navy (dark). The in-app Dark mode switch
+# and the page styles come from src/dashboard/ui/styles.css, drawn from the same tokens in ui/theme.py.
 [theme]
-base = "light"
+font = "sans serif"
+
+# The same palette as src/dashboard/ui/theme.py (TOKENS). With both sections, Streamlit offers light and dark itself
+# and starts from the visitor's system setting; the app's Dark mode switch follows it on the first visit.
+[theme.light]
 primaryColor = "#1F4E8C"
 backgroundColor = "#FBF7F0"
 secondaryBackgroundColor = "#F3ECE0"
 textColor = "#1C2230"
-font = "sans serif"
+
+[theme.dark]
+primaryColor = "#8DB3EC"
+backgroundColor = "#141A24"
+secondaryBackgroundColor = "#1A2130"
+textColor = "#F3EEE5"
 
 [client]
 toolbarMode = "viewer"

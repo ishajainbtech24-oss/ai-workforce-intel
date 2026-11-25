@@ -11,10 +11,10 @@ pytest.importorskip("plotly")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import charts, charts_forecast  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import charts, charts_forecast  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, _page_text  # noqa: E402
 from test_phase5d_loaders import FC_DIR, P3, SEVEN, needs  # noqa: E402
@@ -92,7 +92,7 @@ def _page(state: dict) -> AppTest:
     for k, val in state.items():
         at.session_state[k] = val
     at.run()
-    at.switch_page("views/forecast.py")
+    at.switch_page("app_pages/forecast.py")
     at.run()
     return at
 
@@ -115,8 +115,9 @@ def test_page_shows_the_view_and_offers_the_same_numbers_to_download(name, n):
     text = _page_text(at)
     hit = BANNED_RE.search(text)
     assert not hit, text[max(0, hit.start() - 80): hit.end() + 80]
-    dl = at.get("download_button")
+    dl = [b for b in at.get("download_button") if C.DOWNLOAD_CSV not in str(b.proto)]  # the chart adds its own
     assert len(dl) == 1 and C.DOWNLOAD_EXPECT in str(dl[0].proto)
+    assert sum(C.DOWNLOAD_CSV in str(b.proto) for b in at.get("download_button")) == 1
 
 
 @needs

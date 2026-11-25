@@ -14,14 +14,15 @@ if str(_SRC) not in sys.path:
 import numpy as np  # noqa: E402
 import streamlit as st  # noqa: E402
 
-from dashboard import charts, logic  # noqa: E402
-from dashboard import components as K  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import currency as CUR  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import explain as EX  # noqa: E402
-from dashboard import copy_technical as CT  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import components as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import currency as CUR  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import explain as EX  # noqa: E402
+from dashboard.ui import copy_technical as CT  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 SLIDERS = {"adoption_target": (0, 100, 5), "realisation_rate": (0, 100, 5), "ramp_months": (1, 24, 1),
            "horizon_months": (6, 24, 1)}
@@ -105,7 +106,7 @@ def _pdf_module():
     """The PDF report module, loaded only here: a drawing library that cannot load must never stop the page (the
     form, results and table download all work without it)."""
     try:
-        from dashboard import report_pdf
+        from dashboard.ui import report_pdf
         return report_pdf
     except Exception:  # noqa: BLE001 - any import failure only removes the PDF button
         import logging
@@ -132,16 +133,16 @@ def _show(res, scenario: str) -> None:
     K.kpi_row([K.kpi_card(labels[k], v[k], C.KPI_YOURS_MEANING[k], spark[k], icon_name=k, i=n,
                           tone="warm" if k == "balance" and bal[-1] < 0 else "")
                for n, k in enumerate(("cost", "benefit", "balance", "payback"))])
-    st.markdown(f'<div class="verdict">{logic.verdict(v["prob"], v["p50"], res.meta["T"])}</div>', unsafe_allow_html=True)
+    K.verdict(logic.verdict(v["prob"], v["p50"], res.meta["T"]))
     c1, c2 = st.columns([3, 2])
     with c1:
-        st.plotly_chart(charts.balance_band(res.cum_net, T.outlook_color(scenario), C.OUTLOOK_CHART_TITLE_YOURS),
-                        config=T.PLOT_CONFIG, width="stretch", theme=None)
-        K.chart_guide(EX.company_balance(v, res.meta["T"], float(bal[-1])), stacked=True)
+        K.chart(charts.balance_band(res.cum_net, T.outlook_color(scenario), C.OUTLOOK_CHART_TITLE_YOURS),
+                "company_balance", "my_running_balance")
+        K.insight_row(*EX.company_balance(v, res.meta["T"], float(bal[-1])), stacked=True)
     with c2:
         shares = logic.live_shares(res)
-        st.plotly_chart(charts.donut(shares), config=T.PLOT_CONFIG, width="stretch", theme=None)
-        K.chart_guide(EX.donut(shares, "company_donut"), stacked=True)
+        K.chart(charts.donut(shares), "company_donut", "my_cost_split")
+        K.insight_row(*EX.donut(shares, "company_donut"), stacked=True)
     bundle, yours = st.session_state.get("co_bundle"), D.yours() is not None
     with st.container(horizontal=True, key="co_downloads"):
         st.download_button(C.DOWNLOAD, D.monthly_result_table(res).to_csv(index=False).encode("utf-8-sig"),
@@ -157,12 +158,12 @@ def _show(res, scenario: str) -> None:
 
 
 def render() -> None:
-    K.page_title(C.HEAD["company"], C.COMPANY_NOTE, C.PAGES["company"][0])
+    K.page_header(C.HEAD["company"], C.COMPANY_NOTE, C.PAGES["company"][0])
     try:
         base, _ = D.example_inputs()
         outlooks = D.outlooks()
     except D.Missing:
-        K.missing()
+        K.empty_state()
         return
     _init(base)
     pressed = _form(outlooks)

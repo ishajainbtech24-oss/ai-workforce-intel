@@ -13,15 +13,16 @@ pytest.importorskip("plotly")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import charts, components, logic  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts, components  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = str(ROOT / "src" / "dashboard" / "app.py")
 TABLES = ROOT / "outputs" / "phase4" / "tables"
-PAGES = ["views/welcome.py", "views/overview.py", "views/data_used.py", "views/forecast.py", "views/reliability.py", "views/costs.py", "views/timing.py", "views/levers.py", "views/your_company.py"]
+PAGES = ["app_pages/welcome.py", "app_pages/overview.py", "app_pages/data_used.py", "app_pages/forecast.py", "app_pages/reliability.py", "app_pages/costs.py", "app_pages/timing.py", "app_pages/levers.py", "app_pages/your_company.py"]
 BANNED = ["model", "algorithm", "forecast model", "ARIMA", "SARIMA", "Holt", "XGBoost", "Prophet", "LSTM", "ensemble",
           "backtest", "MASE", "RMSE", "MAE", "sMAPE", "stationarity", "ADF", "KPSS", "decomposition", "seasonality",
           "lag", "residual", "quantile", "percentile", "P10", "P50", "P90", "Monte Carlo", "simulation", "draw", "path",
@@ -118,7 +119,7 @@ def test_overview_kpis_are_the_real_numbers():
     expect = {"cost": _money(t["total_cost_p50"]), "benefit": _money(t["total_value_p50"]),
               "balance": _money(t["cum_net_T_p50"]), "payback": pays}
     assert logic.overview_cards("expected", 1.0) == expect
-    at = _run("views/overview.py")
+    at = _run("app_pages/overview.py")
     html = " ".join(str(m.value) for m in at.markdown)
     for v in expect.values():
         assert v in html, v
@@ -197,7 +198,7 @@ def test_every_engine_name_maps_to_a_plain_label_and_back():
 
 
 def test_formatters():
-    from dashboard import currency as CUR
+    from dashboard.core import currency as CUR
     assert CUR.fmt(950) == "₹950" and CUR.fmt(12_345) == "₹12,345" and CUR.fmt(2_310_000) == "₹23.1 L"
     assert CUR.fmt(12_000_000) == "₹1.2 Cr" and CUR.fmt(-2_310_000) == "-₹23.1 L" and CUR.fmt(0) == "₹0"
     assert T.month(None) == "Not within 12 months"

@@ -9,49 +9,50 @@ if str(_SRC) not in sys.path:
 import numpy as np  # noqa: E402
 import streamlit as st  # noqa: E402
 
-from dashboard import charts, logic  # noqa: E402
-from dashboard import components as K  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import explain as EX  # noqa: E402
-from dashboard import copy_technical as CT  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import components as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import explain as EX  # noqa: E402
+from dashboard.ui import copy_technical as CT  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 LINES = ("token_expenditure", "hosting", "enablement", "integration")
 
 
 def render() -> None:
-    K.page_title(logic.page_headline("costs"), C.SUB["costs"], C.PAGES["costs"][0])
+    K.page_header(logic.page_headline("costs"), C.SUB["costs"], C.PAGES["costs"][0])
     try:
         scenario, k = K.pickers("costs", D.outlooks(), D.cautions())
         K.tags(list(LINES))
         stack = charts.cost_stack({ln: D.monthly(scenario, k, ln) for ln in LINES})
-        st.plotly_chart(stack, config=T.PLOT_CONFIG, width="stretch", theme=None)
-        K.chart_guide(EX.cost_stack(D.monthly(scenario, k, "total_cost")))
+        K.chart(stack, f"costs_stack_{scenario}_{k}", "monthly_cost_by_type")
+        K.insight_row(*EX.cost_stack(D.monthly(scenario, k, "total_cost")))
         b = D.table("cost_breakdown")
         b = b[(b["scenario"] == scenario) & np.isclose(b["multiplier"], k)]
         c1, c2 = st.columns(2)
         with c1:
             view = C.DONUT_VIEW[1]
             if K.motion_on():
-                view = st.segmented_control(C.DONUT_VIEW_LABEL, list(C.DONUT_VIEW), default=C.DONUT_VIEW[0],
+                view = st.segmented_control(C.DONUT_VIEW_LABEL, list(C.DONUT_VIEW), default=C.DONUT_VIEW[1],
                                             key="costs_donut_view", label_visibility="collapsed",
-                                            help=C.HINT["donut_view"]) or C.DONUT_VIEW[0]
+                                            help=C.HINT["donut_view"]) or C.DONUT_VIEW[1]  # flat first, 3D optional
             if view == C.DONUT_VIEW[0]:
                 K.donut_3d(logic.cost_slices(b))
             else:
-                st.plotly_chart(charts.donut(b), config=T.PLOT_CONFIG, width="stretch", theme=None)
-            K.chart_guide(EX.donut(b), stacked=True)
+                K.chart(charts.donut(b), f"costs_donut_{scenario}_{k}", "cost_split")
+            K.insight_row(*EX.donut(b), stacked=True)
         with c2:
             fig = charts.benefit_vs_cost(D.monthly(scenario, k, "total_cost"), D.monthly(scenario, k, "value"),
                                          T.outlook_color(scenario))
-            st.plotly_chart(fig, config=T.PLOT_CONFIG, width="stretch", theme=None)
-            K.chart_guide(EX.benefit_cost(D.monthly(scenario, k, "total_cost"), D.monthly(scenario, k, "value")), stacked=True)
+            K.chart(fig, f"costs_benefit_{scenario}_{k}", "benefit_and_cost")
+            K.insight_row(*EX.benefit_cost(D.monthly(scenario, k, "total_cost"), D.monthly(scenario, k, "value")), stacked=True)
         with st.expander(C.INCLUDED_TITLE, icon=":material/list:"):
             for ln in LINES:
                 st.markdown(f"**{C.LINE[ln]}** ({C.LINE_TAG[ln]}): {C.INCLUDED[ln]}")
     except D.Missing:
-        K.missing()
+        K.empty_state()
 
 
 render()

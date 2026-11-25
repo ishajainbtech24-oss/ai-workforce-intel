@@ -1,0 +1,44 @@
+"""Page 4, What matters most: which choices change the result most, and what could change the verdict."""
+import sys
+from pathlib import Path
+
+_SRC = Path(__file__).resolve().parents[2]
+if str(_SRC) not in sys.path:
+    sys.path.insert(0, str(_SRC))
+
+import streamlit as st  # noqa: E402
+
+from dashboard.ui import charts  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import components as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import explain as EX  # noqa: E402
+from dashboard.ui import copy_technical as CT  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
+
+
+def render() -> None:
+    K.page_header(logic.page_headline("levers"), C.SUB["levers"], C.PAGES["levers"][0])
+    try:
+        sens = D.table("sensitivity").sort_values("swing_cum_net_T", ascending=False)
+        swings = logic.lever_swings(6)
+        K.depth_bars(swings)
+        K.insight_row(*EX.levers_depth(swings))
+        K.chart(charts.levers(sens), "levers_tornado", "what_matters_most")
+        K.insight_row(*EX.levers_chart(sens))
+        a, b, c = (C.LEVER.get(x, x).lower() for x in sens["input"].head(3))
+        K.note(C.LEVER_TAKEAWAY.format(a=a, b=b, c=c))
+        be = D.row("break_even_summary", "expected", 1.0)
+        if be["prob_break_even_within_T"] < 0.5:
+            tot = D.row("totals_summary", "expected", 1.0)
+            first, second = logic.lever_phrases(2)
+            K.section_title(C.NO_PAYBACK_BOX_TITLE)
+            K.verdict(logic.words("NO_PAYBACK").format(months=int(be["T"]), balance=T.money(tot["cum_net_T_p50"])),
+                      C.NO_PAYBACK_LEVERS.format(a=first, b=second), tone="warm")
+        K.tech_details([CT.TERMS["sensitivity"]])
+    except D.Missing:
+        K.empty_state()
+
+
+render()

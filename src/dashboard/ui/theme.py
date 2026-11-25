@@ -11,7 +11,7 @@ import math
 import plotly.graph_objects as go
 import plotly.io as pio
 
-from dashboard import currency as CUR
+from dashboard.core import currency as CUR
 
 # One switch for every 3D scene and decorative animation (the in-app "Reduce motion" sets the same fallback).
 ENABLE_3D = True
@@ -159,7 +159,7 @@ def template() -> str:
 
 def money(x) -> str:
     """A dollar amount from the results, shown in rupees (converted here, at the last step):
-    Indian style, see dashboard.currency.fmt: ₹950, ₹12,345, ₹23.1 L, ₹1.2 Cr."""
+    Indian style, see dashboard.core.currency.fmt: ₹950, ₹12,345, ₹23.1 L, ₹1.2 Cr."""
     return CUR.fmt_usd(x)
 
 
@@ -178,7 +178,7 @@ def share(x) -> str:
 
 def month(x, horizon: int = 12) -> str:
     """'Month 9', or 'Not within 12 months' for none."""
-    from dashboard import copy as C
+    from dashboard.ui import copy as C
     if x is None or (isinstance(x, float) and not math.isfinite(x)):
         return C.NOT_WITHIN.format(months=horizon)
     return C.MONTH.format(month=int(round(float(x))))

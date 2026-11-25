@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-DEFAULT_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_ROOT = Path(__file__).resolve().parents[3]
 N_LIVE, N_SAVED, SEED = 2000, 5000, 42
 YOURS_KEY = "co_tables"  # session key of the visitor's own results
 
@@ -195,8 +195,8 @@ def _run_all(inputs: dict, n: int = N_SAVED) -> dict:
 def monthly_result_table(res) -> pd.DataFrame:
     """Plain table of a live run for the download: month, median cost, benefit and running balance, in rupees
     (the engine's dollar results converted here, at the last step)."""
-    from dashboard import copy as C
-    from dashboard import currency as CUR
+    from dashboard.ui import copy as C
+    from dashboard.core import currency as CUR
     T = res.meta["T"]
     return pd.DataFrame({C.DOWNLOAD_COLS["month"]: np.arange(1, T + 1),
                          C.DOWNLOAD_COLS["cost"]: CUR.to_inr(np.median(res.total_cost, axis=0)).round(2),
@@ -231,7 +231,7 @@ def phase_table(phase: int, name: str) -> pd.DataFrame:
 
 def forecast_series() -> list[str]:
     """The series with a saved forecast, in the order the pages list them (see logic_forecasts.SERIES)."""
-    from dashboard import logic_forecasts as LF
+    from dashboard.core import logic_forecasts as LF
     folder = root() / "outputs" / "phase3" / "forecasts"
     return [s for s in LF.SERIES if (folder / f"{s}.csv").exists()]
 

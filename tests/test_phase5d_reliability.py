@@ -13,10 +13,10 @@ pytest.importorskip("plotly")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import charts, charts_forecast  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import charts, charts_forecast  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, _page_text  # noqa: E402
 from test_phase5d_loaders import FC_DIR, P2, P3, SEVEN, needs  # noqa: E402
@@ -112,7 +112,7 @@ def test_page_is_plain_for_every_trend(name):
     at.session_state["rel_series"] = name
     at.session_state[f"rel_all_{name}"] = True
     at.run()
-    at.switch_page("views/reliability.py")
+    at.switch_page("app_pages/reliability.py")
     at.run()
     assert not at.exception, [e.value for e in at.exception]
     assert len(at.get("plotly_chart")) == 2

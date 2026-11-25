@@ -586,3 +586,19 @@ PDF_AXIS = {"month": "Month", "money": "Amount (₹)", "balance": "Running balan
             "change": "Change in year-end balance (₹)"}
 PDF_LEGEND = {"typical": "Typical case", "range": "Likely range (8 in 10)", "cost": "Cost", "benefit": "Estimated benefit",
               "lower": "20% lower", "higher": "20% higher"}
+
+
+# ---- MVP design system: shared page parts ----
+VIEW_TABLE = "View as table"
+DOWNLOAD_CSV = "Download these numbers"
+TABLE_SERIES, TABLE_X, TABLE_Y = "Series", "Point", "Value"
+LOADING = "Loading the numbers..."
+EMPTY_TITLE = "Nothing to show yet"
+WARMUP = ("The site is waking up. It runs on a free server that sleeps when nobody visits; the first page can take "
+          "up to a minute, and everything is quick after that.")
+SHOCKS = {"2020-03-01": "COVID-19 (Mar 2020)", "2022-11-01": "ChatGPT launch (Nov 2022)"}
+RANGE_BUTTONS_DATED = (("6M", 6, "month"), ("1Y", 1, "year"), ("5Y", 5, "year"))
+RANGE_ALL = "All"
+RANGE_BUTTONS_STEPS = {"day": (("Last 7 days", 7), ("Last 30 days", 30)), "hour": (("Last day", 24), ("Last week", 168))}
+SOURCE_PREFIX = "Source"
+ASSUMPTION_KIND = {"trend": "Based on trends", "estimate": "Our estimate", "input": "Your figure", "study": "From a study"}

@@ -4,7 +4,7 @@ Sets the theme for the session (light or dark), injects the design system, draws
 and Reduce motion switches and the banner, installs the page-level motion script and registers the nine pages
 (Welcome first; forecast pages and money pages grouped in two menus), then adds the "Next" card under each page.
 Streamlit puts this script's folder on the import path; it is removed again so that this folder's
-`copy.py` can never shadow Python's own `copy` module (the module is imported as dashboard.copy).
+`copy.py` can never shadow Python's own `copy` module (the module is imported as dashboard.ui.copy).
 """
 from __future__ import annotations
 
@@ -35,14 +35,14 @@ import engine.sensitivity  # noqa: E402,F401
 import engine.simulate  # noqa: E402,F401
 import tsaf.loaders  # noqa: E402,F401
 
-from dashboard import components as K  # noqa: E402
-from dashboard import copy as C  # noqa: E402
+from dashboard.ui import components as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
 
 st.set_page_config(page_title=C.PRODUCT, page_icon=":material/insights:", layout="wide",
                    initial_sidebar_state="auto")
 K.init_theme()
 K.inject_css()
-st.logo(str(HERE / "assets" / "mark.svg"), size="large", icon_image=str(HERE / "assets" / "mark.svg"))
+st.logo(str(HERE / "ui" / "assets" / "mark.svg"), size="large", icon_image=str(HERE / "ui" / "assets" / "mark.svg"))
 K.motion_script()
 
 # Left side navigation, in reading order (the same order as the Next cards): two pages, two groups, then your own figures.

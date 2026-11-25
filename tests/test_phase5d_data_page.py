@@ -12,10 +12,10 @@ pytest.importorskip("plotly")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import charts, charts_forecast  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import charts, charts_forecast  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, _page_text  # noqa: E402
 from test_phase5d_loaders import FC_DIR, P1, SEVEN, needs  # noqa: E402
@@ -71,10 +71,12 @@ def test_page_shows_the_notes_and_stays_plain(name):
     at = AppTest.from_file(APP, default_timeout=120)
     at.session_state["data_series"] = name
     at.run()
-    at.switch_page("views/data_used.py")
+    at.switch_page("app_pages/data_used.py")
     at.run()
     assert not at.exception, [e.value for e in at.exception]
-    assert len(at.get("plotly_chart")) == 2 and len(at.tabs) == 3 and len(at.get("download_button")) == 1
+    page_dl = [b for b in at.get("download_button") if C.DOWNLOAD_CSV not in str(b.proto)]  # charts add their own
+    chart_dl = [b for b in at.get("download_button") if C.DOWNLOAD_CSV in str(b.proto)]
+    assert len(at.get("plotly_chart")) == 2 and len(at.tabs) == 3 and len(page_dl) == 1 and len(chart_dl) == 2
     v = _view(name)
     md = " ".join(str(m.value) for m in at.markdown)
     assert (C.NO_DATES in md) == (name in UNDATED)  # the day-number note for sources without dates

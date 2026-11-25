@@ -9,9 +9,9 @@ import pytest
 
 pytest.importorskip("streamlit")
 
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import BANNED_RE  # noqa: E402
 

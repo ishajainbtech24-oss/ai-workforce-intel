@@ -14,8 +14,8 @@ import math
 import numpy as np
 import pandas as pd
 
-from dashboard import copy as C
-from dashboard import currency as CUR
+from dashboard.ui import copy as C
+from dashboard.core import currency as CUR
 
 LOW_Q, HIGH_Q = 0.10, 0.90
 HOSTING = ("ppi_hosting_monthly", "ppi_hosting")  # (saved forecast name, column in data/processed)
@@ -214,7 +214,7 @@ def forecast_view(name: str, n: int, hist: pd.DataFrame, fc: pd.DataFrame,
                   "fc_x": [_plot_x(x, dated) for x in fx], "expected": exp, "low": lo, "high": hi, "unit": unit,
                   "y_title": C.SERIES[name][3], "x_title": None if dated else C.AXIS_STEP.get(g),
                   "divider": C.LAST_REAL, "hist_tips": [f"{lab}: {amount(y, unit)}" for lab, y in zip(labels_h, h["value"])],
-                  "fc_tips": fc_tips, "dated": dated,
+                  "fc_tips": fc_tips, "dated": dated, "grain": g,
                   "tickformat": {"quarter": "%Y", "month": "%b %Y", "day": "%d %b", "hour": "%d %b %H:00"}.get(g)},
         "headline": C.FORECAST_HEADLINE.format(end=labels_f[-1], value=amount(exp[-1], unit), unit=unit),
         "range": C.FORECAST_RANGE.format(low=amount(lo[-1], unit), high=amount(hi[-1], unit)),
@@ -441,7 +441,7 @@ def data_view(name: str, hist: pd.DataFrame, grain_: str, source_n: int, anomali
                   "unusual_tips": [f"{step_label(tt, grain_)}: {amount(v, unit)}" for tt, (_, v) in zip(times, marks)],
                   "outage_x": [to_x(x) for x in out_rows["x"]], "outage_y": out_rows["value"].astype(float).tolist(),
                   "unit": unit, "y_title": C.SERIES[name][3], "x_title": None if dated else C.AXIS_STEP.get(grain_),
-                  "dated": dated},
+                  "dated": dated, "grain": grain_},
         "pattern": {"labels": pat["label"].tolist(), "values": pat["value"].astype(float).tolist(),
                     "title": C.PATTERN_TITLE.get(grain_, ""), "unit": unit,
                     "x_title": None if dated else C.POSITION_AXIS.get(grain_),

@@ -1,7 +1,6 @@
 """What we expect next: pick one of the seven real trends and a length (only up to the saved forecast); the chart shows
 what really happened, the latest real value, what we expect and the likely range; a side card says it in words.
-Every number comes from the saved Phase 1 to 3 files through dashboard.data and dashboard.logic_forecasts."""
-import html
+Every number comes from the saved Phase 1 to 3 files through dashboard.core.data and dashboard.core.logic_forecasts."""
 import re
 import sys
 from pathlib import Path
@@ -12,14 +11,14 @@ if str(_SRC) not in sys.path:
 
 import streamlit as st  # noqa: E402
 
-from dashboard import charts_forecast as CF  # noqa: E402
-from dashboard import components as K  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import explain as EX  # noqa: E402
-from dashboard import copy_technical as CT  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts_forecast as CF  # noqa: E402
+from dashboard.ui import components as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import explain as EX  # noqa: E402
+from dashboard.ui import copy_technical as CT  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 DEFAULT = "ppi_hosting_monthly"  # the same trend the Welcome page shows
 
@@ -39,19 +38,16 @@ def _length(name: str, g: str, saved: int) -> int:
 
 
 def _side(v: dict) -> None:
-    st.markdown(f'<div class="verdict fc-card"><span class="fc-headline">{html.escape(v["headline"])}</span>'
-                f'<span class="sub">{html.escape(v["range"])}</span>'
-                f'<span class="sub">{html.escape(v["change"])}</span>'
-                f'<span class="fc-small">{html.escape(C.RANGE_NOTE)}</span></div>', unsafe_allow_html=True)
+    K.verdict(v["headline"], [v["range"], v["change"]], tone="card", small=C.RANGE_NOTE)
     if v["hits"]:
         inside, n = v["hits"]
         warn = v["flag"] is True
         text = (C.RANGE_WARN if warn else C.RANGE_OK).format(inside=inside, n=n)
-        st.markdown(f'<div class="note{" warm-note" if warn else ""}">{html.escape(text)}</div>', unsafe_allow_html=True)
+        K.note(text, tone="warm" if warn else "")
 
 
 def render() -> None:
-    K.page_title(C.HEAD["forecast"], C.FORECAST_SUB, C.PAGES["forecast"][0])
+    K.page_header(C.HEAD["forecast"], C.FORECAST_SUB, C.PAGES["forecast"][0])
     try:
         series = D.forecast_series()
         if not series:
@@ -67,15 +63,14 @@ def render() -> None:
         n = _length(name, g, saved)
         v = LF.forecast_view(name, n, hist, fc, ic)
     except D.Missing:
-        K.missing()
+        K.empty_state()
         return
     desc = C.SERIES[name][1] + ("" if v["dated"] else " " + C.NO_DATES)
-    st.markdown(f'<p class="aiwi-sub fc-desc">{html.escape(desc)}</p>', unsafe_allow_html=True)
+    K.lede(desc)
     left, right = st.columns([2.3, 1], gap="medium")
     with left:
-        st.plotly_chart(CF.series_chart(v["chart"]), config=T.PLOT_CONFIG, width="stretch", theme=None,
-                        key=f"fc_chart_{name}_{n}")
-        K.chart_guide(EX.forecast(name, v, float(hist["value"].iloc[-1])))
+        K.chart(CF.series_chart(v["chart"]), f"fc_chart_{name}_{n}", f"forecast_{name}_{n}")
+        K.insight_row(*EX.forecast(name, v, float(hist["value"].iloc[-1])))
     with right:
         _side(v)
         slug = re.sub(r"[^a-z0-9]+", "_", C.SERIES[name][0].lower()).strip("_")

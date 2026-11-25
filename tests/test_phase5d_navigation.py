@@ -10,10 +10,10 @@ import pytest
 pytest.importorskip("streamlit")
 pytest.importorskip("plotly")
 
-from dashboard import charts, charts_forecast, components  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import charts, charts_forecast, components  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import BANNED_RE, TABLES, _money, _page_text, _run  # noqa: E402
 
@@ -115,7 +115,7 @@ def test_missing_forecast_file_gives_the_friendly_message(tmp_path, monkeypatch)
 def test_no_pages_folder_next_to_the_app():
     """A folder called `pages` beside app.py switches Streamlit into its old page-folder mode: the first visitor who
     opens a page address directly (before anyone opens /) gets that page alone, without the styles, the banner, the
-    top bar or the Next card. The page files therefore live in `views/`."""
+    top bar or the Next card. The page files therefore live in `app_pages/`."""
     here = ROOT / "src" / "dashboard"
     assert not (here / "pages").exists()
-    assert all(path.startswith("views/") for path in components.PAGE_FILES.values())
+    assert all(path.startswith("app_pages/") for path in components.PAGE_FILES.values())

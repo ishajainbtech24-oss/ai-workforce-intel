@@ -1,7 +1,6 @@
 """The big picture: a compact title (the promise itself is on Welcome), four KPI cards (expected outlook), the running
 balance next to 'What needs a decision', the trends behind the costs with how close past predictions came, key
 findings, and the year-end balance in 3D inside a panel that opens on request."""
-import html
 import sys
 from pathlib import Path
 
@@ -11,14 +10,15 @@ if str(_SRC) not in sys.path:
 
 import streamlit as st  # noqa: E402
 
-from dashboard import charts, logic  # noqa: E402
-from dashboard import components as K  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import currency as CUR  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import explain as EX  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import components as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import currency as CUR  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import explain as EX  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 
 ICON = {"cost": "cost", "benefit": "benefit", "balance": "balance", "payback": "payback"}
@@ -48,15 +48,12 @@ def _chart() -> None:
         be = D.row("break_even_summary", sc, 1.0)
         paybacks[sc] = be["p50_month"] if be["prob_break_even_within_T"] >= 0.5 else None
     fig = charts.running_balance(series, view != C.VIEW_TYPICAL, D.horizon(), paybacks, focus="expected")
-    st.plotly_chart(fig, config=T.PLOT_CONFIG, width="stretch", theme=None)
-    K.chart_guide(EX.balance(series, paybacks, D.horizon()))
+    K.chart(fig, "overview_balance", "running_balance")
+    K.insight_row(*EX.balance(series, paybacks, D.horizon()))
 
 
 def _decide() -> None:
-    items = "".join(f'<li><b>{html.escape(it["label"])}</b><span>{html.escape(it["gap"])}</span>'
-                    f'<span class="helps">{html.escape(it["helps"])}</span></li>' for it in logic.decide_items(3))
-    st.markdown(f'<div class="decide-card glass"><div class="decide-title">{html.escape(C.DECIDE_TITLE)}</div>'
-                f'<div class="decide-sub">{html.escape(C.DECIDE_SUB)}</div><ol>{items}</ol></div>', unsafe_allow_html=True)
+    K.numbered_card(C.DECIDE_TITLE, C.DECIDE_SUB, [(it["label"], it["gap"], it["helps"]) for it in logic.decide_items(3)])
     st.page_link(K.PAGE_FILES["levers"], label=f'{C.PAGES["levers"][0]} →', icon=C.PAGES["levers"][1])
 
 
@@ -75,13 +72,9 @@ def _strip() -> None:
                                            lo=LF.pct(min(usage)), hi=LF.pct(max(usage)))
     except (D.Missing, KeyError, ValueError):
         return  # the money results still show; the forecast pages say what is missing
-    st.markdown(f'<h2 class="aiwi-h2">{html.escape(C.STRIP_TITLE)}</h2>', unsafe_allow_html=True)
-    body = "".join(f'<div class="kpi-card text" style="--i:{n}"><div class="kpi-label">{html.escape(t)}</div>'
-                   f'<div class="kpi-value">{html.escape(v)}</div><div class="kpi-meaning">{html.escape(m)}</div></div>'
-                   for n, (t, v, m) in enumerate(cards))
-    body += (f'<div class="kpi-card text strip-reliable" style="--i:2"><div class="kpi-label">{html.escape(C.STRIP_RELIABLE_TITLE)}</div>'
-             f'<div class="kpi-meaning">{html.escape(reliable)}</div></div>')
-    st.markdown(f'<div class="kpi-grid">{body}</div>', unsafe_allow_html=True)
+    K.section_title(C.STRIP_TITLE)
+    K.card_grid([K.kpi_card(t, v, m, i=n) for n, (t, v, m) in enumerate(cards)]
+                + [K.kpi_card(C.STRIP_RELIABLE_TITLE, "", reliable, tone="text strip-reliable", i=2)])
     with st.container(horizontal=True, key="overview_strip_links"):
         st.page_link(K.PAGE_FILES["forecast"], label=f"{C.STRIP_LINK_EXPECT} →", icon=C.PAGES["forecast"][1])
         st.page_link(K.PAGE_FILES["reliable"], label=f"{C.STRIP_LINK_RELIABLE} →", icon=C.PAGES["reliable"][1])
@@ -89,10 +82,9 @@ def _strip() -> None:
 
 def _insights() -> None:
     """Facts from the results, then suggestions clearly labelled as suggestions."""
-    st.markdown(f'<h2 class="aiwi-h2">{html.escape(C.INSIGHTS_DATA_TITLE)}</h2>', unsafe_allow_html=True)
+    K.section_title(C.INSIGHTS_DATA_TITLE)
     K.insight_cards(list(zip(("1", "2", "3"), logic.findings())))
-    st.markdown(f'<h2 class="aiwi-h2">{html.escape(C.INSIGHTS_IDEAS_TITLE)}</h2>'
-                f'<p class="ideas-note">{html.escape(C.INSIGHTS_IDEAS_NOTE)}</p>', unsafe_allow_html=True)
+    K.section_title(C.INSIGHTS_IDEAS_TITLE, C.INSIGHTS_IDEAS_NOTE)
     K.insight_cards([("→", t) for t in logic.ideas()], kind="idea")
 
 
@@ -103,12 +95,12 @@ def _flow() -> None:
         with c1:
             K.money_flow(items)
         with c2:
-            st.plotly_chart(charts.year_end_bars(items), config=T.PLOT_CONFIG, width="stretch", theme=None)
-        K.chart_guide(EX.year_end(items, D.horizon()))
+            K.chart(charts.year_end_bars(items), "overview_year_end", "year_end_balance")
+        K.insight_row(*EX.year_end(items, D.horizon()))
 
 
 def render() -> None:
-    K.page_title(logic.page_headline("overview"), logic.words("OVERVIEW_SUB"), C.PAGES["overview"][0])
+    K.page_header(logic.page_headline("overview"), logic.words("OVERVIEW_SUB"), C.PAGES["overview"][0])
     try:
         _cards()
         left, right = st.columns([2.3, 1], gap="medium")
@@ -120,7 +112,7 @@ def render() -> None:
         _insights()
         _flow()
     except D.Missing:
-        K.missing()
+        K.empty_state()
 
 
 render()

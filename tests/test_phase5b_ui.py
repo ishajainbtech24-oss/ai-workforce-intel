@@ -13,11 +13,12 @@ pytest.importorskip("plotly")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import charts, components, logic  # noqa: E402
-from dashboard import components_3d as K3  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts, components  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import components_3d as K3  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, PAGES, TABLES, _page_text  # noqa: E402
 
@@ -105,14 +106,14 @@ def test_enable_3d_off_gives_the_still_versions(monkeypatch):
 
 
 @needs_outputs
-@pytest.mark.parametrize("page", [None, "views/costs.py"])
+@pytest.mark.parametrize("page", [None, "app_pages/costs.py"])
 def test_reduce_motion_switch_gives_still_page(page):
     at = _run(page, **{T.MOTION_KEY: True})
     assert not at.exception
     if page is None:
         html = " ".join(str(m.value) for m in at.markdown)
         assert "aiwi-still" in html and "animation: none" in html  # the reduced-motion rules are applied
-    if page == "views/costs.py":  # no 3D donut, so no 3D/flat switch; the flat donut is shown
+    if page == "app_pages/costs.py":  # no 3D donut, so no 3D/flat switch; the flat donut is shown
         assert len(at.get("plotly_chart")) == 3
 
 
@@ -177,7 +178,7 @@ def test_chart_annotations_are_real_numbers():
 
 
 def test_money_ticks_match_the_cards():
-    from dashboard import currency as CUR
+    from dashboard.core import currency as CUR
     vals, text = charts.money_ticks(-683_000, 61_000)  # dollars in, round rupee ticks out
     assert 0.0 in vals and "₹0" in text and "-₹2 Cr" in text and all("$" not in t for t in text)
     for v, t in zip(vals, text):

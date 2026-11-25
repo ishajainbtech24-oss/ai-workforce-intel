@@ -16,10 +16,10 @@ from matplotlib.figure import Figure
 from matplotlib.patches import FancyBboxPatch
 from matplotlib.ticker import FuncFormatter, MaxNLocator
 
-from dashboard import copy as C
-from dashboard import currency as CUR
-from dashboard import logic
-from dashboard import theme as T
+from dashboard.ui import copy as C
+from dashboard.core import currency as CUR
+from dashboard.core import logic
+from dashboard.ui import theme as T
 
 A4 = (8.27, 11.69)
 LIGHT = T.TOKENS["light"]
@@ -157,13 +157,13 @@ def _page_summary(pdf, res, scenario, who, made) -> None:
     ax.set_xlabel(C.PDF_AXIS["month"], fontsize=8, color=MUTED)
     _money_axis(ax)
     ax.legend(frameon=False, fontsize=7.5, loc="lower right")
-    from dashboard import explain as EX
+    from dashboard.core import explain as EX
     _guide(fig, 0.27, EX.company_balance(cards, T_, float(bal[-1])))
     pdf.savefig(fig)
 
 
 def _page_money(pdf, res, who) -> None:
-    from dashboard import explain as EX
+    from dashboard.core import explain as EX
     fig = _page(pdf, 2, who)
     _heading(fig, 0.94, C.PDF_SECTIONS["split"])
     shares = logic.live_shares(res)
@@ -309,7 +309,7 @@ def _page_levers(pdf, bundle, who) -> None:
 
 
 def _page_table(pdf, res, who) -> None:
-    from dashboard import data as D
+    from dashboard.core import data as D
     fig = _page(pdf, 5, who)
     _heading(fig, 0.94, C.PDF_SECTIONS["table"])
     tab = D.monthly_result_table(res)

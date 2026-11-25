@@ -13,22 +13,22 @@ pytest.importorskip("plotly")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import components_3d as K3  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import copy_technical as CT  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import explain as EX  # noqa: E402
-from dashboard import logic  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import components_3d as K3  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.ui import copy_technical as CT  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import explain as EX  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, TABLES, _money  # noqa: E402
 from test_phase5d_loaders import FC_DIR, P1, P2, P3, SEVEN, needs  # noqa: E402
 from test_phase5d_reliability import TECH_RE  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-CHART_PAGES = {None: 1, "views/overview.py": 2, "views/data_used.py": 2, "views/forecast.py": 1,
-               "views/reliability.py": 2, "views/costs.py": 3, "views/timing.py": 2, "views/levers.py": 2,
-               "views/your_company.py": 2}  # charts that explain themselves on each page (3D views count once)
+CHART_PAGES = {None: 1, "app_pages/overview.py": 2, "app_pages/data_used.py": 2, "app_pages/forecast.py": 1,
+               "app_pages/reliability.py": 2, "app_pages/costs.py": 3, "app_pages/timing.py": 2, "app_pages/levers.py": 2,
+               "app_pages/your_company.py": 2}  # charts that explain themselves on each page (3D views count once)
 
 
 def _page(path, **state) -> AppTest:
@@ -62,7 +62,7 @@ def test_every_chart_has_a_three_line_guide(page):
 
 @needs
 def test_glossary_and_hints_are_on_the_page():
-    at = _page("views/forecast.py")
+    at = _page("app_pages/forecast.py")
     md = " ".join(str(m.value) for m in at.markdown)
     for term in list(C.GLOSSARY) + list(C.GLOSSARY_MORE):
         assert term in md, term
@@ -133,7 +133,7 @@ def test_forecast_and_reliability_guides_per_trend(name):
 
 @needs
 def test_findings_and_ideas_are_kept_apart():
-    at = _page("views/overview.py")
+    at = _page("app_pages/overview.py")
     md = " ".join(str(m.value) for m in at.markdown)
     assert C.INSIGHTS_DATA_TITLE in md and C.INSIGHTS_IDEAS_TITLE in md and C.INSIGHTS_IDEAS_NOTE in md
     assert md.index(C.INSIGHTS_DATA_TITLE) < md.index(C.INSIGHTS_IDEAS_TITLE)
@@ -145,8 +145,8 @@ def test_findings_and_ideas_are_kept_apart():
 
 
 @needs
-@pytest.mark.parametrize("page", ["views/forecast.py", "views/reliability.py", "views/data_used.py", "views/timing.py",
-                                  "views/levers.py"])
+@pytest.mark.parametrize("page", ["app_pages/forecast.py", "app_pages/reliability.py", "app_pages/data_used.py", "app_pages/timing.py",
+                                  "app_pages/levers.py"])
 def test_technical_panels_explain_every_term(page):
     at = _page(page)
     panels = [e for e in at.expander if e.label == C.TECH_TITLE]

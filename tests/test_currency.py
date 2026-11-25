@@ -9,11 +9,12 @@ import pytest
 pytest.importorskip("streamlit")
 pytest.importorskip("plotly")
 
-from dashboard import charts, components, logic  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import currency as CUR  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts, components  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import currency as CUR  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 from test_phase5_dashboard import INR_PER_USD, PAGES, TABLES, _inr, _money, _page_text, _run  # noqa: E402
 
@@ -88,7 +89,7 @@ def test_cards_are_phase4_times_the_rate():
                                                      ("balance", "cum_net_T_p50"))}
     cards = logic.overview_cards("expected", 1.0)
     assert {k: cards[k] for k in want} == want
-    at = _run("views/overview.py")
+    at = _run("app_pages/overview.py")
     html = " ".join(str(m.value) for m in at.markdown)
     for k, v in want.items():
         assert v in html, v
@@ -121,7 +122,7 @@ def test_round_trip_of_rupee_inputs():
 
 @needs_outputs
 def test_company_page_shows_rupee_inputs_and_results():
-    at = _run("views/your_company.py")
+    at = _run("app_pages/your_company.py")
     assert not at.exception, [e.value for e in at.exception]
     base, _ = D.example_inputs()
     boxes = {n.label: n.value for n in at.number_input}
@@ -206,7 +207,7 @@ def test_charts_have_no_dollars():
         title = str((f.layout.yaxis if f.layout.xaxis.title.text != C.AXIS_CHANGE else f.layout.xaxis).title.text)
         assert "₹" in title, title
     assert "₹" in str(figs[5].layout.xaxis.title.text)
-    from dashboard import components_3d as K3
+    from dashboard.ui import components_3d as K3
     for markup in (K3.money_flow_html(items, True), K3.donut_html(logic.cost_slices(b), True),
                    components.depth_bars_html(logic.lever_swings(6), T.ACCENT)):
         cfg = re.search(r'<script type="application/json" id="cfg">(.*?)</script>', markup, re.S)

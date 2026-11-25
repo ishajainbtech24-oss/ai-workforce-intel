@@ -1,7 +1,7 @@
 """Colour checks used by the tests (and runnable on their own): WCAG contrast, see-through colours drawn over the page,
 and a colour-blindness simulation (Machado, Oliveira and Fernandes 2009, full severity) with CIELAB distances.
 
-Run: python -m dashboard.colour_check   (from the src folder) prints every check for both themes.
+Run: python -m dashboard.ui.colour_check   (from the src folder) prints every check for both themes.
 """
 from __future__ import annotations
 
@@ -92,7 +92,7 @@ def min_distance(colours: dict[str, str]) -> tuple[float, str]:
 
 def chart_groups(m: str) -> dict[str, dict[str, str]]:
     """The colours each chart draws side by side (only these need to stay apart from each other)."""
-    from dashboard import theme as T
+    from dashboard.ui import theme as T
     c, t = T.CHART_COLORS[m], T.TOKENS[m]
     return {"running balance (outlooks)": dict(T.OUTLOOK_COLORS[m]),
             "what we expect next": {"history": c["history"], "forecast": c["forecast"]},
@@ -103,7 +103,7 @@ def chart_groups(m: str) -> dict[str, dict[str, str]]:
 
 def cost_types_told_apart(m: str) -> list[str]:
     """Pairs of cost types that look alike for some viewers AND share a fill pattern (should be empty)."""
-    from dashboard import theme as T
+    from dashboard.ui import theme as T
     cols, bad = T.LINE_COLORS[m], []
     for a, b in itertools.combinations(cols, 2):
         close = min(distance(cols[a], cols[b], v) for v in (None, "deutan", "protan", "tritan")) < APART_MIN
@@ -114,7 +114,7 @@ def cost_types_told_apart(m: str) -> list[str]:
 
 def report(m: str) -> list[tuple[str, float, float]]:
     """(check, value, minimum) for one theme: text, buttons and chart lines on what they are drawn over."""
-    from dashboard import theme as T
+    from dashboard.ui import theme as T
     t = T.TOKENS[m]
     card = over(t["surface"], t["bg"])  # glass cards as drawn over the page
     elevated = over(t["elevated"], t["bg"])

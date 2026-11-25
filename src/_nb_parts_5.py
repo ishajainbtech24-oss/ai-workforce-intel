@@ -79,7 +79,7 @@ def part_numbers(nb: NB) -> None:
     """)
     nb.code(r'''
     with step("card numbers"):
-        from dashboard import theme as T
+        from dashboard.ui import theme as T
         tot = read_table("phase4", "totals_summary")
         be = read_table("phase4", "break_even_summary")
         t = tot[(tot["scenario"] == "expected") & (tot["multiplier"] == 1.0)].iloc[0]
@@ -105,7 +105,7 @@ def part_engine(nb: NB) -> None:
         import numpy as np
         logging.getLogger("engine").setLevel(logging.ERROR)
         import config, config_phase4 as P4
-        from dashboard import theme as T
+        from dashboard.ui import theme as T
         from engine.inputs import load_inputs
         from engine.drivers import load_drivers
         from engine.simulate import run_engine

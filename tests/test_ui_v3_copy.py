@@ -7,8 +7,8 @@ import pytest
 
 pytest.importorskip("streamlit")
 
-from dashboard import copy as C  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 FILLER = ["seamlessly", "seamless", "powerful", "unlock", "leverage", "delve", "cutting-edge", "in today's world", "journey",
@@ -30,7 +30,7 @@ def _strings(obj):
 
 def test_no_filler_words_in_the_on_screen_copy():
     texts = [s for v in vars(C).values() for s in _strings(v)]
-    for mod in ("explain.py", "logic.py", "logic_forecasts.py", "components.py", "components_3d.py"):
+    for mod in ("core/explain.py", "core/logic.py", "core/logic_forecasts.py", "ui/components.py", "ui/components_3d.py"):
         texts += re.findall(r'"([^"\n]{12,})"', (ROOT / "src" / "dashboard" / mod).read_text(encoding="utf-8"))
     hits = [(t[:80], m.group(0)) for t in texts for m in [FILLER_RE.search(t)] if m]
     assert not hits, hits
@@ -43,7 +43,7 @@ def test_word_guide_name_and_headlines():
 
 
 def test_ai_look_is_gone():
-    css = (ROOT / "src" / "dashboard" / "styles.css").read_text(encoding="utf-8")
+    css = (ROOT / "src" / "dashboard" / "ui" / "styles.css").read_text(encoding="utf-8")
     assert "backdrop-filter" not in css and "background-clip: text" not in css and "background-clip:text" not in css
     assert not re.search(r"aurora|shimmer|dot-grid|aiwi-orb", css)
     assert not re.search(r"animation:[^;]*infinite", css)  # no looping motion

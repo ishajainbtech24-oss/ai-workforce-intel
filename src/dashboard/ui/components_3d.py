@@ -15,8 +15,8 @@ from __future__ import annotations
 import html
 import json
 
-from dashboard import copy as C
-from dashboard import theme as T
+from dashboard.ui import copy as C
+from dashboard.ui import theme as T
 
 THREE_URL = "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?'

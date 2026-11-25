@@ -10,9 +10,9 @@ import math
 import numpy as np
 import pandas as pd
 
-from dashboard import copy as C
-from dashboard import logic_forecasts as LF
-from dashboard import theme as T
+from dashboard.ui import copy as C
+from dashboard.core import logic_forecasts as LF
+from dashboard.ui import theme as T
 
 FLAT = 0.005  # changes under half a percent read as 'about the same'
 

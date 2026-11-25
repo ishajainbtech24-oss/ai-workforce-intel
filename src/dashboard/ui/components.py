@@ -7,18 +7,20 @@ when the visitor prefers reduced motion or switched "Reduce motion" on.
 """
 from __future__ import annotations
 
+import functools
 import html
 import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 
-from dashboard import components_3d as K3
-from dashboard import copy as C
-from dashboard import currency as CUR
-from dashboard import theme as T
+from dashboard.ui import components_3d as K3
+from dashboard.ui import copy as C
+from dashboard.core import currency as CUR
+from dashboard.ui import theme as T
 
 CSS_PATH = Path(__file__).with_name("styles.css")
 THREE_URL = K3.THREE_URL
@@ -57,8 +59,14 @@ def _reduce_block(css: str) -> str:
     return block[block.find("{") + 1: block.rfind("}")]
 
 
+@functools.lru_cache(maxsize=1)
+def _css_text() -> str:
+    """styles.css, read once per server (it only changes with a deploy, which restarts the server)."""
+    return CSS_PATH.read_text(encoding="utf-8")
+
+
 def inject_css() -> None:
-    css = CSS_PATH.read_text(encoding="utf-8")
+    css = _css_text()
     extra = "" if motion_on() else _reduce_block(css)
     names = f"--pages-label:{json.dumps(C.PAGES_MENU)};--product-name:{json.dumps(C.PRODUCT)}"
     st.markdown(f"<style>{T.css_vars(T.mode())}:root{{{names}}}{css}{extra}</style>"
@@ -66,9 +74,17 @@ def inject_css() -> None:
 
 
 def init_theme() -> None:
-    """First visit: take ?theme=dark from the address (used for screenshots), else light. Kept for the session."""
+    """First visit: ?theme=dark|light from the address if given, else the visitor's own browser/Streamlit setting
+    (st.context.theme), else light. Kept for the session; the Dark mode switch changes it."""
     if T.THEME_KEY not in st.session_state:
-        st.session_state[T.THEME_KEY] = st.query_params.get("theme") == "dark"
+        asked = st.query_params.get("theme")
+        if asked in ("dark", "light"):
+            st.session_state[T.THEME_KEY] = asked == "dark"
+        else:
+            try:
+                st.session_state[T.THEME_KEY] = getattr(st.context.theme, "type", None) == "dark"
+            except Exception:  # noqa: BLE001 - older Streamlit or no browser context
+                st.session_state[T.THEME_KEY] = False
     if T.MOTION_KEY not in st.session_state:
         st.session_state[T.MOTION_KEY] = st.query_params.get("motion") == "off"
 
@@ -86,7 +102,7 @@ def sidebar_controls() -> None:
 
 def yours_note() -> None:
     """While the visitor's own figures are showing: a note in the side panel and a way back to the example."""
-    from dashboard import data as D
+    from dashboard.core import data as D
     if D.yours() is None:
         return
     st.markdown(f'<div class="aiwi-yours-note">{icon("info", 16)}<span>{html.escape(C.SIDE_YOURS)}</span></div>',
@@ -119,7 +135,7 @@ def rate_note() -> str:
 
 
 def _words(name: str) -> str:
-    from dashboard import logic
+    from dashboard.core import logic
     return logic.words(name)
 
 
@@ -193,10 +209,10 @@ def embed(markup: str, height: int) -> None:
 
 
 # ---------------------------------------------------------------- navigation helpers (Phase 5D)
-PAGE_FILES = {"welcome": "views/welcome.py", "overview": "views/overview.py", "data": "views/data_used.py", "forecast": "views/forecast.py",
-              "reliable": "views/reliability.py",
-              "costs": "views/costs.py",
-              "timing": "views/timing.py", "levers": "views/levers.py", "company": "views/your_company.py"}
+PAGE_FILES = {"welcome": "app_pages/welcome.py", "overview": "app_pages/overview.py", "data": "app_pages/data_used.py", "forecast": "app_pages/forecast.py",
+              "reliable": "app_pages/reliability.py",
+              "costs": "app_pages/costs.py",
+              "timing": "app_pages/timing.py", "levers": "app_pages/levers.py", "company": "app_pages/your_company.py"}
 
 
 def next_card(key: str) -> None:
@@ -253,8 +269,10 @@ def sparkline_svg(values, color: str = T.ACCENT, zero: bool = False) -> str:
 
 
 def kpi_card(label: str, value: str, meaning: str, spark: str = "", count: float | None = None, tone: str = "",
-             icon_name: str = "", chip: tuple[str, str] | None = None, i: int = 0) -> str:
-    """One KPI card; `count` (the raw amount in rupees) enables the count-up, the final text is already in place."""
+             icon_name: str = "", chip: tuple[str, str] | None = None, i: int = 0,
+             delta: tuple[str, str] | None = None) -> str:
+    """One KPI card; `count` (the raw amount in rupees) enables the count-up, the final text is already in place.
+    `delta` = (text, 'up' | 'down' | 'flat') shows a change next to the value, in words as well as colour."""
     data = f' data-count="{count}"' if count is not None else ""
     kind = "" if value.lstrip("-").startswith(CUR.SYM) else " text"  # words such as 'Not within 12 months'
     ic = f'<span class="kpi-icon">{icon(icon_name)}</span>' if icon_name else ""
@@ -262,7 +280,8 @@ def kpi_card(label: str, value: str, meaning: str, spark: str = "", count: float
     return (f'<div class="kpi-card {tone}{kind}" tabindex="0" style="--i:{i}">'
             f'<div class="kpi-head">{ic}{ch}</div><div class="kpi-label">{html.escape(label)}</div>'
             f'<div class="kpi-value"{data}>{html.escape(value)}</div>'
-            f'<div class="kpi-meaning">{html.escape(meaning)}</div>{spark}</div>')
+            + (f'<div class="kpi-delta {html.escape(delta[1])}">{html.escape(delta[0])}</div>' if delta else "")
+            + f'<div class="kpi-meaning">{html.escape(meaning)}</div>{spark}</div>')
 
 
 def kpi_row(cards: list[str], lead: bool = False) -> None:
@@ -398,3 +417,165 @@ def pickers(key: str, outlooks: list[str], cautions: list[float]) -> tuple[str, 
 def tags(lines: list[str]) -> None:
     st.markdown("".join(f'<span class="tag"><i style="background:{T.line_color(ln)}"></i><b>{html.escape(C.LINE[ln])}</b>'
                         f'<span>{html.escape(C.LINE_TAG[ln])}</span></span>' for ln in lines), unsafe_allow_html=True)
+
+
+
+# ---------------------------------------------------------------- MVP design system: the one set of page parts
+# Every page builds its layout from these; no page writes its own HTML.
+def page_header(text: str, sub: str | None = None, eyebrow: str | None = None) -> None:
+    """Page title band: small page name, a headline that makes the point, one line of context."""
+    page_title(text, sub, eyebrow)
+
+
+def insight_row(see: str, mean: str, why: str, stacked: bool = False) -> None:
+    """The 'What you see / What it means / Why it matters' row under a chart."""
+    chart_guide((see, mean, why), stacked)
+
+
+def next_step_card(key: str) -> None:
+    next_card(key)
+
+
+def section_title(text: str, sub: str | None = None, anchor: str | None = None) -> None:
+    ida = f' id="{html.escape(anchor)}"' if anchor else ""
+    tail = f'<p class="aiwi-sub">{html.escape(sub)}</p>' if sub else ""
+    st.markdown(f'<h2 class="aiwi-h2"{ida}>{html.escape(text)}</h2>{tail}', unsafe_allow_html=True)
+
+
+def chart_title(text: str) -> None:
+    st.markdown(f'<div class="aiwi-chart-title">{html.escape(text)}</div>', unsafe_allow_html=True)
+
+
+def lede(text: str) -> None:
+    """One plain line describing what a chart or series is."""
+    st.markdown(f'<p class="aiwi-sub fc-desc">{html.escape(text)}</p>', unsafe_allow_html=True)
+
+
+def note(text: str, tone: str = "", trusted_html: bool = False) -> None:
+    """A quiet note; tone='warm' for a caution. trusted_html only for our own copy with <b>/<i>."""
+    body = text if trusted_html else html.escape(text)
+    cls = " warm-note" if tone == "warm" else ""
+    st.markdown(f'<div class="note{cls}" role="note">{body}</div>', unsafe_allow_html=True)
+
+
+def verdict(text: str, sub: str | list[str] | None = None, tone: str = "", small: str | None = None,
+            trusted_html: bool = False) -> None:
+    """A verdict box: the sentence a reader should leave with (tone: 'warm' warning, 'card' forecast card, 'rel')."""
+    body = text if trusted_html else html.escape(text)
+    cls = {"warm": " warm-box", "card": " fc-card", "rel": " rel-verdict"}.get(tone, "")
+    inner = f'<span class="fc-headline">{body}</span>' if tone == "card" else body
+    subs = [sub] if isinstance(sub, str) else list(sub or [])
+    extra = "".join(f'<span class="sub">{html.escape(x)}</span>' for x in subs) + \
+            (f'<span class="fc-small">{html.escape(small)}</span>' if small else "")
+    st.markdown(f'<div class="verdict{cls}">{inner}{extra}</div>', unsafe_allow_html=True)
+
+
+def numbered_card(title: str, sub: str, items: list[tuple[str, str, str]]) -> None:
+    """A titled card with a numbered list; each item is (bold label, line, small helper line)."""
+    lis = "".join(f'<li><b>{html.escape(a)}</b><span>{html.escape(b)}</span><span class="helps">{html.escape(c)}</span></li>'
+                  for a, b, c in items)
+    st.markdown(f'<div class="decide-card glass"><div class="decide-title">{html.escape(title)}</div>'
+                f'<div class="decide-sub">{html.escape(sub)}</div><ol>{lis}</ol></div>', unsafe_allow_html=True)
+
+
+def card_grid(cards_html: list[str], kind: str = "kpi-grid") -> None:
+    """A grid of cards already built by kpi_card / insight helpers (kind: kpi-grid or insight-grid stack)."""
+    st.markdown(f'<div class="{html.escape(kind)}">{"".join(cards_html)}</div>', unsafe_allow_html=True)
+
+
+def assumption_chip(label: str, value: str, kind: str = "estimate") -> str:
+    """A small chip naming an assumption and where it comes from (kind: trend / estimate / input / study)."""
+    title = html.escape(C.ASSUMPTION_KIND.get(kind, ""))
+    return (f'<span class="chip assumption {html.escape(kind)}" title="{title}">'
+            f'<b>{html.escape(label)}</b> {html.escape(value)}</span>')
+
+
+def assumption_chips(chips: list[str]) -> None:
+    st.markdown(f'<div class="chip-row">{"".join(chips)}</div>', unsafe_allow_html=True)
+
+
+def source_note(text: str, url: str | None = None) -> None:
+    link = ""
+    if url:
+        host = url.split("//")[-1].split("/")[0]
+        link = f' <a href="{html.escape(url)}" target="_blank" rel="noopener">{html.escape(host)}</a>'
+    st.markdown(f'<p class="aiwi-source">{html.escape(C.SOURCE_PREFIX)}: {html.escape(text)}{link}</p>',
+                unsafe_allow_html=True)
+
+
+def empty_state(body: str | None = None, title: str | None = None, icon_name: str = ":material/hourglass_empty:") -> None:
+    """Shown instead of a chart or section when its data is missing: says what is missing, never a raw error."""
+    st.info(f"**{title or C.EMPTY_TITLE}**  \n{body or C.MISSING}", icon=icon_name)
+
+
+def loading_skeleton(lines: int = 3) -> None:
+    bars = "".join('<div class="sk-line"></div>' for _ in range(lines))
+    st.markdown(f'<div class="aiwi-skeleton" aria-busy="true" aria-label="{html.escape(C.LOADING)}">{bars}</div>',
+                unsafe_allow_html=True)
+
+
+def _chart_config(filename: str) -> dict:
+    return {"displayModeBar": "hover", "displaylogo": False, "responsive": True, "modeBarButtons": [["toImage"]],
+            "toImageButtonOptions": {"format": "png", "scale": 2, "filename": filename}}
+
+
+def figure_table(fig) -> pd.DataFrame:
+    """The numbers behind a chart, one row per point, money in rupees (charts keep dollars and label in rupees)."""
+    meta = fig.layout.meta if isinstance(fig.layout.meta, dict) else {}
+    money = set(meta.get("money", []))
+    xt = fig.layout.xaxis.title.text if fig.layout.xaxis and fig.layout.xaxis.title.text else C.TABLE_X
+    yt = fig.layout.yaxis.title.text if fig.layout.yaxis and fig.layout.yaxis.title.text else C.TABLE_Y
+    frames = []
+    for tr in fig.data:
+        if tr.type == "pie":
+            vals = np.asarray(tr.values, float)
+            frames.append(pd.DataFrame({C.TABLE_SERIES: list(tr.labels),
+                                        C.TABLE_Y: np.round(CUR.to_inr(vals), 0) if "values" in money else vals}))
+            continue
+        x, y = getattr(tr, "x", None), getattr(tr, "y", None)
+        if x is None or y is None or (not tr.name and tr.showlegend is False):
+            continue
+        xs, ys, xcol, ycol, as_money = list(x), list(y), xt, yt, "y" in money
+        if getattr(tr, "orientation", None) == "h":
+            xs, ys, xcol, ycol, as_money = list(y), list(x), yt, xt, "x" in money
+        yv = pd.to_numeric(pd.Series(ys), errors="coerce").to_numpy(float)
+        if as_money:
+            yv = np.round(CUR.to_inr(yv), 0)
+        frames.append(pd.DataFrame({C.TABLE_SERIES: tr.name or "", xcol: xs, ycol: yv}))
+    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+
+def chart(fig, key: str, filename: str | None = None, table: pd.DataFrame | None = None) -> None:
+    """Every chart: the figure (PNG download on hover), then 'View as table' with a CSV download of its numbers."""
+    name = filename or key
+    st.plotly_chart(fig, config=_chart_config(name), width="stretch", theme=None, key=key)
+    df = table if table is not None else figure_table(fig)
+    if df is None or not len(df):
+        return
+    with st.expander(C.VIEW_TABLE, icon=":material/table_chart:"):
+        st.dataframe(df, hide_index=True, width="stretch")
+        st.download_button(C.DOWNLOAD_CSV, df.to_csv(index=False).encode("utf-8-sig"), file_name=f"{name}.csv",
+                           mime="text/csv", key=f"{key}_csv", icon=":material/download:", on_click="ignore")
+
+
+
+def hidden_heading(text: str) -> None:
+    """The page's main heading for screen readers when the visible headline is drawn elsewhere (Welcome banner)."""
+    st.markdown(f'<h1 class="welcome-title sr-only">{html.escape(text)}</h1>', unsafe_allow_html=True)
+
+
+def anchor_link(text: str, anchor: str) -> None:
+    st.markdown(f'<a class="aiwi-ghost" href="#{html.escape(anchor)}">{html.escape(text)}</a>', unsafe_allow_html=True)
+
+
+def chart_note(text: str) -> None:
+    st.markdown(f'<div class="aiwi-chart-note">{html.escape(text)}</div>', unsafe_allow_html=True)
+
+
+def steps(items: list[tuple[str, str]], title: str, anchor: str) -> None:
+    """Numbered steps (title + line each) under an h2 that a link can jump to."""
+    st.markdown(f'<h2 class="aiwi-h2 steps-title" id="{html.escape(anchor)}">{html.escape(title)}</h2>', unsafe_allow_html=True)
+    body = "".join(f'<div class="insight" style="--i:{n}"><div class="insight-icon">{n + 1}</div>'
+                   f'<div class="insight-text"><b>{html.escape(t)}</b><br>{html.escape(s)}</div></div>'
+                   for n, (t, s) in enumerate(items))
+    card_grid([body], "insight-grid stack")

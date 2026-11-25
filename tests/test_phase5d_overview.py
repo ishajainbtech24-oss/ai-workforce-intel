@@ -11,10 +11,11 @@ pytest.importorskip("plotly")
 
 from streamlit.testing.v1 import AppTest  # noqa: E402
 
-from dashboard import charts, logic  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
+from dashboard.ui import charts  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, TABLES, _money, _page_text  # noqa: E402
 from test_phase5d_loaders import FC_DIR, P2, needs  # noqa: E402
@@ -62,7 +63,7 @@ def test_cost_trends_strip_uses_the_saved_forecasts():
 
 @needs
 def test_big_picture_page():
-    at = _page("views/overview.py")
+    at = _page("app_pages/overview.py")
     assert not at.exception, [e.value for e in at.exception]
     md = " ".join(str(m.value) for m in at.markdown)
     assert C.OVERVIEW_TITLE in md and C.HERO_TITLE not in md  # the promise lives on Welcome now
@@ -107,7 +108,7 @@ def test_payback_dots_follow_the_break_even_table(k):
 
 @needs
 def test_timing_page_shows_the_dots():
-    at = _page("views/timing.py")
+    at = _page("app_pages/timing.py")
     assert not at.exception, [e.value for e in at.exception]
     assert len(at.get("plotly_chart")) == 2
     md = " ".join(str(m.value) for m in at.markdown)

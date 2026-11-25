@@ -1,6 +1,5 @@
 """Welcome: the promise in one sentence, a real chart of what happened and what we expect (hosting prices, from
 the saved Phase 3 results), how it works in three steps, and three headline numbers of the example company."""
-import html
 import math
 import sys
 from pathlib import Path
@@ -11,24 +10,23 @@ if str(_SRC) not in sys.path:
 
 import streamlit as st  # noqa: E402
 
-from dashboard import charts_forecast as CF  # noqa: E402
-from dashboard import components as K  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import currency as CUR  # noqa: E402
-from dashboard import data as D  # noqa: E402
-from dashboard import explain as EX  # noqa: E402
-from dashboard import logic  # noqa: E402
-from dashboard import logic_forecasts as LF  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts_forecast as CF  # noqa: E402
+from dashboard.ui import components as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.core import currency as CUR  # noqa: E402
+from dashboard.core import data as D  # noqa: E402
+from dashboard.core import explain as EX  # noqa: E402
+from dashboard.core import logic  # noqa: E402
+from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 
 def _hero() -> None:
     # the headline lives in the 3D banner; a hidden copy keeps the page's main heading for screen readers
-    st.markdown(f'<h1 class="welcome-title sr-only">{html.escape(C.HERO_TITLE)}</h1>', unsafe_allow_html=True)
+    K.hidden_heading(C.HERO_TITLE)
     K.hero()
     with st.container(key="aiwi_cta", horizontal=True):
         st.page_link(K.PAGE_FILES["overview"], label=f"{C.WELCOME_CTA} →")
-        st.markdown(f'<a class="aiwi-ghost" href="#how-it-works">{html.escape(C.WELCOME_HOW)}</a>', unsafe_allow_html=True)
+        K.anchor_link(C.WELCOME_HOW, "how-it-works")
     left, right = st.columns([1.6, 1], gap="large")
     with right:
         _steps()
@@ -36,23 +34,17 @@ def _hero() -> None:
         try:
             d = LF.hosting_hero(D.processed(LF.HOSTING[0]), D.saved_forecast(LF.HOSTING[0]))
         except D.Missing:
-            K.missing()
+            K.empty_state()
             return
-        st.markdown(f'<div class="aiwi-chart-title">{html.escape(C.WELCOME_CHART_TITLE)}</div>', unsafe_allow_html=True)
-        st.plotly_chart(CF.history_forecast(d, "", 340, C.AXIS_PRICE_LEVEL),
-                        config=T.PLOT_CONFIG, width="stretch", theme=None)
-        st.markdown(f'<div class="aiwi-chart-note">{html.escape(C.WELCOME_CHART_NOTE.format(value=LF.level(d["expected"][-1]), end=LF.month_year(d["fc_dates"][-1]), low=LF.level(d["low"][-1]), high=LF.level(d["high"][-1])))}</div>',
-                    unsafe_allow_html=True)
-        K.chart_guide(EX.welcome(d))
+        K.chart_title(C.WELCOME_CHART_TITLE)
+        K.chart(CF.history_forecast(d, "", 340, C.AXIS_PRICE_LEVEL), "welcome_hosting", "hosting_prices")
+        K.chart_note(C.WELCOME_CHART_NOTE.format(value=LF.level(d["expected"][-1]), end=LF.month_year(d["fc_dates"][-1]),
+                                                 low=LF.level(d["low"][-1]), high=LF.level(d["high"][-1])))
+        K.insight_row(*EX.welcome(d))
 
 
 def _steps() -> None:
-    st.markdown(f'<h2 class="aiwi-h2 steps-title" id="how-it-works">{html.escape(C.WELCOME_STEPS_TITLE)}</h2>',
-                unsafe_allow_html=True)
-    body = "".join(f'<div class="insight" style="--i:{n}"><div class="insight-icon">{n + 1}</div>'
-                   f'<div class="insight-text"><b>{html.escape(t)}</b><br>{html.escape(s)}</div></div>'
-                   for n, (t, s) in enumerate(C.WELCOME_STEPS))
-    st.markdown(f'<div class="insight-grid stack">{body}</div>', unsafe_allow_html=True)
+    K.steps(C.WELCOME_STEPS, C.WELCOME_STEPS_TITLE, "how-it-works")
 
 
 def _payback_note(horizon: int) -> str:
@@ -68,7 +60,7 @@ def _numbers() -> None:
         v, f = D.overview_kpis("expected", 1.0), logic.overview_cards("expected", 1.0)
         note = _payback_note(v["T"])
     except D.Missing:
-        K.missing()
+        K.empty_state()
         return
     K.eyebrow(logic.words("WELCOME_NUMBERS_TITLE"))
     tone = "warm" if not math.isfinite(v["payback"]) else ""

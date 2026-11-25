@@ -6,12 +6,13 @@ from the current theme.
 from __future__ import annotations
 
 import numpy as np
+import pandas as pd
 import plotly.graph_objects as go
 
-from dashboard import copy as C
-from dashboard import logic_forecasts as LF
-from dashboard import theme as T
-from dashboard.charts import _rgba
+from dashboard.ui import copy as C
+from dashboard.core import logic_forecasts as LF
+from dashboard.ui import theme as T
+from dashboard.ui.charts import _rgba
 
 
 def count_ticks(lo: float, hi: float, unit: str, n: int = 5) -> tuple[list[float], list[str]]:
@@ -24,6 +25,47 @@ def count_ticks(lo: float, hi: float, unit: str, n: int = 5) -> tuple[list[float
     if unit == "points":
         return vals, [f"{v:g}" for v in vals]
     return vals, [LF.amount(v) for v in vals]
+
+
+def time_controls(fig: go.Figure, xs: list, dated: bool, grain: str | None) -> None:
+    """History charts: 6M / 1Y / 5Y / All buttons and a range slider on dated series; 'last N' buttons on series that
+    count days or hours from the start (BurstGPT has no calendar dates)."""
+    style = dict(bgcolor=T.tok("bg-2"), activecolor=T.tok("accent-soft"), bordercolor=T.tok("border"), borderwidth=1,
+                 font=dict(color=T.tok("text"), size=12))
+    if dated:
+        buttons = [dict(count=n, label=lab, step=step, stepmode="backward") for lab, n, step in C.RANGE_BUTTONS_DATED]
+        fig.update_xaxes(rangeselector=dict(buttons=buttons + [dict(step="all", label=C.RANGE_ALL)], x=0, y=1.0,
+                                            xanchor="left", yanchor="bottom", **style),
+                         rangeslider=dict(visible=True, thickness=0.06, bgcolor=T.tok("bg-2")))
+        fig.update_layout(margin=dict(t=56))
+        return
+    steps = C.RANGE_BUTTONS_STEPS.get("hour" if grain == "hour" else "day")
+    if not steps or not xs:
+        return
+    last = float(xs[-1])
+    buttons = [dict(label=lab, method="relayout", args=[{"xaxis.range": [last - n + 0.5, last + 0.5]}]) for lab, n in steps
+               if n < len(xs)]
+    buttons.append(dict(label=C.RANGE_ALL, method="relayout", args=[{"xaxis.autorange": True}]))
+    fig.update_layout(updatemenus=[dict(type="buttons", direction="right", x=0, y=1.0, xanchor="left", yanchor="bottom",
+                                        showactive=False, pad=dict(t=0, b=4), buttons=buttons,
+                                        **{k: v for k, v in style.items() if k != "activecolor"})],
+                      margin=dict(t=56))
+
+
+def shocks(fig: go.Figure, first, last) -> None:
+    """Mark known shocks (COVID-19, ChatGPT launch) on dated charts whose span covers them."""
+    try:
+        lo, hi = pd.Timestamp(first), pd.Timestamp(last)
+    except (TypeError, ValueError):
+        return
+    for day, text in C.SHOCKS.items():
+        t = pd.Timestamp(day)
+        if lo <= t <= hi:
+            fig.add_shape(type="line", x0=t, x1=t, xref="x", y0=0, y1=1, yref="paper",
+                          line=dict(color=T.tok("faint"), width=1, dash="dash"))
+            fig.add_annotation(x=t, y=0.98, xref="x", yref="paper", text=text, showarrow=False, xanchor="right",
+                               yanchor="top", xshift=-4, bgcolor=T.tok("surface-solid"), borderpad=2,
+                               font=dict(color=T.tok("muted"), size=11))
 
 
 def series_chart(v: dict, height: int = 420, title: str = "") -> go.Figure:
@@ -68,6 +110,8 @@ def series_chart(v: dict, height: int = 420, title: str = "") -> go.Figure:
     fig.update_xaxes(title=v.get("x_title") or None, range=[first - span * 0.01, v["fc_x"][-1] + span * 0.03])
     if v.get("dated"):
         fig.update_xaxes(tickformat=v.get("tickformat", "%b %Y"))
+        shocks(fig, v["hist_x"][0], v["fc_x"][-1])
+    time_controls(fig, list(v["hist_x"]) + list(v["fc_x"]), bool(v.get("dated")), v.get("grain"))
     return fig
 
 
@@ -173,6 +217,9 @@ def data_chart(v: dict, height: int = 400) -> go.Figure:
     fig.update_layout(template=T.template(), height=height, hovermode="closest", margin=dict(l=16, r=24, t=24, b=64))
     _count_axis(fig, v["y"], v["unit"], v.get("y_title"))
     fig.update_xaxes(title=v.get("x_title") or None)
+    if v.get("dated"):
+        shocks(fig, v["x"][0], v["x"][-1])
+    time_controls(fig, list(v["x"]), bool(v.get("dated")), v.get("grain"))
     return fig
 
 

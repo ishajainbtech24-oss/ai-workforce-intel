@@ -10,9 +10,9 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from dashboard import copy as C
-from dashboard import currency as CUR
-from dashboard import theme as T
+from dashboard.ui import copy as C
+from dashboard.core import currency as CUR
+from dashboard.ui import theme as T
 
 
 def _rgba(hex_color: str, a: float) -> str:
@@ -42,6 +42,14 @@ def _money_axis(fig: go.Figure, values, axis: str = "y", pad: float = 0.06, n: i
     rng = [min(lo - span * pad, vals[0]), max(hi + span * pad, vals[-1])]
     upd = dict(tickmode="array", tickvals=vals, ticktext=text, range=rng)
     (fig.update_yaxes if axis == "y" else fig.update_xaxes)(**upd)
+    mark_money(fig, axis)
+
+
+def mark_money(fig: go.Figure, axis: str) -> None:
+    """Record that an axis (or 'values' of a pie) holds dollar amounts, so 'View as table' shows them in rupees."""
+    meta = dict(fig.layout.meta or {})
+    meta["money"] = sorted(set(meta.get("money", [])) | {axis})
+    fig.update_layout(meta=meta)
 
 
 def _base(title: str, height: int = 380) -> go.Figure:
@@ -152,6 +160,7 @@ def donut(shares: pd.DataFrame) -> go.Figure:
                            texttemplate=_slice_labels(shares["p50_total"]), textposition="inside"))
     fig.update_layout(template=T.template(), title=C.DONUT_TITLE, height=420, showlegend=True,
                       legend=dict(orientation="h", yanchor="top", y=-0.05, x=0))
+    mark_money(fig, "values")
     return fig
 
 

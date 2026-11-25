@@ -7,10 +7,10 @@ import pytest
 
 pytest.importorskip("plotly")
 
-from dashboard import charts, charts_forecast  # noqa: E402
-from dashboard import colour_check as K  # noqa: E402
-from dashboard import copy as C  # noqa: E402
-from dashboard import theme as T  # noqa: E402
+from dashboard.ui import charts, charts_forecast  # noqa: E402
+from dashboard.ui import colour_check as K  # noqa: E402
+from dashboard.ui import copy as C  # noqa: E402
+from dashboard.ui import theme as T  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -89,5 +89,5 @@ def test_no_hard_coded_white_text():
     """Text on the accent gradients takes the theme's on-accent colour (dark text in dark mode, where the gradient is
     light); white written into the stylesheet would fail there."""
     import re
-    css = (ROOT / "src" / "dashboard" / "styles.css").read_text(encoding="utf-8")
+    css = (ROOT / "src" / "dashboard" / "ui" / "styles.css").read_text(encoding="utf-8")
     assert not re.search(r"(?<![-\w])color:\s*#fff\b", css, flags=re.IGNORECASE)
