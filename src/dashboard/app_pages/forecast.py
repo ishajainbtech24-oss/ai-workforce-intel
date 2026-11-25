@@ -15,6 +15,7 @@ from dashboard.ui import charts_forecast as CF  # noqa: E402
 from dashboard.ui import components as K  # noqa: E402
 from dashboard.ui import copy as C  # noqa: E402
 from dashboard.core import data as D  # noqa: E402
+from dashboard.core import artifacts as A  # noqa: E402
 from dashboard.core import explain as EX  # noqa: E402
 from dashboard.ui import copy_technical as CT  # noqa: E402
 from dashboard.core import logic_forecasts as LF  # noqa: E402
@@ -37,7 +38,9 @@ def _length(name: str, g: str, saved: int) -> int:
 
 def _side(v: dict) -> None:
     K.verdict(v["headline"], [v["range"], v["change"]], tone="card", small=C.RANGE_NOTE)
-    if v["hits"]:
+    if v["coverage"]:
+        K.note(v["coverage"][0], tone="warm" if v["coverage"][1] else "")
+    elif v["hits"]:
         inside, n = v["hits"]
         warn = v["flag"] is True
         text = (C.RANGE_WARN if warn else C.RANGE_OK).format(inside=inside, n=n)
@@ -59,7 +62,7 @@ def render() -> None:
         except D.Missing:
             ic = None
         n = _length(name, g, saved)
-        v = LF.forecast_view(name, n, hist, fc, ic)
+        v = LF.forecast_view(name, n, hist, fc, ic, A.cal(name))
     except D.Missing:
         K.empty_state()
         return

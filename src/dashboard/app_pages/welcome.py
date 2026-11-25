@@ -15,6 +15,7 @@ from dashboard.ui import components as K  # noqa: E402
 from dashboard.ui import copy as C  # noqa: E402
 from dashboard.core import currency as CUR  # noqa: E402
 from dashboard.core import data as D  # noqa: E402
+from dashboard.core import artifacts as A  # noqa: E402
 from dashboard.core import explain as EX  # noqa: E402
 from dashboard.core import logic  # noqa: E402
 from dashboard.core import logic_forecasts as LF  # noqa: E402
@@ -32,7 +33,7 @@ def _hero() -> None:
         _steps()
     with left:
         try:
-            d = LF.hosting_hero(D.processed(LF.HOSTING[0]), D.saved_forecast(LF.HOSTING[0]))
+            d = LF.hosting_hero(D.processed(LF.HOSTING[0]), D.saved_forecast(LF.HOSTING[0]), cal=A.cal("ppi_hosting_monthly"))
         except D.Missing:
             K.empty_state()
             return

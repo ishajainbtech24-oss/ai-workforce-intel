@@ -19,6 +19,7 @@ from dashboard.core import explain as EX  # noqa: E402
 from dashboard.ui import copy_technical as CT  # noqa: E402
 from dashboard.core import logic_forecasts as LF  # noqa: E402
 from dashboard.ui import theme as T  # noqa: E402
+from dashboard.ui import analyst as AN  # noqa: E402
 
 DEFAULT = "ppi_hosting_monthly"
 
@@ -76,6 +77,8 @@ def render() -> None:
     t = CT.TERMS
     K.tech_details([t["stl"], (t["strength"][0], t["strength"][1].format(trend=_num(v["trend"]), pattern=_num(v["pattern_strength"]))),
                     t["zscore"]])
+    if AN.on():
+        AN.data_section(name, v["dated"])
 
 
 def _num(x) -> str:

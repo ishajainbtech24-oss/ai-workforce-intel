@@ -25,7 +25,8 @@ needs_files = pytest.mark.skipif(not (FC.exists() and HIST.exists() and (TABLES 
 
 
 def _hero() -> dict:
-    return LF.hosting_hero(pd.read_csv(HIST), pd.read_csv(FC))
+    from dashboard.core import artifacts as A
+    return LF.hosting_hero(pd.read_csv(HIST), pd.read_csv(FC), cal=A.cal("ppi_hosting_monthly"))
 
 
 @needs_files

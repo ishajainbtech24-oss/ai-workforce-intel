@@ -16,6 +16,7 @@ from streamlit.testing.v1 import AppTest  # noqa: E402
 from dashboard.ui import charts, charts_forecast  # noqa: E402
 from dashboard.ui import copy as C  # noqa: E402
 from dashboard.core import data as D  # noqa: E402
+from dashboard.core import artifacts as A  # noqa: E402
 from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, _page_text  # noqa: E402
@@ -32,7 +33,7 @@ def _view(name: str) -> dict:
     g = LF.grain(pd.read_csv(FC_DIR / f"{name}.csv"))
     return LF.reliability_view(name, D.history(name), g, pd.read_csv(P2 / "chosen_models.csv"),
                                pd.read_csv(P2 / "holdout.csv"), pd.read_csv(P3 / "interval_check.csv"),
-                               pd.read_csv(P2 / "leaderboard.csv"))
+                               pd.read_csv(P2 / "leaderboard.csv"), A.cal(name))
 
 
 @needs
@@ -72,16 +73,15 @@ def test_numbers_are_the_saved_ones(name):
     assert v["miss"] == pytest.approx(float(h["holdout_mae"].iloc[0]), rel=1e-6)
     assert v["level"] == pytest.approx(float(h["actual"].mean()))
     assert v["first_inside"] == int(((h["actual"] >= h["lo80"]) & (h["actual"] <= h["hi80"])).sum())
-    ic = pd.read_csv(P3 / "interval_check.csv")
-    r = ic[(ic["driver"] == name) & (ic["segment"] == "all")].iloc[0]
-    assert v["hits"] == (int(round(r["coverage_80_after"] * r["n_holdout_points"])), int(r["n_holdout_points"]))
-    assert v["flag"] is bool(r["flag"])
+    c = A.conformal(name)  # the calibrated range and its rolling check replace the Phase 3 hold-out counts
+    assert v["hits"] is None
+    assert v["flag"] is (not 0.7 <= c["coverage"]["0.8"] <= 0.9)
     lb = pd.read_csv(P2 / "leaderboard.csv").query("driver == @name and status == 'ok'").set_index("model")["cv_mae"]
     assert v["vs_reference"] == pytest.approx(1 - lb[chosen] / lb["seasonal_naive"])
     unit = C.SERIES[name][2]
     assert f"{LF.amount(v['miss'], unit)} {unit}" == v["tiles"][0][1]
-    assert v["tiles"][1][1] == C.VALUE_OF.format(inside=v["hits"][0], n=v["hits"][1])
-    assert C.TILE_INSIDE[1].format(first=v["first_inside"], n=v["n"]) == v["tiles"][1][2]
+    assert v["tiles"][1][1] == LF.pct(c["coverage"]["0.8"])
+    assert v["tiles"][1][2] == C.TILE_INSIDE_CAL.format(pts=c["scored_points"])
 
 
 @needs

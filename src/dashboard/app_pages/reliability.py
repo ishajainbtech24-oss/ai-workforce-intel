@@ -14,10 +14,12 @@ from dashboard.ui import charts_forecast as CF  # noqa: E402
 from dashboard.ui import components as K  # noqa: E402
 from dashboard.ui import copy as C  # noqa: E402
 from dashboard.core import data as D  # noqa: E402
+from dashboard.core import artifacts as A  # noqa: E402
 from dashboard.core import explain as EX  # noqa: E402
 from dashboard.ui import copy_technical as CT  # noqa: E402
 from dashboard.core import logic_forecasts as LF  # noqa: E402
 from dashboard.ui import theme as T  # noqa: E402
+from dashboard.ui import analyst as AN  # noqa: E402
 
 DEFAULT = "ppi_hosting_monthly"
 
@@ -46,7 +48,7 @@ def render() -> None:
         except D.Missing:
             ic = None
         v = LF.reliability_view(name, D.history(name), g, D.phase_table(2, "chosen_models"),
-                                D.phase_table(2, "holdout"), ic, D.phase_table(2, "leaderboard"))
+                                D.phase_table(2, "holdout"), ic, D.phase_table(2, "leaderboard"), A.cal(name))
     except (D.Missing, KeyError):
         K.empty_state()
         return
@@ -57,13 +59,17 @@ def render() -> None:
     K.chart_title(C.PAST_CHART_TITLE)
     K.chart(CF.past_check_chart(v["chart"]), f"rel_past_{name}", f"past_check_{name}")
     K.insight_row(*EX.past(v))
-    if v["flag"] and v["hits"]:
+    if v["coverage"]:
+        K.note(v["coverage"][0], tone="warm" if v["coverage"][1] else "")
+    elif v["flag"] and v["hits"]:
         K.note(C.RANGE_WARN.format(inside=v["hits"][0], n=v["hits"][1]), tone="warm")
     K.section_title(C.RANK_TITLE, C.RANK_SUB)
     _ranking(name, v)
     for note in v["notes"]:
         K.note(note)
     _technical(name, v)
+    if AN.on():
+        AN.reliability_section(name, v["approach"], CT.TECH_NAME)
 
 
 @st.fragment  # "show all" redraws the ranking only

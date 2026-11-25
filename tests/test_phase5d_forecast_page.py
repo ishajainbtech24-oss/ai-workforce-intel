@@ -14,25 +14,30 @@ from streamlit.testing.v1 import AppTest  # noqa: E402
 from dashboard.ui import charts, charts_forecast  # noqa: E402
 from dashboard.ui import copy as C  # noqa: E402
 from dashboard.core import data as D  # noqa: E402
+from dashboard.core import artifacts as A  # noqa: E402
 from dashboard.core import logic_forecasts as LF  # noqa: E402
 
 from test_phase5_dashboard import APP, BANNED_RE, _page_text  # noqa: E402
 from test_phase5d_loaders import FC_DIR, P3, SEVEN, needs  # noqa: E402
+
+ROOT = Path(__file__).resolve().parents[1]
 
 CASES = [(s, n) for s in SEVEN for n in {"eci_wages_quarterly": (4, 8), "ppi_hosting_monthly": (3, 6, 12),
                                           "burst_requests_hourly": (24, 72, 168)}.get(s, (7, 14))]
 
 
 def _saved(name: str, n: int) -> tuple[float, float, float]:
-    """Expected value and 10th / 90th percentile at step n, straight from the saved forecast file."""
+    """Expected value at step n from the saved forecast file, and the calibrated 80% range at step n from
+    artifacts/fan (the range the page shows)."""
     fc = pd.read_csv(FC_DIR / f"{name}.csv")
     step = fc[fc["period_index"] == n]
-    sims = step.loc[step["sample_id"] >= 0, "value"].to_numpy()
-    return float(step.loc[step["sample_id"] == -1, "value"].iloc[0]), float(np.quantile(sims, .1)), float(np.quantile(sims, .9))
+    fan = pd.read_csv(ROOT / "artifacts" / "fan" / f"{name}.csv").set_index("period_index").loc[n]
+    return float(step.loc[step["sample_id"] == -1, "value"].iloc[0]), float(fan["lo80"]), float(fan["hi80"])
 
 
 def _view(name: str, n: int) -> dict:
-    return LF.forecast_view(name, n, D.history(name), D.saved_forecast(name), pd.read_csv(P3 / "interval_check.csv"))
+    return LF.forecast_view(name, n, D.history(name), D.saved_forecast(name), pd.read_csv(P3 / "interval_check.csv"),
+                            A.cal(name))
 
 
 @needs
@@ -78,13 +83,15 @@ def test_chart_draws_saved_values_and_marks_the_latest_real_value(name):
 
 
 @needs
-def test_range_check_note_uses_phase3_counts():
-    ic = pd.read_csv(P3 / "interval_check.csv")
+def test_range_check_note_uses_the_rolling_check():
+    import json
+    conf = json.loads((ROOT / "artifacts" / "conformal.json").read_text(encoding="utf-8"))
     for name in SEVEN:
         v = _view(name, 7 if "daily" in name else 4 if "quarterly" in name else 3 if "monthly" in name else 24)
-        row = ic[(ic["driver"] == name) & (ic["segment"] == "all")].iloc[0]
-        assert v["hits"] == (int(round(row["coverage_80_after"] * row["n_holdout_points"])), int(row["n_holdout_points"]))
-        assert v["flag"] is bool(row["flag"])
+        c = conf[name]
+        assert v["hits"] is None
+        assert v["coverage"][0] == C.RANGE_CAL.format(share=LF.pct(c["coverage"]["0.8"]), pts=c["scored_points"])
+        assert v["flag"] is (not 0.7 <= c["coverage"]["0.8"] <= 0.9)
 
 
 def _page(state: dict) -> AppTest:
@@ -108,8 +115,7 @@ def test_page_shows_the_view_and_offers_the_same_numbers_to_download(name, n):
     md = " ".join(str(m.value) for m in at.markdown)
     for s in (v["headline"], v["range"], v["change"], C.RANGE_NOTE):
         assert s in md, s
-    inside, total = v["hits"]
-    assert (C.RANGE_WARN if v["flag"] else C.RANGE_OK).format(inside=inside, n=total) in md
+    assert v["coverage"] and v["coverage"][0] in md  # how often the calibrated range held in the rolling check
     if not v["dated"]:
         assert C.NO_DATES in md
     text = _page_text(at)
@@ -124,7 +130,7 @@ def test_page_shows_the_view_and_offers_the_same_numbers_to_download(name, n):
 def test_default_trend_matches_the_welcome_chart():
     at = _page({})
     md = " ".join(str(m.value) for m in at.markdown)
-    d = LF.hosting_hero(D.processed(LF.HOSTING[0]), D.saved_forecast(LF.HOSTING[0]))
+    d = LF.hosting_hero(D.processed(LF.HOSTING[0]), D.saved_forecast(LF.HOSTING[0]), cal=A.cal(LF.HOSTING[0]))
     assert f"By Oct 2027 we expect about {LF.level(d['expected'][-1])} points." in md
     assert C.FORECAST_RANGE.format(low=LF.level(d["low"][-1]), high=LF.level(d["high"][-1])) in md
 

@@ -47,3 +47,47 @@ TERMS = {
     "approach": ("Approach used", "{plain} (technical name: {tech})."),
 }
 RANK_TABLE_COLS = ("Approach (plain name)", "Technical name", "Average miss (MAE)", "Scaled error (MASE)")
+
+# ---------------------------------------------------------------- Analyst mode (off by default; technical names allowed)
+ANALYST = "Analyst mode"
+ANALYST_HELP = ("Adds the statistical checks behind each trend and each forecast: decomposition, stationarity tests, "
+                "autocorrelation, model cards, rolling-origin cross-validation and residual checks. Off by default.")
+ANALYST_DATA_TITLE = "Analyst view: what the series is made of"
+ANALYST_REL_TITLE = "Analyst view: how the forecasts were tested"
+STL_PANELS = ("Series", "Trend (long-run level)", "Seasonal (repeating pattern)", "Remainder (what is left over)")
+STL_STRENGTH = "STL decomposition. Trend strength {trend:.2f}, seasonal strength {season:.2f} (0 = none, 1 = all of the movement)."
+STAT_TITLE = "Stationarity (does the level wander?)"
+STAT_LINE = ("ADF p = {adf:.3f} (small p: no wandering), KPSS p = {kpss:.3f} (small p: wandering). Verdict: {verdict}.")
+ACF_TITLE, PACF_TITLE = "Autocorrelation (ACF)", "Partial autocorrelation (PACF)"
+ACF_AXIS, PACF_AXIS, LAG = "Correlation", "Partial correlation", "Lag"
+BAND_NOTE = "Dashed lines: ±{band:.2f}, the range expected if there were no correlation (about 95%)."
+SUBSERIES_TITLE = "Average at each point of the cycle (subseries)"
+SUBSERIES_MEAN, CYCLE_POS = "Average", "Position in the cycle"
+BREAK_LINE = "Structural break (CUSUM test): statistic {stat:.2f}, p = {p:.3g}. Most likely shift near {at}."
+BREAK_NONE = "Structural break (CUSUM test): statistic {stat:.2f}, p = {p:.3g}. No clear shift."
+OUTLIER_LINE = "Unusual points (outliers): {n}; {treatment}."
+CARDS_TITLE = "Model cards"
+CARDS_COLS = {"title": "Approach", "model": "Fitted as", "settings": "Settings", "aicc": "AICc", "fit_seconds": "Fit time (s)",
+              "cv_mase": "CV MASE", "status": "Status"}
+CV_TITLE = "Rolling-origin cross-validation"
+CV_SUB = ("Each approach was refitted at {folds} earlier cut-off points and scored on what happened next. MASE below 1 "
+          "beats the seasonal-naive rule; bias is the average signed error.")
+CV_COLS = {"model": "Approach", "n": "Points scored", "mae": "MAE", "rmse": "RMSE", "mase": "MASE", "bias": "Bias",
+           "coverage80": "80% range coverage", "dm_p": "DM p vs seasonal naive"}
+HORIZON_TITLE = "Error by how far ahead (MASE by step)"
+STEP_AXIS, MASE_ONE = "Steps ahead", "MASE = 1 (in-sample seasonal-naive error)"
+DM_NOTE = ("Diebold–Mariano test: a small p (below 0.05) means the approach's errors differ from seasonal naive's by more "
+           "than chance.")
+RESID_TITLE = "One-step errors of the chosen approach (residuals)"
+FOLD_AXIS, ERROR_AXIS = "Cut-off point", "Error (relative)"
+QQ_TITLE, QQ_X, QQ_Y = "Normal Q–Q plot of the errors", "Normal quantile", "Error quantile"
+LJUNG_LINE = "Ljung–Box p = {p:.3f} ({word}). Errors that still carry a pattern mean the approach missed something."
+LJUNG_OK, LJUNG_BAD = "no pattern left", "a pattern is left"
+COVERAGE_TITLE = "Calibrated ranges: promised vs real coverage"
+NOMINAL, REAL = "Promised", "Real"
+COVERAGE_LINE = ("Conformal calibration on {folds} scored cut-off points ({pts} values): the 80% range held {cov:.0%} of the "
+                 "real values (before calibration: {boot:.0%}). Interval score {score:.2f} (before {score_b:.2f}; lower is better).")
+COVERAGE_THIN = "Only {folds} cut-off point(s) could be scored for this series, so its coverage figure is rough."
+RESID_FEW = ("Only {n} one-step errors exist for this series (few cut-off points), too few for a Q–Q plot or a "
+             "Ljung–Box test.")
+HORIZON_NOTE = "Shown: the five approaches with the smallest overall MASE, the chosen one and seasonal naive (all are in the table above)."

@@ -96,6 +96,8 @@ def sidebar_controls() -> None:
             glossary()
         st.toggle(C.DARK_MODE, key=T.THEME_KEY, help=C.DARK_HELP)
         st.toggle(C.REDUCE_MOTION, key=T.MOTION_KEY, help=C.MOTION_HELP)
+        from dashboard.ui import analyst
+        analyst.toggle()
         st.markdown(f'<div class="aiwi-rate-note">{html.escape(rate_note())}</div>', unsafe_allow_html=True)
         yours_note()
 

@@ -79,6 +79,10 @@ def series_chart(v: dict, height: int = 420, title: str = "") -> go.Figure:
     fig.add_trace(go.Scatter(x=xs + xs[::-1], y=[last_y] + list(v["high"]) + list(v["low"])[::-1] + [last_y],
                              fill="toself", mode="lines", fillcolor=_rgba(fc_c, 0.16), line=dict(width=0), hoverinfo="skip",
                              name=C.LEGEND_RANGE, legendrank=3))
+    if v.get("low50") is not None:
+        fig.add_trace(go.Scatter(x=xs + xs[::-1], y=[last_y] + list(v["high50"]) + list(v["low50"])[::-1] + [last_y],
+                                 fill="toself", mode="lines", fillcolor=_rgba(fc_c, 0.30), line=dict(width=0),
+                                 hoverinfo="skip", name=C.LEGEND_RANGE_50, legendrank=3))
     fig.add_trace(go.Scatter(x=list(v["hist_x"]), y=list(v["hist_y"]), name=C.LEGEND_HAPPENED, mode="lines",
                              line=dict(color=hist_c, width=2.2 if len(v["hist_x"]) < 200 else 1.4),
                              customdata=v["hist_tips"], hovertemplate="%{customdata}<extra></extra>", legendrank=1))

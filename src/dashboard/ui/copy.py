@@ -279,7 +279,8 @@ FORECAST_HEADLINE = "By {end} we expect about {value} {unit}."
 FORECAST_RANGE = "Likely between {low} and {high}."
 FORECAST_CHANGE = "That is {change} compared with the latest real value ({last}, {when})."
 SAME = "about the same"
-RANGE_NOTE = "Likely range: where eight in ten of the futures we looked at land."
+RANGE_NOTE = ("Likely range: where eight in ten real values should land, set from how far earlier forecasts "
+              "missed. The darker inner band is where half should land.")
 RANGE_WARN = ("When we checked earlier predictions, the real value landed inside the likely range only {inside} of "
               "{n} times. Treat the range as narrower than reality.")
 RANGE_OK = "When we checked earlier predictions, the real value landed inside the likely range {inside} of {n} times."
@@ -298,6 +299,11 @@ TILE_INSIDE = ("Real value inside the likely range", "The range used on What we 
 TILE_VS = ("Compared with simply repeating", "Our misses were {size} the simple guess's "
            "(\"{reference}\"), over earlier checks.")
 VALUE_OF = "{inside} of {n}"
+TILE_INSIDE_CAL = ("Share of {pts} earlier real values that landed inside the likely range, when we re-ran the forecast "
+                   "from earlier dates and set the range the same way as on What we expect next. Eight in ten is the aim.")
+RANGE_CAL = ("Checked against the past: when we re-ran the forecast from earlier dates, {share} of {pts} real values "
+             "landed inside the likely range (the aim is eight in ten).")
+LEGEND_RANGE_50 = "Likely range (half the time)"
 VALUE_SMALLER = "{share} smaller miss"
 VALUE_LARGER = "{share} larger miss"
 PAST_CHART_TITLE = "What was predicted, and what really happened"

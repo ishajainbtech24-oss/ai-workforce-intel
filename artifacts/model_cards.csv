@@ -1,0 +1,50 @@
+series,card,title,model,status,why_not_run,settings,aicc,fit_seconds,cv_mase
+eci_wages_quarterly,naive,Naive,naive,ok,,none (rule-based),,0.02,1.1258190973187203
+eci_wages_quarterly,seasonal_naive,Seasonal naive,seasonal_naive,ok,,none (rule-based),,0.02,1.7374153179140417
+eci_wages_quarterly,drift,Drift,drift,ok,,none (rule-based),,0.01,0.5289229602418821
+eci_wages_quarterly,ets,ETS (exponential smoothing),hw_multiplicative,ok,,alpha=0.8789025932766026; beta=0.1942863892172421; gamma=0.0,,3.93,0.375785242176101
+eci_wages_quarterly,arima,ARIMA,arima,ok,,"order=[1, 1, 1]; seasonal_order=[0, 0, 0, 0]; trend=t; aicc=95.13359156193897; exog=none; D_used=0; candidates_tried=9; candidates_converged=9; grid_stopped_early=False; selection=AICc on first training w; converged=True",95.13359156193897,8.59,0.3283163803203953
+eci_wages_quarterly,theta,Theta,theta,ok,,"theta=2, multiplicative deseasonalising when the period allows",,0.03245095645680147,
+eci_wages_quarterly,chosen,Current approach (chosen),arima,ok,,"order=[1, 1, 1]; seasonal_order=[0, 0, 0, 0]; trend=t; aicc=95.13359156193897; exog=none; D_used=0; candidates_tried=9; candidates_converged=9; grid_stopped_early=False; selection=AICc on first training w; converged=True",95.13359156193897,8.59,0.3283163803203953
+ppi_hosting_monthly,naive,Naive,naive,ok,,none (rule-based),,0.04,0.7652837008411507
+ppi_hosting_monthly,seasonal_naive,Seasonal naive,seasonal_naive,ok,,none (rule-based),,0.04,2.108673553743063
+ppi_hosting_monthly,drift,Drift,drift,ok,,none (rule-based),,0.04,0.6898816550113739
+ppi_hosting_monthly,ets,ETS (exponential smoothing),hw_multiplicative,ok,,alpha=0.8309998510368005; beta=0.0; gamma=0.0,,11.45,0.6858563511752641
+ppi_hosting_monthly,arima,ARIMA,arima,ok,,"order=[0, 1, 1]; seasonal_order=[0, 0, 0, 0]; trend=t; aicc=70.33688276334456; exog=none; D_used=0; candidates_tried=9; candidates_converged=4; grid_stopped_early=False; selection=AICc on first training w; converged=True",70.33688276334456,10.7,0.6892520827134823
+ppi_hosting_monthly,theta,Theta,theta,ok,,"theta=2, multiplicative deseasonalising when the period allows",,0.04573718183919003,
+ppi_hosting_monthly,chosen,Current approach (chosen),ensemble,ok,,"components=[""hw_multiplicative"", ""a; weights=[0.5, 0.5]",,0.0,0.6786546270304455
+burst_tokens_total_daily,naive,Naive,naive,ok,,none (rule-based),,0.0,0.6962437321046218
+burst_tokens_total_daily,seasonal_naive,Seasonal naive,seasonal_naive,ok,,none (rule-based),,0.0,0.5288233351341011
+burst_tokens_total_daily,drift,Drift,drift,ok,,none (rule-based),,0.0,0.7543211765338519
+burst_tokens_total_daily,ets,ETS (exponential smoothing),hw_multiplicative,ok,,alpha=0.6100542129168199; beta=0.016571588272940252; gamma=0.0,,0.73,0.501663796850409
+burst_tokens_total_daily,arima,ARIMA,sarima,ok,,"order=[0, 0, 2]; seasonal_order=[0, 0, 1, 7]; trend=c; aicc=1182.3890737001364; exog=none; D_used=0; candidates_tried=24; candidates_converged=24; grid_stopped_early=False; selection=AICc on first training w; converged=T",1182.3890737001364,1.71,0.4887637624126344
+burst_tokens_total_daily,theta,Theta,theta,ok,,"theta=2, multiplicative deseasonalising when the period allows",,0.01923513412475586,
+burst_tokens_total_daily,chosen,Current approach (chosen),ensemble,ok,,"components=[""sarima"", ""ridge""]; weights=[0.5, 0.5]",,0.0,0.4239097078754532
+burst_tokens_api_daily,naive,Naive,naive,ok,,none (rule-based),,0.0,0.695039276312931
+burst_tokens_api_daily,seasonal_naive,Seasonal naive,seasonal_naive,ok,,none (rule-based),,0.0,0.5296161119089865
+burst_tokens_api_daily,drift,Drift,drift,ok,,none (rule-based),,0.01,0.7538286095174764
+burst_tokens_api_daily,ets,ETS (exponential smoothing),damped_holt,ok,,alpha=0.46811312269299127; beta=0.0; phi=0.905708435495119,,0.15,0.5453230273698662
+burst_tokens_api_daily,arima,ARIMA,sarima,ok,,"order=[0, 0, 2]; seasonal_order=[0, 0, 1, 7]; trend=c; aicc=1182.1962422051001; exog=none; D_used=0; candidates_tried=24; candidates_converged=24; grid_stopped_early=False; selection=AICc on first training w; converged=T",1182.1962422051001,1.53,0.4781373939012212
+burst_tokens_api_daily,theta,Theta,theta,ok,,"theta=2, multiplicative deseasonalising when the period allows",,0.022325456142425537,
+burst_tokens_api_daily,chosen,Current approach (chosen),ensemble,ok,,"components=[""sarima"", ""ridge""]; weights=[0.5, 0.5]",,0.0,0.4240927688789242
+burst_tokens_chat_daily,naive,Naive,naive,ok,,none (rule-based),,0.01,1.6630542658975158
+burst_tokens_chat_daily,seasonal_naive,Seasonal naive,seasonal_naive,ok,,none (rule-based),,0.0,1.0147153105788618
+burst_tokens_chat_daily,drift,Drift,drift,ok,,none (rule-based),,0.0,1.6599755888303145
+burst_tokens_chat_daily,ets,ETS (exponential smoothing),hw_additive,ok,,alpha=0.058913283233975676; beta=0.058913283233975676; gamma=0.09994870219109342,,0.72,1.1031713605955376
+burst_tokens_chat_daily,arima,ARIMA,sarima,ok,,"order=[0, 0, 2]; seasonal_order=[0, 1, 1, 7]; trend=n; aicc=713.4925277449934; exog=none; D_used=1; candidates_tried=24; candidates_converged=24; grid_stopped_early=False; selection=AICc on first training w; converged=Tr",713.4925277449934,2.67,1.0562821166122869
+burst_tokens_chat_daily,theta,Theta,theta,ok,,"theta=2, multiplicative deseasonalising when the period allows",,0.023392975330352783,
+burst_tokens_chat_daily,chosen,Current approach (chosen),ensemble,ok,,"components=[""seasonal_naive"", ""ridg; weights=[0.5, 0.5]",,0.0,0.9801457170142922
+burst_requests_hourly,naive,Naive,naive,ok,,none (rule-based),,0.01,0.9132050259931472
+burst_requests_hourly,seasonal_naive,Seasonal naive,seasonal_naive,ok,,none (rule-based),,0.01,0.8218020127992989
+burst_requests_hourly,drift,Drift,drift,ok,,none (rule-based),,0.0,0.9219632141284784
+burst_requests_hourly,ets,ETS (exponential smoothing),ses,ok,,alpha=0.34109631190665035,,0.15,0.9132050236226334
+burst_requests_hourly,arima,ARIMA,arima,ok,,"order=[2, 0, 2]; seasonal_order=[0, 0, 0, 0]; trend=c; aicc=5972.546552552738; exog=none; D_used=0; candidates_tried=9; candidates_converged=9; grid_stopped_early=False; selection=AICc on first training w; converged=True",5972.546552552738,11.88,0.8102918562885735
+burst_requests_hourly,theta,Theta,theta,ok,,"theta=2, multiplicative deseasonalising when the period allows",,0.053944557905197144,
+burst_requests_hourly,chosen,Current approach (chosen),ensemble,ok,,"components=[""moving_average"", ""ridg; weights=[0.5, 0.5]",,0.0,0.7546782794315804
+wildchat_conversations_daily,naive,Naive,naive,ok,,none (rule-based),,0.01,1.817907175728668
+wildchat_conversations_daily,seasonal_naive,Seasonal naive,seasonal_naive,ok,,none (rule-based),,0.01,1.5065429989652976
+wildchat_conversations_daily,drift,Drift,drift,ok,,none (rule-based),,0.01,1.864166883880192
+wildchat_conversations_daily,ets,ETS (exponential smoothing),hw_multiplicative,ok,,alpha=0.20064101687608807; beta=0.0; gamma=0.42619011377469335,,1.81,1.4593042601158863
+wildchat_conversations_daily,arima,ARIMA,sarima,ok,,"order=[0, 0, 2]; seasonal_order=[0, 1, 1, 7]; trend=n; aicc=360.10340679231734; exog=none; D_used=1; candidates_tried=24; candidates_converged=24; grid_stopped_early=False; selection=AICc on first training w; converged=T",360.10340679231734,5.39,1.4452786615114348
+wildchat_conversations_daily,theta,Theta,theta,ok,,"theta=2, multiplicative deseasonalising when the period allows",,0.05338313844468859,
+wildchat_conversations_daily,chosen,Current approach (chosen),seasonal_ma3,ok,,none (rule-based),,0.08,1.430176021264421

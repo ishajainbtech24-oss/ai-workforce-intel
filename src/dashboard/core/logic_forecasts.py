@@ -185,11 +185,33 @@ def _plot_x(x, dated: bool):
     return pd.Timestamp(x) if dated else int(x) + 1  # step numbers are shown counted from 1
 
 
+def calibrated(rng: pd.DataFrame, cal: dict | None) -> pd.DataFrame:
+    """Swap the saved range for the calibrated (conformal) 80% range and add the 50% range, when available."""
+    if not cal or cal.get("fan") is None:
+        return rng
+    f = cal["fan"].set_index("period_index")
+    out = rng.copy()
+    idx = out["period_index"] if "period_index" in out else pd.Series(range(1, len(out) + 1))
+    for col, src in (("low", "lo80"), ("high", "hi80"), ("low50", "lo50"), ("high50", "hi50")):
+        out[col] = f[src].reindex(idx.to_numpy()).to_numpy()
+    return out
+
+
+def coverage_note(cal: dict | None) -> tuple[str, bool] | None:
+    """(sentence, warn) on how often the calibrated range held in the rolling check, or None."""
+    if not cal or cal.get("coverage") is None:
+        return None
+    cov, pts = float(cal["coverage"]), int(cal["points"])
+    warn = not (0.7 <= cov <= 0.9)
+    return C.RANGE_CAL.format(share=pct(cov), pts=pts), warn
+
+
 def forecast_view(name: str, n: int, hist: pd.DataFrame, fc: pd.DataFrame,
-                  interval_check: pd.DataFrame | None = None) -> dict:
-    """Everything the 'What we expect next' page shows for one series and one length, from the saved files."""
+                  interval_check: pd.DataFrame | None = None, cal: dict | None = None) -> dict:
+    """Everything the 'What we expect next' page shows for one series and one length, from the saved files.
+    `cal` (from artifacts/): calibrated ranges ('fan') and their rolling-check coverage ('coverage', 'points')."""
     g, unit = grain(fc), C.SERIES[name][2]
-    rng = cut(expected_and_range(fc), n)
+    rng = calibrated(cut(expected_and_range(fc), n), cal)
     last_x, last_y = hist["x"].iloc[-1], float(hist["value"].iloc[-1])
     dated = has_dates(last_x)
     fx = future_x(last_x, rng, g)
@@ -204,6 +226,9 @@ def forecast_view(name: str, n: int, hist: pd.DataFrame, fc: pd.DataFrame,
     if interval_check is not None:
         r = interval_check[(interval_check["driver"] == name) & (interval_check["segment"] == "all")]
         flag = bool(r["flag"].iloc[0]) if len(r) else None
+    cov = coverage_note(cal)
+    if cov is not None:  # the calibrated range replaces the old one, so its own check replaces the old check
+        hits, flag = None, cov[1]
     digits = 2 if unit == "points" else 0
     table = pd.DataFrame({C.EXPECT_COLS["when"]: labels_f,
                           C.EXPECT_COLS["expected"]: np.round(exp, digits), C.EXPECT_COLS["low"]: np.round(lo, digits),
@@ -215,12 +240,14 @@ def forecast_view(name: str, n: int, hist: pd.DataFrame, fc: pd.DataFrame,
                   "y_title": C.SERIES[name][3], "x_title": None if dated else C.AXIS_STEP.get(g),
                   "divider": C.LAST_REAL, "hist_tips": [f"{lab}: {amount(y, unit)}" for lab, y in zip(labels_h, h["value"])],
                   "fc_tips": fc_tips, "dated": dated, "grain": g,
+                  "low50": rng["low50"].astype(float).tolist() if "low50" in rng else None,
+                  "high50": rng["high50"].astype(float).tolist() if "high50" in rng else None,
                   "tickformat": {"quarter": "%Y", "month": "%b %Y", "day": "%d %b", "hour": "%d %b %H:00"}.get(g)},
         "headline": C.FORECAST_HEADLINE.format(end=labels_f[-1], value=amount(exp[-1], unit), unit=unit),
         "range": C.FORECAST_RANGE.format(low=amount(lo[-1], unit), high=amount(hi[-1], unit)),
         "change": C.FORECAST_CHANGE.format(change=change_text(exp[-1] / last_y - 1 if last_y else float("nan")),
                                            last=amount(last_y, unit), when=step_label(last_x, g)),
-        "hits": hits, "flag": flag, "table": table,
+        "hits": hits, "flag": flag, "table": table, "coverage": cov,
     }
 
 
@@ -246,7 +273,7 @@ def pct(x: float) -> str:
 
 
 def reliability_view(name: str, hist: pd.DataFrame, grain_: str, chosen: pd.DataFrame, holdout: pd.DataFrame,
-                     interval_check: pd.DataFrame | None, leaderboard: pd.DataFrame) -> dict:
+                     interval_check: pd.DataFrame | None, leaderboard: pd.DataFrame, cal: dict | None = None) -> dict:
     """Everything the 'How reliable it is' page shows for one series, from the saved Phase 2 and 3 tables."""
     unit = C.SERIES[name][2]
     one, many = C.GRAIN_WORD.get(grain_, ("step", "steps"))
@@ -260,6 +287,9 @@ def reliability_view(name: str, hist: pd.DataFrame, grain_: str, chosen: pd.Data
     if interval_check is not None:
         r = interval_check[(interval_check["driver"] == name) & (interval_check["segment"] == "all")]
         flag = bool(r["flag"].iloc[0]) if len(r) else None
+    cov = coverage_note(cal)
+    if cov is not None:
+        flag = cov[1]
     rk = ranking(leaderboard, name, ap, grain_)
     mine = rk[rk["chosen"]].iloc[0]
     ref = rk[rk["reference"]]
@@ -291,13 +321,15 @@ def reliability_view(name: str, hist: pd.DataFrame, grain_: str, chosen: pd.Data
     vs_value = (C.VALUE_SMALLER if vs >= 0 else C.VALUE_LARGER).format(share=pct(abs(vs)))
     return {
         "approach": ap, "approach_label": mine["label"], "grain": grain_, "n": n, "miss": miss, "level": level, "unit": unit,
-        "first_inside": first_inside, "hits": hits, "flag": flag, "vs_reference": vs, "close": close,
+        "first_inside": first_inside, "hits": None if cov is not None else hits, "flag": flag, "coverage": cov, "vs_reference": vs, "close": close,
         "skipped": skipped, "ranking": rk, "notes": notes, "dated": dated,
         "verdict": C.RELIABLE_VERDICT.format(n=n, grains=one if n == 1 else many, miss=amount(miss, unit), unit=unit,
                                              share=pct(miss / level if level else float("nan"))),
         "tiles": [
             (C.TILE_MISS[0], f"{amount(miss, unit)} {unit}",
              C.TILE_MISS[1].format(n=n, grains=one if n == 1 else many, level=f"{amount(level, unit)} {unit}")),
+            (C.TILE_INSIDE[0], pct(float(cal["coverage"])), C.TILE_INSIDE_CAL.format(pts=int(cal["points"])))
+            if cov is not None else
             (C.TILE_INSIDE[0], C.VALUE_OF.format(inside=hits[0], n=hits[1]) if hits else C.VALUE_OF.format(inside=first_inside, n=n),
              C.TILE_INSIDE[1].format(first=first_inside, n=n)),
             (C.TILE_VS[0], vs_value, C.TILE_VS[1].format(size=size_words(1 - vs), reference=ref_label)),
@@ -451,13 +483,13 @@ def data_view(name: str, hist: pd.DataFrame, grain_: str, source_n: int, anomali
 
 
 # ---------------------------------------------------------------- Welcome chart (step A)
-def hosting_hero(history: pd.DataFrame, fc: pd.DataFrame, months: int = HISTORY_MONTHS) -> dict:
+def hosting_hero(history: pd.DataFrame, fc: pd.DataFrame, months: int = HISTORY_MONTHS, cal: dict | None = None) -> dict:
     """Data of the Welcome chart: the last `months` real values of hosting prices and the saved forecast."""
     col = HOSTING[1]
     h = history.dropna(subset=[col]).copy()
     h["date"] = pd.to_datetime(h["date"])
     h = h.sort_values("date").tail(months)
-    f = expected_and_range(fc)
+    f = calibrated(expected_and_range(fc), cal)
     f["date"] = pd.to_datetime(f["calendar_month"])
     return {"hist_dates": list(h["date"]), "hist_values": [float(v) for v in h[col]],
             "fc_dates": list(f["date"]), "expected": [float(v) for v in f["expected"]],
