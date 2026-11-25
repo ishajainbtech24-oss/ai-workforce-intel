@@ -52,7 +52,7 @@ st.logo(str(HERE / "ui" / "assets" / "mark.svg"), size="large", icon_image=str(H
 K.motion_script()
 
 # Left side navigation, in reading order (the same order as the Next cards): two pages, two groups, then your own figures.
-SECTIONS = {"": ["welcome", "overview"], C.SECTION_FORECASTS: ["data", "forecast", "reliable"],
+SECTIONS = {"": ["welcome", "overview"], C.SECTION_FORECASTS: ["data", "forecast", "reliable", "method"],
             C.SECTION_MONEY: ["costs", "timing", "levers"], C.SECTION_YOURS: ["company"]}
 pages = {sec: [st.Page(K.PAGE_FILES[key], title=C.PAGES[key][0], icon=C.PAGES[key][1], default=(key == "welcome"))
                for key in keys] for sec, keys in SECTIONS.items()}

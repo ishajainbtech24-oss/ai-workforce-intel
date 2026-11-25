@@ -91,3 +91,51 @@ COVERAGE_THIN = "Only {folds} cut-off point(s) could be scored for this series, 
 RESID_FEW = ("Only {n} one-step errors exist for this series (few cut-off points), too few for a Q–Q plot or a "
              "Ljung–Box test.")
 HORIZON_NOTE = "Shown: the five approaches with the smallest overall MASE, the chosen one and seasonal naive (all are in the table above)."
+
+# ---------------------------------------------------------------- where each trend comes from (provenance cards)
+SOURCE_TITLE = "Where this data comes from"
+SOURCE_FIELDS = ("Source", "Published by", "Dataset", "Link", "Licence", "How often", "Covers", "What we did to it")
+_FRED_LICENCE = ("U.S. government data, tagged on FRED as \"Public Domain: Citation Requested\". Cite the U.S. Bureau "
+                 "of Labor Statistics via FRED.")
+_BURST = {"source": "BurstGPT (request logs of a large language model service)",
+          "publisher": "HPMLL research group, published on GitHub",
+          "link": "https://github.com/HPMLL/BurstGPT",
+          "licence": "Creative Commons Attribution 4.0 (CC BY 4.0): free to use with credit."}
+PROVENANCE = {
+    "eci_wages_quarterly": {
+        "source": "Employment Cost Index (ECI): wages and salaries, private industry, professional and business services",
+        "publisher": "U.S. Bureau of Labor Statistics, via FRED (Federal Reserve Bank of St. Louis)",
+        "dataset": "FRED series CIS202540A000000I (index, December 2005 = 100, seasonally adjusted)",
+        "link": "https://fred.stlouisfed.org/series/CIS202540A000000I", "licence": _FRED_LICENCE,
+        "freq": "Every quarter",
+        "did": "Used as published (already seasonally adjusted). It moves the hourly pay in the cost model."},
+    "ppi_hosting_monthly": {
+        "source": "Producer Price Index (PPI): data processing, hosting and related services",
+        "publisher": "U.S. Bureau of Labor Statistics, via FRED (Federal Reserve Bank of St. Louis)",
+        "dataset": "FRED series PCU518210518210 (index, December 2000 = 100, not seasonally adjusted)",
+        "link": "https://fred.stlouisfed.org/series/PCU518210518210", "licence": _FRED_LICENCE,
+        "freq": "Every month",
+        "did": "Used as published. It moves the technology running cost in the cost model."},
+    "burst_tokens_total_daily": {**_BURST, "dataset": "BurstGPT_1.csv and BurstGPT_2.csv (release v1.1)",
+        "freq": "Every day (summed from single requests)",
+        "did": "All tokens (ChatGPT and GPT-4, through apps and chat) added up per day, inside the window the "
+               "model uses. Days are counted from the first day of the logs; the logs carry no calendar dates."},
+    "burst_tokens_api_daily": {**_BURST, "dataset": "BurstGPT_1.csv and BurstGPT_2.csv (release v1.1)",
+        "freq": "Every day (summed from single requests)",
+        "did": "Tokens of requests made through the API (apps), ChatGPT and GPT-4 added together, per day."},
+    "burst_tokens_chat_daily": {**_BURST, "dataset": "BurstGPT_1.csv and BurstGPT_2.csv (release v1.1)",
+        "freq": "Every day (summed from single requests)",
+        "did": "Tokens of chat (conversation) requests, ChatGPT and GPT-4 added together, per day."},
+    "burst_requests_hourly": {**_BURST, "dataset": "BurstGPT_1.csv and BurstGPT_2.csv (release v1.1)",
+        "freq": "Every hour (counted from single requests)",
+        "did": "Requests counted per hour. 43 hours with no requests are real zeros and are kept."},
+    "wildchat_conversations_daily": {
+        "source": "WildChat-1M (one million conversations people had with ChatGPT and GPT-4)",
+        "publisher": "Allen Institute for AI (AI2), on Hugging Face",
+        "dataset": "allenai/WildChat-1M", "link": "https://huggingface.co/datasets/allenai/WildChat-1M",
+        "licence": "Open Data Commons Attribution (ODC-BY): free to use with credit.",
+        "freq": "Every day (counted from single conversations)",
+        "did": "Conversations counted per day across model families. Only the longest stretch with both families "
+               "present is used (GPT-4 is missing from late June to early November 2023); the last, cut-off day "
+               "is dropped."},
+}

@@ -86,6 +86,10 @@ def _node_text(node) -> str:
     # in the same sentence (tests/test_beginner_pass.py checks that); everything else stays in plain words
     if getattr(node, "type", "") == "expander" and getattr(node, "label", "") == C.TECH_TITLE:
         return ""
+    # the closed "Where this data comes from" panels name each source (proper nouns such as BurstGPT, ECI)
+    from dashboard.ui import copy_technical as CT
+    if getattr(node, "type", "") == "expander" and str(getattr(node, "label", "")).startswith(CT.SOURCE_TITLE):
+        return ""
     kids = getattr(node, "children", None)
     if kids:
         return " ".join(_node_text(k) for k in kids.values())

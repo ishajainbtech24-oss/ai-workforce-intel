@@ -77,6 +77,7 @@ def render() -> None:
     t = CT.TERMS
     K.tech_details([t["stl"], (t["strength"][0], t["strength"][1].format(trend=_num(v["trend"]), pattern=_num(v["pattern_strength"]))),
                     t["zscore"]])
+    K.provenance(name, D.history(name))
     if AN.on():
         AN.data_section(name, v["dated"])
 

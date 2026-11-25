@@ -122,7 +122,7 @@ def header_strip() -> None:
 
 
 PAGE_TINTS = {"welcome": "tint-sand", "overview": "tint-sand", "data": "tint-sky", "forecast": "tint-sky",
-              "reliable": "tint-sky", "costs": "tint-blush", "timing": "tint-blush", "levers": "tint-blush",
+              "reliable": "tint-sky", "method": "tint-sky", "costs": "tint-blush", "timing": "tint-blush", "levers": "tint-blush",
               "company": "tint-sage"}
 
 
@@ -212,7 +212,7 @@ def embed(markup: str, height: int) -> None:
 
 # ---------------------------------------------------------------- navigation helpers (Phase 5D)
 PAGE_FILES = {"welcome": "app_pages/welcome.py", "overview": "app_pages/overview.py", "data": "app_pages/data_used.py", "forecast": "app_pages/forecast.py",
-              "reliable": "app_pages/reliability.py",
+              "reliable": "app_pages/reliability.py", "method": "app_pages/methodology.py",
               "costs": "app_pages/costs.py",
               "timing": "app_pages/timing.py", "levers": "app_pages/levers.py", "company": "app_pages/your_company.py"}
 
@@ -660,3 +660,23 @@ catch(e){}</script>""", 1)
 def error_state(title: str, body: str) -> None:
     """What a visitor sees when a page fails to draw: plain words, no traceback."""
     st.warning(f"**{title}**  \n{body}", icon=":material/report:")
+
+
+def provenance(name: str, hist: pd.DataFrame) -> None:
+    """Closed panel: where one trend comes from (source, publisher, dataset, link, licence, how often, what it covers,
+    what we did to it). Source names are proper nouns, so this panel, like the technical details, may name them."""
+    from dashboard.ui import copy_technical as CT
+    p = CT.PROVENANCE.get(name)
+    if p is None:
+        return
+    x0, x1, n = hist["x"].iloc[0], hist["x"].iloc[-1], len(hist)
+    if isinstance(x0, (pd.Timestamp,)) or hasattr(x0, "strftime"):
+        covers = f"{pd.Timestamp(x0):%b %Y} to {pd.Timestamp(x1):%b %Y} ({n:,} values)"
+    else:
+        covers = f"{n:,} values in a row (counted from the start of the records; no calendar dates)"
+    vals = (p["source"], p["publisher"], p["dataset"], p["link"], p["licence"], p["freq"], covers, p["did"])
+    rows = "".join(f"<dt>{html.escape(k)}</dt><dd>" + (f'<a href="{html.escape(v)}" target="_blank" rel="noopener">'
+                                                         f"{html.escape(v)}</a>" if k == "Link" else html.escape(v))
+                   + "</dd>" for k, v in zip(CT.SOURCE_FIELDS, vals))
+    with st.expander(f"{CT.SOURCE_TITLE}: {C.SERIES[name][0]}", icon=":material/source:"):
+        st.markdown(f'<dl class="glossary tech">{rows}</dl>', unsafe_allow_html=True)

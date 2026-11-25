@@ -91,7 +91,7 @@ def test_next_cards_walk_every_page_in_order():
         order.append(key)
         key = C.NEXT[key][0]
     order.append(key)
-    assert order == ["welcome", "overview", "data", "forecast", "reliable", "costs", "timing", "levers", "company"]
+    assert order == ["welcome", "overview", "data", "forecast", "reliable", "method", "costs", "timing", "levers", "company"]
     assert set(order) == set(components.PAGE_FILES) == set(C.PAGES)
     for k, path in components.PAGE_FILES.items():
         assert (ROOT / "src" / "dashboard" / path).exists(), path
@@ -101,7 +101,7 @@ def test_next_cards_walk_every_page_in_order():
 
 def test_menu_groups_are_declared_in_the_app():
     app = (ROOT / "src" / "dashboard" / "app.py").read_text(encoding="utf-8")
-    assert 'C.SECTION_MONEY: ["costs", "timing", "levers"]' in app and 'C.SECTION_FORECASTS: ["data", "forecast", "reliable"]' in app
+    assert 'C.SECTION_MONEY: ["costs", "timing", "levers"]' in app and 'C.SECTION_FORECASTS: ["data", "forecast", "reliable", "method"]' in app
     assert 'default=(key == "welcome")' in app
 
 

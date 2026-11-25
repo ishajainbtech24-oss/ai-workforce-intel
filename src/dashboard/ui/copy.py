@@ -35,6 +35,7 @@ PAGES = {"welcome": ("Welcome", ":material/waving_hand:"),
          "data": ("The data we used", ":material/dataset:"),
          "forecast": ("What we expect next", ":material/trending_up:"),
          "reliable": ("How reliable it is", ":material/fact_check:"),
+         "method": ("How we forecast", ":material/menu_book:"),
          "costs": ("Where the money goes", ":material/payments:"),
          "timing": ("When it pays for itself", ":material/event_available:"),
          "levers": ("What matters most", ":material/tune:"),
@@ -200,7 +201,8 @@ NEXT = {"welcome": ("overview", "The four numbers that matter, and how the runni
         "overview": ("data", "The real public records behind every forecast, and anything unusual in them."),
         "data": ("forecast", "What the public trends behind the costs are expected to do next."),
         "forecast": ("reliable", "How close earlier predictions came to what really happened."),
-        "reliable": ("costs", "What the money is spent on, month by month."),
+        "reliable": ("method", "How the forecasts and the money figures are made, step by step, and their limits."),
+        "method": ("costs", "What the money is spent on, month by month."),
         "costs": ("timing", "In which month the programme could pay for itself."),
         "timing": ("levers", "Which choices change the result the most."),
         "levers": ("company", "Put in your own figures and see the result.")}
@@ -671,3 +673,42 @@ XLSX_COLS = {"outlook": "Outlook", "chance": "Chance of paying for itself", "mon
              "roi": "Return on cost", "per_user": "Cost per person per month (₹)"}
 PDF_MEMO_TITLE = "Decision memo"
 PDF_MEMO_FIGS = "The three outlooks side by side"
+
+# ---- How we forecast (workstream E)
+METHOD_HEAD = "How the forecasts and the money figures are made"
+METHOD_SUB = "Every step from the public records to the numbers on these pages, in plain words, and what they cannot tell you."
+METHOD_STEPS_TITLE = "Step by step"
+METHOD_STEPS = [
+    ("Collect public records", "Seven trends from three public sources: US pay and hosting prices from the US "
+     "government, and two published records of how people used AI chat services. Where each one comes from is listed "
+     "below."),
+    ("Check and clean them", "Gaps, cut-off days and unusual points are found and flagged. Unusual points are kept, "
+     "because they really happened; only broken stretches at the edges are left out."),
+    ("Try many ways of forecasting", "Simple rules (repeat the last value, repeat last year, follow the trend) and "
+     "more careful statistical approaches are all tried on every trend."),
+    ("Test them on the past", "Each approach is run again from many earlier dates, as if those were today, and "
+     "scored on what really happened next. The one that came closest on average is used; the simple rules are kept "
+     "as a yardstick."),
+    ("Set the likely range", "The range around each forecast is set from how far those earlier forecasts missed, "
+     "so that about eight in ten real values land inside it. The How reliable it is page shows how often they did."),
+    ("Work out the money", "For the example company, thousands of possible futures are worked through month by "
+     "month: the trends move costs, and the time AI saves, how many people use it, how much of the saved time "
+     "becomes value and how long training takes all vary within sensible ranges. The pages show the typical result "
+     "and the range."),
+]
+METHOD_LIMITS_TITLE = "What these numbers cannot tell you"
+METHOD_LIMITS = [
+    "The company is made up. Its figures are a reasonable example, not a benchmark; your own figures give your answer.",
+    "How much time AI saves is the least certain figure. The three outlooks come from published studies that disagree, "
+    "including one where people were slower with AI.",
+    "The AI usage records cover a few months of one service each, so their forecasts are short and their ranges wide.",
+    "Past patterns may not continue. A sudden change (a new product, a price cut, a shock like COVID-19) can move "
+    "any trend outside its likely range.",
+]
+METHOD_SOURCES_TITLE = "Where each trend comes from"
+METHOD_SOURCES_SUB = "Open a trend to see its source, publisher, licence, what it covers and what we did to it."
+METHOD_REPRO_TITLE = "Repeat it yourself"
+METHOD_REPRO = ("Everything is rebuilt from the public records by the scripts in the project's src folder, in order: "
+                "the four phase scripts, then src/build_artifacts.py for the reliability checks. The same starting "
+                "number is used every time, so the same records give the same results. The project's README explains "
+                "how to run it.")

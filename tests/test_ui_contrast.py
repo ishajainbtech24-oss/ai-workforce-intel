@@ -144,7 +144,7 @@ def test_side_navigation_lists_every_page_and_marks_the_current_one(browser_app)
     info = pg.evaluate(SIDEBAR)
     pg.close()
     names = [link["name"] for link in info["links"]]
-    assert names == [C.PAGES[k][0] for k in ("welcome", "overview", "data", "forecast", "reliable", "costs", "timing",
+    assert names == [C.PAGES[k][0] for k in ("welcome", "overview", "data", "forecast", "reliable", "method", "costs", "timing",
                                              "levers", "company")]
     assert [link["name"] for link in info["links"] if link["current"] == "page"] == [C.PAGES["timing"][0]]
     assert info["controls"] and any(C.GLOSSARY_BUTTON in t for t in info["wordGuide"])
