@@ -1,0 +1,33 @@
+# Tests on every push and pull request: the engine, the forecasting phases (fast mode on synthetic data) and every
+# dashboard page rendered with Streamlit's AppTest (any page error fails the run: AIWI_STRICT=1 in tests/conftest.py).
+# The browser checks (contrast, side navigation) also run here, with Playwright's Chromium.
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            src/dashboard/requirements.txt
+      - name: Install
+        run: |
+          pip install -r src/dashboard/requirements.txt
+          pip install "pytest>=7" "playwright==1.64.1"
+          python -m playwright install --with-deps chromium
+      - name: Test
+        run: python -m pytest -q -p no:cacheprovider

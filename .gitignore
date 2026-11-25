@@ -18,3 +18,4 @@ ai-workforce-intel_colab.zip
 
 # Local logs of the browser checks
 outputs/phase5/ui_v3/browser_check_server.log
+.env

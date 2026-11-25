@@ -3,6 +3,18 @@
 **Live website: https://ai-workforce-intel.onrender.com** (updates itself on every push to `main`; the free
 service sleeps when idle, so the first visit after a quiet spell takes about a minute)
 
+## Quick start
+
+```bash
+pip install -r src/dashboard/requirements.txt
+streamlit run src/dashboard/app.py
+```
+
+The website needs only what is in this repository (processed data, saved results and `artifacts/`). To rebuild the
+results from the data: `python src/run_phase1.py`, `run_phase2.py`, `run_phase3.py`, `run_phase4.py`, then
+`python src/build_artifacts.py` (details per phase below). Method, limits and data sources are explained on the
+site's *How we forecast* page.
+
 Download and preprocessing live in `ai-workforce-intel/` (scripts `src/prep_*.py`, notebook
 `TSAF_Data_Preprocessing.ipynb`, see its README). This outer folder holds the processed data
 (`data/processed/`) and the modelling phases.
@@ -136,49 +148,66 @@ break-even histograms, scenario comparison, multiplier effect, tornado, cost sha
 ## Phase 5: dashboard
 
 ```bash
-pip install -r requirements.txt -r requirements-dashboard.txt   # adds streamlit and plotly
-streamlit run src/dashboard/app.py                              # opens http://localhost:8501
+pip install -r src/dashboard/requirements.txt    # the website's packages, pinned (Streamlit 1.67, Plotly, openpyxl ...)
+streamlit run src/dashboard/app.py               # opens http://localhost:8501
+python -m pytest -q                              # all tests, about 4 minutes (browser checks need Playwright)
 ```
 
-A five-page dashboard for readers with no technical background, using plain words throughout:
-**The big picture** (cost, estimated benefit, running balance and when it pays for itself, for the expected
-outlook), **Where the money goes** (costs by type, tagged "Based on trends" or "Our estimate"), **When it pays for
-itself** (how often and in which month, the three outlooks side by side), **What matters most** (which choices
-move the result) and **Try your own numbers** (reruns the Phase 4 engine on your figures and lets you download
-the result). Pages 1-4 read the saved Phase 4 results; page 5 calls `run_engine` live. All on-screen text is in
-`src/dashboard/copy.py`; the theme is in `src/dashboard/theme.py`, `styles.css` and `.streamlit/config.toml`.
-The currency on screen is Indian rupees, converted from the saved US-currency results at `INR_PER_USD` (RBI reference rate, 16 Nov 2026), set in one place: `src/dashboard/currency.py`.
-The shipped company is an example with made-up figures, and every page says so. Notes, the page-by-page summary
-and screenshots are in `outputs/phase5/`.
+Ten pages for readers with no technical background, in plain words throughout, each chart followed by
+*What you see / What it means / Why it matters*:
 
-**Navigation (UI v3).** `app.py` builds the pages with `st.navigation(..., position="sidebar")`: a 240 px side panel
-with the logo (`src/dashboard/assets/mark.svg`) and product name at the top, the pages under *Forecasts*, *The money*
-and *Your own figures* (the current page has a solid 3 px marker and `aria-current="page"`), and the **Word guide**,
-**Dark mode**, **Reduce motion** and the rupee rate note at its foot. From 641 to 1024 px it becomes a 76 px icon
-rail; at 640 px and below it folds away behind a **Menu** button. The example-company banner stays at the top of
-every page.
+| Group | Page | What it answers |
+|---|---|---|
+| | Welcome, The big picture | cost, estimated benefit, running balance and payback for the company shown |
+| Forecasts | The data we used, What we expect next, How reliable it is, How we forecast | the seven public trends, their forecasts with calibrated ranges, how well those held on the past, and the method, limits and sources |
+| The money | Where the money goes, When it pays for itself, What matters most | cost by type, payback chance and month, NPV / return on cost / cost per person, which inputs matter, what it would take |
+| Your own figures | Try your own numbers | reruns the engine on your figures; PDF memo, Excel summary, CSV and a scenario file |
 
-**Your own figures and the PDF report.** On *Try your own numbers*, **Update results** runs the engine on the
-visitor's figures for every outlook and caution level, plus the "what matters most" runs (`dashboard.core.data.run_all`:
-the same 5,000 futures, starting number and table functions as `run_phase4.py`, so the example company's inputs give
-the saved tables back). When the figures differ from the example's, every results page (Welcome cards, The big
-picture, Where the money goes, When it pays for itself, What matters most) shows them, with "Your figures" in the
-banner and a note plus a **Back to the example** button in the side panel. They live in that browser session only:
-**Reset to example**, Back to the example or a page refresh brings the example back. The forecast pages are about
-the public trends and do not change. Next to the month-by-month table download (CSV, unchanged), **Download report
-(PDF)** makes a five-page A4 report with the summary, every chart, the figures used and the monthly table
-(`dashboard/report_pdf.py`, drawn with matplotlib when the button is clicked).
+**Code layout** (`src/dashboard/`): `app.py` (navigation, theme, first-visit tour, error boundary), `app_pages/` (one
+file per page), `ui/` (shared components, charts, all on-screen wording in `copy.py` and `copy_technical.py`, theme,
+styles, PDF and Excel builders, Analyst mode), `core/` (data loading, page logic, view state, presets, decision
+figures, Analyst-mode files). Every page is built from the shared components (`page_header`, `insight_row`,
+`chart`, `kpi_card`, `scenario_bar`, `empty_state` ...); every chart has *View as table* and *Download these numbers*,
+and the camera icon saves it as PNG.
 
-**Palette and theme switching.** All colours are tokens in `src/dashboard/theme.py` (`TOKENS["light"]`,
-`TOKENS["dark"]`, plus `OUTLOOK_COLORS`, `CHART_COLORS`, `LINE_COLORS`): light uses a warm off-white page
-`#FBF7F0`, ink text `#1C2230`, a deep blue primary `#1F4E8C`, a marigold accent `#E8A33D` and a soft tint `#FBEBD0`;
-dark uses ink navy `#141A24` with cream text `#F3EEE5`. Headlines are Fraunces (serif), body text Inter. Streamlit
-cannot switch its own theme per visitor, so `.streamlit/config.toml` fixes its built-in theme to the light palette
-and the **Dark mode** switch (or `?theme=dark` in the address) swaps the CSS custom properties that
-`components.inject_css` writes from those tokens; `styles.css` repaints every widget Streamlit draws (pop-ups,
-drop-down lists, buttons, inputs) from the same properties. `python -m dashboard.ui.colour_check` (from `src/`) checks
-every text and chart colour for contrast and colour-blind separation; `tests/test_ui_contrast.py` measures the
-rendered widgets in a browser (skipped when Playwright is not installed).
+**One view, one link.** Company (example, small team, enterprise), outlook and caution level are chosen in the bar
+above the charts on every Money page; the trend in a grouped picker on the Forecast pages. All live in
+`core/state.py` and are mirrored to the address, so a copied link reproduces the view, e.g.
+`/timing?preset=small&outlook=optimistic&caution=more` or `/forecast?trend=pay`. `?analyst=on`, `?theme=dark` and
+`?tour=off` work the same way.
+
+**Analyst mode** (switch in the side panel, off by default) adds the statistics behind each trend: STL
+decomposition, ADF/KPSS verdict, ACF/PACF, subseries, CUSUM break test, outliers; and behind each forecast: model
+cards, rolling-origin cross-validation (MAE, RMSE, MASE, bias, coverage), Diebold–Mariano tests, error by step,
+residual checks (Ljung–Box, Q–Q) and a coverage plot. All of it is precomputed by `python src/build_artifacts.py`
+into `artifacts/` (committed, about 0.5 MB); nothing is fitted on a page load.
+
+**Calibrated ranges.** The likely range on every forecast is a split-conformal range calibrated on earlier
+cross-validation folds; its 80% coverage in rolling-origin CV is 71–86% for all seven trends (shown on *How reliable
+it is*). **Input uncertainty.** The cost engine varies time saved, conversion to value, adoption level and training
+hours in every draw (PERT ranges in `src/config_phase4.py`), on top of the forecast paths, so payback is a real
+probability. Every change to a forecast or money figure is logged with before and after values in
+`docs/CHANGELOG.md`; design choices are in `docs/DECISIONS.md`.
+
+**Your own figures.** *Update results* runs the engine for every outlook and caution level; every results page then
+shows your figures until *Back to the example*. Nothing is stored on the server: results live in the browser
+session, and the scenario file you save stays on your computer (load it again on the same page). Downloads: PDF
+report with a decision-memo first page, Excel decision summary, month-by-month CSV, scenario file (JSON).
+
+**Settings.** None are needed; see `.env.example` (`TSAF_DASH_ROOT`, `AIWI_TOUR`, `AIWI_STRICT`). Money is shown in
+Indian rupees converted at one fixed rate set in `src/dashboard/core/currency.py`. The theme follows the visitor's
+system setting on the first visit; *Dark mode* and *Reduce motion* are in the side panel.
+
+**Tests and CI.** `.github/workflows/ci.yml` runs the whole suite on every push and pull request: engine and
+forecasting units, a render of every page with Streamlit's AppTest (a page error fails the run), copy rules (no
+jargon outside the technical panels), currency, PDF/Excel/scenario file, and browser checks with Playwright:
+contrast in both themes, side navigation, and accessibility at 375 / 768 / 1280 px (no sideways scrolling, one main
+heading, named controls, visible keyboard focus).
+
+**Load times** (measured 25 Nov 2026, page shown with its first chart): on a laptop, the first page after the
+server starts about 3 s, other pages 0.3–1.4 s. On the live free Render service (0.1 CPU): the first page after a
+deploy took 29 s while the saved results load once, every later page about 3 s, and Welcome in a new session about
+9 s. After 15 idle minutes the service sleeps; waking it adds up to about a minute to the first visit.
 
 ## Live website and automatic updates
 
