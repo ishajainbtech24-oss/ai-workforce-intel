@@ -48,9 +48,16 @@ header[data-testid="stHeader"] { background: transparent !important; }
 [data-testid="stSidebarHeader"] img { height: 34px !important; width: 34px !important; border-radius: 8px; }
 [data-testid="stSidebarNav"] { padding: 0 var(--s3) !important; }
 [data-testid="stNavSectionHeader"] { padding: var(--s3) 10px var(--s1) !important; margin: 0 !important; min-height: 0 !important; }
-[data-testid="stNavSectionHeader"], [data-testid="stNavSectionHeader"] span { font: 600 11px var(--font) !important; letter-spacing: .1em;
+/* the heading text only: its collapse arrow is an icon-font span, which must keep its own font, lower case and spacing
+   (otherwise the browser prints the icon's name, "EXPAND_MORE", over the heading) */
+[data-testid="stNavSectionHeader"], [data-testid="stNavSectionHeader"] span:not([data-testid="stIconMaterial"]) {
+  font: 600 11px var(--font) !important; letter-spacing: .1em;
   text-transform: uppercase; color: var(--faint) !important; }
-[data-testid="stNavSectionHeader"] span { padding: 0 !important; overflow: visible !important; text-overflow: clip !important; }
+[data-testid="stNavSectionHeader"] span:not([data-testid="stIconMaterial"]) { padding: 0 !important; overflow: visible !important;
+  text-overflow: clip !important; }
+[data-testid="stNavSectionHeader"] [data-testid="stIconMaterial"] { font-family: "Material Symbols Rounded" !important;
+  font-size: 18px !important; font-weight: 400 !important; text-transform: none !important; letter-spacing: normal !important;
+  line-height: 1 !important; color: var(--faint) !important; }
 [data-testid="stNavSectionHeader"] + div, [data-testid="stSidebarNavItems"] > div { margin-top: 0 !important; }
 [data-testid="stSidebarNavLink"] .stMarkdownEllipsis, [data-testid="stSidebarNavLink"] p { white-space: normal !important;
   overflow: visible !important; text-overflow: clip !important; line-height: 1.3 !important; }
