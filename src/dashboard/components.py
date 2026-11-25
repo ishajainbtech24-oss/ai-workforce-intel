@@ -348,6 +348,15 @@ _MOTION_JS = r"""
       l.setAttribute('pathLength', '1'); l.classList.add('aiwi-draw');
     });
   }
+  function iconsReady() {  // icons are glyphs of an icon font: show them only once it has loaded (see styles.css)
+    const font = '20px "Material Symbols Rounded"', mark = () => D.documentElement.classList.add('aiwi-icons');
+    try {
+      if (D.fonts.check(font)) { mark(); return; }
+      D.fonts.load(font).then(f => { if (f.length) mark(); }).catch(() => {});
+      D.fonts.addEventListener('loadingdone', () => { if (D.fonts.check(font)) mark(); });
+    } catch (e) { mark(); }
+  }
+  iconsReady();
   let queued = false;
   const run = () => { queued = false; try { markActive(); countUps(); drawLines(); } catch (e) {} };
   const kick = () => { if (!queued) { queued = true; W.requestAnimationFrame(run); } };

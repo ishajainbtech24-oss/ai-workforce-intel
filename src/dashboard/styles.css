@@ -55,9 +55,12 @@ header[data-testid="stHeader"] { background: transparent !important; }
   text-transform: uppercase; color: var(--faint) !important; }
 [data-testid="stNavSectionHeader"] span:not([data-testid="stIconMaterial"]) { padding: 0 !important; overflow: visible !important;
   text-overflow: clip !important; }
-[data-testid="stNavSectionHeader"] [data-testid="stIconMaterial"] { font-family: "Material Symbols Rounded" !important;
-  font-size: 18px !important; font-weight: 400 !important; text-transform: none !important; letter-spacing: normal !important;
-  line-height: 1 !important; color: var(--faint) !important; }
+/* No collapse arrow at all: it is an icon-font glyph, and whenever that font is late (slow host) or overridden the browser
+   prints its name ("expand_more") over the heading. The groups are short, so the headings are plain labels and are not
+   clickable (a click would otherwise fold a group away with no arrow to show it). */
+[data-testid="stNavSectionHeader"] [data-testid="stIconMaterial"],
+[data-testid="stNavSectionHeader"] > div:has([data-testid="stIconMaterial"]) { display: none !important; }
+[data-testid="stNavSectionHeader"] { pointer-events: none; cursor: default; }
 [data-testid="stNavSectionHeader"] + div, [data-testid="stSidebarNavItems"] > div { margin-top: 0 !important; }
 [data-testid="stSidebarNavLink"] .stMarkdownEllipsis, [data-testid="stSidebarNavLink"] p { white-space: normal !important;
   overflow: visible !important; text-overflow: clip !important; line-height: 1.3 !important; }
@@ -266,6 +269,12 @@ header[data-testid="stHeader"] { background: transparent !important; }
 /* The hosting service adds "Fork" and a source-code link to the app's toolbar; this is a team project shown
    without personal links, so they are hidden (the page's own menu stays). */
 [data-testid="stToolbarActions"] { display: none !important; }
+
+/* Every Streamlit icon is a glyph of an icon font, written as a word ("waving_hand", "expand_more"). While that font is
+   still loading (a slow host) or if it never loads, the browser prints the word over the labels. So an icon is never
+   wider than one glyph, and stays invisible until the page script marks the font as loaded (html.aiwi-icons). */
+[data-testid="stIconMaterial"] { max-width: 1.25em; overflow: hidden; white-space: nowrap; }
+html:not(.aiwi-icons) body [data-testid="stIconMaterial"] { opacity: 0 !important; }
 
 /* ---------- Streamlit widgets ---------- */
 [data-testid="stButtonGroup"] [role="radiogroup"], [data-testid="stButtonGroup"] > div:last-child { gap: 0; }

@@ -14,3 +14,10 @@ showErrorDetails = "none"
 
 [browser]
 gatherUsageStats = false
+
+[server]
+# No file watcher on the website: it only reloads code while someone edits files, and after every page run it re-checks
+# the location of every loaded module (thousands, with the forecasting libraries), which froze the Welcome page and slowed
+# the slow free host. Render restarts the app on each deploy, so new code still goes live. For live reloading while
+# developing, run: streamlit run src/dashboard/app.py --server.fileWatcherType auto
+fileWatcherType = "none"
