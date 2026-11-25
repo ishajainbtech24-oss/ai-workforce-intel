@@ -1,6 +1,6 @@
 role,driver,months_covered_by_forecast,months_extrapolated,share_of_total_cost_in_extrapolated_months,used_fallback
-token_demand,burst_tokens_total_daily,1.0,11.0,0.0007553176752306063,False
+token_demand,burst_tokens_total_daily,1.0,11.0,0.0007383561773068949,False
 wages,eci_wages_quarterly,12.0,0.0,0.0,False
 hosting,ppi_hosting_monthly,12.0,0.0,0.0,False
 token_price,fixed_token_price_per_mtok,12.0,0.0,0.0,True
-any,any extrapolated driver,,,0.0007553176752306063,False
+any,any extrapolated driver,,,0.0007383561773068949,False

@@ -328,9 +328,32 @@ def _page_table(pdf, res, who) -> None:
     pdf.savefig(fig)
 
 
-def build(res, scenario: str, bundle: dict, yours: bool, today: _dt.date | None = None) -> bytes:
+def _page_memo(pdf, memo: dict, who: str, made: str) -> None:
+    """Decision memo: the answer in one paragraph, the three outlooks side by side, and what it would take."""
+    fig = _page(pdf, 0, who)
+    fig.text(0.07, 0.94, C.PRODUCT, fontsize=9, color=MUTED, fontweight="bold")
+    fig.text(0.07, 0.905, C.PDF_MEMO_TITLE, fontsize=24, fontweight="bold", color=INK)
+    fig.text(0.07, 0.878, who, fontsize=11, color=ACCENT)
+    fig.text(0.07, 0.858, _wrap(made, 110), fontsize=7.5, color=MUTED, va="top")
+    y = 0.80
+    for line in memo["lines"]:
+        fig.text(0.07, y, _wrap(line, 92), fontsize=10, color=INK, va="top", linespacing=1.35)
+        y -= 0.022 * (1 + _wrap(line, 92).count("\n")) + 0.018
+    _heading(fig, y - 0.01, C.PDF_MEMO_FIGS)
+    X = C.XLSX_COLS
+    head = [X["outlook"], X["chance"], X["month"], X["balance"], X["npv"], X["roi"], X["per_user"]]
+    rows = [[C.OUTLOOK[r["scenario"]], T.share(r["chance"]), T.month(r["month"], r["T"]),
+             f"{T.money(r['balance'])}\n({T.money(r['balance_low'])} to {T.money(r['balance_high'])})",
+             T.money(r["npv"]), f"{r['roi']:+.0%}", T.money(r["cost_per_user_month"])] for r in memo["rows"]]
+    ax = fig.add_axes((0.07, y - 0.24, 0.86, 0.19))
+    _table(ax, [_wrap(h.replace(" (₹)", ""), 14) for h in head], rows, [0.16, 0.12, 0.12, 0.24, 0.13, 0.1, 0.13], size=7)
+    pdf.savefig(fig)
+
+
+def build(res, scenario: str, bundle: dict, yours: bool, today: _dt.date | None = None, memo: dict | None = None) -> bytes:
     """The report as PDF bytes. `res` = the run shown on the page (its outlook, standard caution); `bundle` = the
-    tables, payback counts and inputs of the same figures (data.run_all); `yours` picks the wording."""
+    tables, payback counts and inputs of the same figures (data.run_all); `yours` picks the wording. With `memo`
+    ({'lines', 'rows'}: decision.memo), a decision memo page comes first."""
     import matplotlib
     matplotlib.rcParams["font.family"] = FONT
     matplotlib.rcParams["hatch.color"] = "white"
@@ -343,6 +366,8 @@ def build(res, scenario: str, bundle: dict, yours: bool, today: _dt.date | None 
     meta = {"Title": f"{C.PRODUCT}: {C.PDF_TITLE}", "Author": C.PRODUCT, "Subject": who,
             "CreationDate": _dt.datetime(day.year, day.month, day.day)}
     with PdfPages(buf, metadata=meta) as pdf:
+        if memo:
+            _page_memo(pdf, memo, who, made)
         _page_summary(pdf, res, scenario, who, made)
         _page_money(pdf, res, who)
         _page_outlooks(pdf, bundle, scenario, who)
@@ -352,3 +377,4 @@ def build(res, scenario: str, bundle: dict, yours: bool, today: _dt.date | None 
 
 
 PAGES = 5  # summary, money, outlooks, what matters most + figures used, month by month
+PAGES_WITH_MEMO = 6  # the decision memo first

@@ -636,3 +636,38 @@ TOUR_DONE = "Start exploring"
 ERROR_TITLE = "This page could not be drawn"
 ERROR_BODY = ("Something went wrong while drawing this page. The other pages still work; reloading usually helps. "
               "The details have been recorded for the people who run the site.")
+
+# ---- decision figures, goal-seek, downloads (workstream D)
+DECISION_TITLE = "Decision figures"
+DECISION_SUB = "The same results as one-line answers. Typical values; the range is on the chart above."
+DECISION_KPI = {"npv": ("Value in today's money", "The typical monthly balance changes added up, each counted at "
+                        "what it is worth today (10% a year)."),
+                "roi": ("Return on cost", "Running balance at the end for every rupee spent. Above zero means the "
+                        "benefit covered the cost."),
+                "per_user": ("Cost per person using AI", "Total cost spread over every month each person used AI.")}
+PER_MONTH = "{value} a month"
+NEGATIVE_BENEFIT = ("In the {outlook}, AI makes the work slower (a real study found people took longer on tasks with "
+                    "AI), so the benefit is below zero in every future we looked at. It cannot pay for itself in this "
+                    "outlook however long you wait; that is why the chance is 0%.")
+GOAL_TITLE = "What it would take"
+GOAL_LINE = ("For an even chance of paying for itself within {months} months, AI would need to save about {needed} of "
+             "working hours, with everything else as now. The expected outlook assumes {expected}; the optimistic "
+             "{optimistic}.")
+GOAL_UNREACHABLE = ("Even if AI saved all working time, these figures would not give an even chance of paying for "
+                    "itself within {months} months: the costs are too high for the number of people using it.")
+DOWNLOAD_XLSX = "Download decision summary (Excel)"
+SCENARIO_SAVE = "Save these figures (scenario file)"
+SCENARIO_LOAD = "Load a scenario file"
+SCENARIO_LOAD_HELP = ("A file saved from this page earlier. It fills in the form above; press Update to see the "
+                      "results. The file stays on your computer; nothing is stored on the server.")
+SCENARIO_LOADED = "Scenario loaded into the form. Press Update to see its results."
+SCENARIO_BAD_FILE = "That file is not a scenario file from this site."
+SCENARIO_BAD_FIELDS = "That scenario file has figures this page does not know."
+SCENARIO_BAD_VALUES = "That scenario file has a figure that is not a number of zero or more."
+XLSX_SHEETS = {"summary": "Decision summary", "monthly": "Month by month", "inputs": "Figures used"}
+XLSX_COLS = {"outlook": "Outlook", "chance": "Chance of paying for itself", "month": "Typical payback month",
+             "cost": "Total cost (₹)", "benefit": "Estimated benefit (₹)", "balance": "Running balance at the end (₹)",
+             "low": "1 in 10 lower (₹)", "high": "1 in 10 higher (₹)", "npv": "Value in today's money (₹)",
+             "roi": "Return on cost", "per_user": "Cost per person per month (₹)"}
+PDF_MEMO_TITLE = "Decision memo"
+PDF_MEMO_FIGS = "The three outlooks side by side"

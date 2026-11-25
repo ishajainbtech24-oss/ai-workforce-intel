@@ -16,6 +16,7 @@ from dashboard.core import data as D  # noqa: E402
 from dashboard.core import explain as EX  # noqa: E402
 from dashboard.ui import copy_technical as CT  # noqa: E402
 from dashboard.ui import theme as T  # noqa: E402
+from dashboard.core import decision as X  # noqa: E402
 
 
 def render() -> None:
@@ -38,9 +39,28 @@ def render() -> None:
             K.verdict(logic.words("NO_PAYBACK").format(months=int(be["T"]), balance=T.money(tot["cum_net_T_p50"]),
                                                        outlook=C.OUTLOOK[scenario].lower()),
                       C.NO_PAYBACK_LEVERS.format(a=first, b=second), tone="warm")
+        _goal(int(be["T"]))
         K.tech_details([CT.TERMS["sensitivity"]])
     except D.Missing:
         K.empty_state()
+
+
+def _goal(months: int) -> None:
+    """Goal-seek: the time saved that gives an even chance of paying for itself within the horizon."""
+    with st.spinner(C.WORKING):
+        g = X.goal_seek("expected")
+    if g.get("status") == "skipped":
+        return
+    K.section_title(C.GOAL_TITLE)
+    if g["status"] == "unreachable":
+        K.verdict(C.GOAL_UNREACHABLE.format(months=months), tone="warm")
+        return
+    from engine.simulate import scenario_fraction
+    base = D.active_inputs()
+    pct = lambda f: f"{f:.1%}"  # noqa: E731
+    K.verdict(C.GOAL_LINE.format(months=months, needed=pct(g["needed"]),
+                                 expected=pct(scenario_fraction(D.outlook_table(), "expected", base)[0]),
+                                 optimistic=pct(scenario_fraction(D.outlook_table(), "optimistic", base)[0])), tone="card")
 
 
 render()

@@ -17,6 +17,7 @@ from dashboard.core import data as D  # noqa: E402
 from dashboard.core import explain as EX  # noqa: E402
 from dashboard.ui import copy_technical as CT  # noqa: E402
 from dashboard.ui import theme as T  # noqa: E402
+from dashboard.core import decision as X  # noqa: E402
 
 NARROW = 0.10  # likely range of the year-end balance under 10% of total cost counts as narrow
 
@@ -40,6 +41,8 @@ def render() -> None:
         horizon = D.horizon()
         be, tot = D.row("break_even_summary", scenario, k), D.row("totals_summary", scenario, k)
         K.verdict(logic.verdict(be["prob_break_even_within_T"], be["p50_month"], horizon))
+        if tot["total_value_p90"] < 0:
+            K.note(C.NEGATIVE_BENEFIT.format(outlook=C.OUTLOOK[scenario].lower()), tone="warm")
         K.chart_title(C.TIMING_DOTS_TITLE)
         dots = logic.payback_dots(k)
         K.chart(charts.payback_dots(dots), f"timing_dots_{k}", "payback_by_outlook")
@@ -53,10 +56,21 @@ def render() -> None:
             K.note(C.NARROW_NOTE, trusted_html=True)
         K.section_title(C.COMPARE_TITLE)
         K.table(_compare(k, horizon), dots=[T.outlook_color(sc) for sc in D.outlooks()])
+        _decision(scenario, k)
         t = CT.TERMS
         K.tech_details([(t["monte_carlo"][0], t["monte_carlo"][1].format(n=f"{total:,}")), t["caution"]])
     except D.Missing:
         K.empty_state()
+
+
+def _decision(scenario: str, k: float) -> None:
+    m = X.metrics(scenario, k)
+    K.section_title(C.DECISION_TITLE, C.DECISION_SUB)
+    cards = {"npv": T.money(m["npv"]), "roi": f"{m['roi']:+.0%}",
+             "per_user": C.PER_MONTH.format(value=T.money(m["cost_per_user_month"]))}
+    K.kpi_row([K.kpi_card(C.DECISION_KPI[key][0], value, C.DECISION_KPI[key][1], i=n,
+                          tone="warm" if key != "per_user" and m["npv" if key == "npv" else "roi"] < 0 else "")
+               for n, (key, value) in enumerate(cards.items())])
 
 
 render()

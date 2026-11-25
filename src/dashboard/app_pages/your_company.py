@@ -23,6 +23,8 @@ from dashboard.core import data as D  # noqa: E402
 from dashboard.core import explain as EX  # noqa: E402
 from dashboard.ui import copy_technical as CT  # noqa: E402
 from dashboard.ui import theme as T  # noqa: E402
+from dashboard.core import decision as X  # noqa: E402
+from dashboard.core import state  # noqa: E402
 
 SLIDERS = {"adoption_target": (0, 100, 5), "realisation_rate": (0, 100, 5), "ramp_months": (1, 24, 1),
            "horizon_months": (6, 24, 1)}
@@ -150,11 +152,48 @@ def _show(res, scenario: str) -> None:
         pdf = _pdf_module() if bundle is not None else None
         if pdf is not None:
             # made only when clicked (on its own thread), from the values captured here
-            st.download_button(C.PDF_DOWNLOAD, lambda: pdf.build(res, scenario, bundle, yours),
+            memo = X.memo(scenario)
+            st.download_button(C.PDF_DOWNLOAD, lambda: pdf.build(res, scenario, bundle, yours, memo=memo),
                                file_name="my_results_report.pdf", mime="application/pdf",
                                icon=":material/picture_as_pdf:", key="pdf_btn", on_click="ignore")
         elif bundle is not None:
             st.caption(C.PDF_UNAVAILABLE)
+        try:
+            from dashboard.ui import report_xlsx
+            rows = X.all_metrics(1.0)
+            st.download_button(C.DOWNLOAD_XLSX, lambda: report_xlsx.build(rows, res, D.active_inputs()),
+                               file_name="decision_summary.xlsx", icon=":material/table_view:", key="xlsx_btn",
+                               mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", on_click="ignore")
+        except (ImportError, D.Missing):  # no Excel library: the other downloads still work
+            pass
+        form = {f: st.session_state.get(f"co_{f}") for row in LAYOUT for f in row}
+        view = {n: state.get(n) for n in ("preset", "outlook", "caution")}
+        st.download_button(C.SCENARIO_SAVE, X.scenario_payload(view, form), file_name="scenario.json",
+                           mime="application/json", icon=":material/save:", key="scenario_save", on_click="ignore")
+    st.file_uploader(C.SCENARIO_LOAD, type=["json"], key="scenario_file", help=C.SCENARIO_LOAD_HELP,
+                     on_change=_load_scenario)
+    msg = st.session_state.pop("_scenario_msg", None)
+    if msg:
+        (st.success if msg == C.SCENARIO_LOADED else st.warning)(msg)
+
+
+def _load_scenario() -> None:
+    """Fill the form from a scenario file (validated); the visitor presses Update to run it."""
+    up = st.session_state.get("scenario_file")
+    if up is None:
+        return
+    fields = {f for row in LAYOUT for f in row}
+    doc, problem = X.read_scenario(up.getvalue(), fields)
+    if problem:
+        st.session_state["_scenario_msg"] = problem
+        return
+    for f, v in (doc.get("figures") or {}).items():
+        cur = st.session_state.get(f"co_{f}")
+        st.session_state[f"co_{f}"] = int(v) if isinstance(cur, int) and not isinstance(cur, bool) else float(v)
+    for n, v in (doc.get("view") or {}).items():
+        if n in ("preset", "outlook", "caution") and v is not None:
+            state.set(n, v)
+    st.session_state["_scenario_msg"] = C.SCENARIO_LOADED
 
 
 def render() -> None:

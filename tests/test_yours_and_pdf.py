@@ -134,7 +134,7 @@ def test_company_page_offers_the_table_and_the_pdf():
     at.run()
     assert not at.exception, [e.value for e in at.exception]
     labels = [b.proto.label for b in at.get("download_button") if b.proto.label != C.DOWNLOAD_CSV]  # charts add their own
-    assert labels == [C.DOWNLOAD, C.PDF_DOWNLOAD]
+    assert labels == [C.DOWNLOAD, C.PDF_DOWNLOAD, C.DOWNLOAD_XLSX, C.SCENARIO_SAVE]
 
 
 def _pages(pdf: bytes) -> int:

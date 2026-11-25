@@ -451,3 +451,6 @@ html:not(.aiwi-icons) body [data-testid="stIconMaterial"] { opacity: 0 !importan
 .st-key-aiwi_scenario { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r-sm); padding: var(--s2) var(--s3); margin-bottom: var(--s3); }
 .scenario-yours .label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
 .scenario-yours b { display: inline-block; padding: 6px 12px; border-radius: 8px; background: var(--surface-solid); border: 1px solid var(--border); }
+/* scenario file upload: follows the theme */
+[data-testid="stFileUploaderDropzone"] { background: var(--surface-solid) !important; border: 1px dashed var(--border-strong) !important; color: var(--text) !important; }
+[data-testid="stFileUploaderDropzone"] small, [data-testid="stFileUploaderDropzoneInstructions"] span { color: var(--muted) !important; }

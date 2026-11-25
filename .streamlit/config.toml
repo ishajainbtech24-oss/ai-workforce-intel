@@ -30,3 +30,5 @@ gatherUsageStats = false
 # the slow free host. Render restarts the app on each deploy, so new code still goes live. For live reloading while
 # developing, run: streamlit run src/dashboard/app.py --server.fileWatcherType auto
 fileWatcherType = "none"
+# Uploads are only small scenario files (a few KB); 1 MB is plenty and keeps memory low on the free host.
+maxUploadSize = 1

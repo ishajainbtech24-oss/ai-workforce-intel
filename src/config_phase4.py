@@ -18,6 +18,14 @@ SCENARIO_ROWS = {"downside": ["task_time_change_with_ai", "task_time_change_with
                  "optimistic": ["time_saved_share_of_work_hours"]}
 SCENARIOS = ("downside", "expected", "optimistic")
 
+# Input uncertainty inside the Monte Carlo (workstream D). Each draw multiplies the entered value by a PERT draw
+# (low, most likely, high), so a range is applied to any company's inputs, not only the example. Shares stay in
+# [0, 1]. Pass input_spread={} to run_engine for the old fixed-input behaviour.
+INPUT_SPREAD = {"time_saved": (0.5, 1.0, 1.6),               # how much time AI saves (the outlook's figure)
+                "realisation_rate": (0.7, 1.0, 1.3),          # share of saved time that becomes value
+                "adoption_target": (0.75, 1.0, 1.15),         # how many people end up using it
+                "training_hours_per_new_user": (0.75, 1.0, 1.5)}
+
 LINES = ("token_expenditure", "hosting", "enablement", "integration")
 LINE_TYPE = {"token_expenditure": "Forecast-driven", "hosting": "Forecast-driven",
              "enablement": "Estimate", "integration": "Estimate", "value": "Projection"}

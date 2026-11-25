@@ -100,8 +100,12 @@ def _extrapolation(lines: dict, drivers: DriverPaths) -> dict:
 
 def run_engine(inputs: dict, scenario: str, multiplier: float = 1.0, n_draws: int = P4.N_DRAWS,
                seed: int = P4.SEED, drivers: DriverPaths | None = None, scenarios: pd.DataFrame | None = None,
-               time_saved_fraction: float | None = None) -> EngineResult:
-    """One Monte Carlo run (see module docstring). `drivers` must be loaded for inputs['horizon_months']."""
+               time_saved_fraction: float | None = None, input_spread: dict | None = None) -> EngineResult:
+    """One Monte Carlo run (see module docstring). `drivers` must be loaded for inputs['horizon_months'].
+
+    After the forecast paths, each draw also takes its own time saved, realisation rate, adoption target and
+    training hours: the entered value times a PERT draw from `input_spread` (default config_phase4.INPUT_SPREAD;
+    {} keeps them fixed). The forecast-path draws come first, so they are the same with or without the spread."""
     if drivers is None:
         raise ValueError("pass preloaded DriverPaths (engine.drivers.load_drivers)")
     T = int(inputs["horizon_months"])
@@ -117,20 +121,30 @@ def run_engine(inputs: dict, scenario: str, multiplier: float = 1.0, n_draws: in
     eng = inputs["base_hourly_wage_engineer"] * d["wages"]
     price = d["token_price"] * (inputs["fixed_token_price_per_mtok"] if drivers["token_price"].used_fallback
                                 else inputs["price_multiplier_vs_frontier"])
-    U, N, U0 = model.adoption(inputs, T)
+    spread = P4.INPUT_SPREAD if input_spread is None else input_spread
+    mult = {name: model.pert(rng, *spread[name], n_draws) if name in spread else None
+            for name in ("time_saved", "realisation_rate", "adoption_target", "training_hours_per_new_user")}
+    tsf = time_saved_fraction if mult["time_saved"] is None else time_saved_fraction * mult["time_saved"]
+    rr = None if mult["realisation_rate"] is None else np.clip(inputs["realisation_rate"] * mult["realisation_rate"], 0, 1)
+    tgt = None if mult["adoption_target"] is None else np.clip(
+        inputs["adoption_target"] * mult["adoption_target"], inputs["adoption_start"], 1.0)
+    trn = None if mult["training_hours_per_new_user"] is None else (
+        inputs["training_hours_per_new_user"] * mult["training_hours_per_new_user"])
+    U, N, U0 = model.adoption(inputs, T, tgt)
     E = model.effective_users(U0, N, int(inputs["benefit_lag_months"]))
     lines = {"token_expenditure": model.token_expenditure(U, inputs["tokens_per_active_user_per_month"],
                                                           d["token_demand"], price),
              "hosting": model.hosting(inputs["base_monthly_hosting_cost"], d["hosting"]),
-             "enablement": model.enablement(inputs, U, N, staff),
+             "enablement": model.enablement(inputs, U, N, staff, trn),
              "integration": model.integration(inputs, T, eng)}
     total = sum(lines.values())
-    val = model.value(inputs, E, time_saved_fraction, staff)
+    val = model.value(inputs, E, tsf, staff, rr)
     net = val - total
     cum = np.cumsum(net, axis=1)
     meta = {"scenario": scenario, "multiplier": multiplier, "n_draws": n_draws, "seed": seed, "T": T,
             "time_saved_fraction": time_saved_fraction, "scenario_info": sc_info,
-            "U": U, "N": N, "U0": U0, "E": E, "extrapolation": _extrapolation(lines, drivers),
+            "U": U, "N": N, "U0": U0, "E": E, "input_spread": spread,
+            "input_draws": {k: v for k, v in mult.items() if v is not None}, "extrapolation": _extrapolation(lines, drivers),
             "fallbacks": [r for r in ROLE_ORDER if drivers[r].used_fallback]}
     return EngineResult(lines=lines, value=val, total_cost=total, net=net, cum_net=cum,
                         break_even=model.break_even(cum), peak_investment=np.maximum(-cum.min(axis=1), 0.0),
