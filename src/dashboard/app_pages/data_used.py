@@ -24,10 +24,7 @@ DEFAULT = "ppi_hosting_monthly"
 
 
 def _pick(series: list[str]) -> str:
-    first = DEFAULT if DEFAULT in series else series[0]
-    name = st.pills(C.PICK_SERIES, series, selection_mode="single", default=first,
-                    format_func=lambda s: C.SERIES[s][0], key="data_series", help=C.HINT["series"])
-    return name or first
+    return K.trend_picker(series)
 
 
 def _optional(phase: int, table: str):

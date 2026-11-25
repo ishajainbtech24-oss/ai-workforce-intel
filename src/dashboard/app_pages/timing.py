@@ -36,7 +36,7 @@ def _compare(k: float, horizon: int) -> pd.DataFrame:
 def render() -> None:
     K.page_header(logic.page_headline("timing"), C.SUB["timing"], C.PAGES["timing"][0])
     try:
-        scenario, k = K.pickers("timing", D.outlooks(), D.cautions())
+        scenario, k = K.scenario_bar(D.outlooks(), D.cautions())
         horizon = D.horizon()
         be, tot = D.row("break_even_summary", scenario, k), D.row("totals_summary", scenario, k)
         K.verdict(logic.verdict(be["prob_break_even_within_T"], be["p50_month"], horizon))

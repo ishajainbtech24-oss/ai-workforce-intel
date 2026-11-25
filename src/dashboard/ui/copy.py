@@ -120,7 +120,7 @@ LEVER_TIP = "If this were {direction}, the year-end balance would be {value}"
 LEVER_TAKEAWAY = ("The three choices that matter most are {a}, {b} and {c}. Getting these right matters far more "
                   "than technology prices.")
 NO_PAYBACK_BOX_TITLE = "What could change that"
-NO_PAYBACK = ("At the example figures, the expected outlook does not pay for itself within {months} months. "
+NO_PAYBACK = ("At the example figures, the {outlook} does not pay for itself within {months} months. "
               "The year-end running balance is {balance}.")
 NO_PAYBACK_LEVERS = "The two choices that would help most: {a}, and {b}."
 RAISE, LOWER = "raising", "lowering"
@@ -550,7 +550,7 @@ YOURS = {
     "WELCOME_NUMBERS_TITLE": "Your company at a glance",
     "OVERVIEW_SUB": ("The four numbers that matter for your company, how the running balance moves over the year, "
                      "and which choices to look at first."),
-    "NO_PAYBACK": ("At your figures, the expected outlook does not pay for itself within {months} months. "
+    "NO_PAYBACK": ("At your figures, the {outlook} does not pay for itself within {months} months. "
                    "The year-end running balance is {balance}."),
     "ABOUT": ABOUT.replace("The company itself is an example with made-up figures.",
                            "The company figures are the ones you entered on Try your own numbers."),
@@ -563,6 +563,21 @@ SIDE_YOURS_HELP = "Show the example company again on every page (a page refresh 
 
 # ---- PDF report of the results (Try your own numbers, next to the table download) ----
 PDF_DOWNLOAD = "Download report (PDF)"
+PRESET_LABEL = {"example": "Example company (500 people)", "small": "Small team (50 people)",
+                "enterprise": "Enterprise (5,000 people)"}
+PRESET_PICK = "Company"
+PRESET_HELP = ("Made-up companies to compare: the mid-size example, a small team, a large enterprise. Your own "
+               "figures go on Try your own numbers.")
+PRESET_WORDS = {p: {"EXAMPLE_PILL": f"{label} preset",
+                    "BANNER": (f"You are looking at a made-up {label.split(' (')[0].lower()} with {label.split('(')[1][:-1]}. "
+                               "Switch company in the bar above the charts, or enter your own on the Try your own numbers page."),
+                    "WELCOME_NUMBERS_TITLE": f"{label.split(' (')[0]} at a glance"}
+                for p, label in (("small", "Small team (50 people)"), ("enterprise", "Enterprise (5,000 people)"))}
+SCENARIO_YOURS = "Your figures"
+PICK_GROUP = "Trend group"
+TREND_GROUPS = {"Pay": ["eci_wages_quarterly"], "Technology": ["ppi_hosting_monthly"],
+                "AI usage": ["burst_tokens_total_daily", "burst_tokens_api_daily", "burst_tokens_chat_daily",
+                             "burst_requests_hourly", "wildchat_conversations_daily"]}
 PDF_UNAVAILABLE = "The PDF report is not available on this server right now; the table download has the same numbers."
 PDF_WORKING = "Preparing the report..."
 PDF_TITLE = "Results report"
@@ -602,3 +617,16 @@ RANGE_ALL = "All"
 RANGE_BUTTONS_STEPS = {"day": (("Last 7 days", 7), ("Last 30 days", 30)), "hour": (("Last day", 24), ("Last week", 168))}
 SOURCE_PREFIX = "Source"
 ASSUMPTION_KIND = {"trend": "Based on trends", "estimate": "Our estimate", "input": "Your figure", "study": "From a study"}
+
+# ---- first-visit tour and error state ----
+TOUR_TITLE = "A quick tour"
+TOUR_STEPS = [("Start with The big picture", "Four numbers for an example company: cost, estimated benefit, the running "
+               "balance and when the programme could pay for itself."),
+              ("Change the view in the bar above the charts", "Pick a company size, an outlook (how much time AI saves) "
+               "and how cautious to be. Every money page follows, and the link in your address bar keeps your choice."),
+              ("Try your own numbers", "Put in your company's figures and download a decision memo. Nothing you type "
+               "is stored on the server.")]
+TOUR_DONE = "Start exploring"
+ERROR_TITLE = "This page could not be drawn"
+ERROR_BODY = ("Something went wrong while drawing this page. The other pages still work; reloading usually helps. "
+              "The details have been recorded for the people who run the site.")

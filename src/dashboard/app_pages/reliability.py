@@ -23,10 +23,7 @@ DEFAULT = "ppi_hosting_monthly"
 
 
 def _pick(series: list[str]) -> str:
-    first = DEFAULT if DEFAULT in series else series[0]
-    name = st.pills(C.PICK_SERIES, series, selection_mode="single", default=first,
-                    format_func=lambda s: C.SERIES[s][0], key="rel_series", help=C.HINT["series"])
-    return name or first
+    return K.trend_picker(series)
 
 
 def _tiles(v: dict) -> None:
@@ -63,13 +60,18 @@ def render() -> None:
     if v["flag"] and v["hits"]:
         K.note(C.RANGE_WARN.format(inside=v["hits"][0], n=v["hits"][1]), tone="warm")
     K.section_title(C.RANK_TITLE, C.RANK_SUB)
+    _ranking(name, v)
+    for note in v["notes"]:
+        K.note(note)
+    _technical(name, v)
+
+
+@st.fragment  # "show all" redraws the ranking only
+def _ranking(name: str, v: dict) -> None:
     show_all = (st.toggle(C.RANK_SHOW_ALL, value=False, key=f"rel_all_{name}", help=C.HINT["show_all"])
                 if len(v["ranking"]) > CF.RANK_ROWS + 1 else True)
     K.chart(CF.ranking_chart(v["ranking"], v["unit"], show_all), f"rel_rank_{name}_{show_all}", f"ranking_{name}")
     K.insight_row(*EX.ranking(v))
-    for note in v["notes"]:
-        K.note(note)
-    _technical(name, v)
 
 
 def _technical(name: str, v: dict) -> None:

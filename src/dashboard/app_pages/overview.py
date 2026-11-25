@@ -24,30 +24,31 @@ from dashboard.ui import theme as T  # noqa: E402
 ICON = {"cost": "cost", "benefit": "benefit", "balance": "balance", "payback": "payback"}
 
 
-def _cards() -> None:
-    v, f, chips = D.overview_kpis("expected", 1.0), logic.overview_cards("expected", 1.0), logic.card_status("expected", 1.0)
-    spark = {"cost": K.sparkline_svg(D.monthly("expected", 1.0, "total_cost")["p50"], T.tok("accent")),
-             "benefit": K.sparkline_svg(D.monthly("expected", 1.0, "value")["p50"], T.tok("accent-2")),
-             "balance": K.sparkline_svg(D.monthly("expected", 1.0, "cumulative_net")["p50"], T.tok("warm"), zero=True),
-             "payback": K.sparkline_svg(D.monthly("expected", 1.0, "value")["p50"].to_numpy()
-                                        - D.monthly("expected", 1.0, "total_cost")["p50"].to_numpy(), T.tok("warm"), zero=True)}
+def _cards(sc: str, k: float) -> None:
+    v, f, chips = D.overview_kpis(sc, k), logic.overview_cards(sc, k), logic.card_status(sc, k)
+    spark = {"cost": K.sparkline_svg(D.monthly(sc, k, "total_cost")["p50"], T.tok("accent")),
+             "benefit": K.sparkline_svg(D.monthly(sc, k, "value")["p50"], T.tok("accent-2")),
+             "balance": K.sparkline_svg(D.monthly(sc, k, "cumulative_net")["p50"], T.tok("warm"), zero=True),
+             "payback": K.sparkline_svg(D.monthly(sc, k, "value")["p50"].to_numpy()
+                                        - D.monthly(sc, k, "total_cost")["p50"].to_numpy(), T.tok("warm"), zero=True)}
     cards = [K.kpi_card(C.KPI[k][0], f[k], C.KPI[k][1], spark[k], count=None if k == "payback" else CUR.to_inr(v[k]),
                         tone=("warm" if k in ("balance", "payback") and v["balance"] < 0 else "") + (" key" if k == "balance" else ""),
                         icon_name=ICON[k], chip=chips[k], i=n)
              for n, k in enumerate(("balance", "cost", "benefit", "payback"))]
-    K.eyebrow(C.OUTLOOK["expected"])
+    K.eyebrow(C.OUTLOOK[sc])
     K.kpi_row(cards, lead=True)
 
 
-def _chart() -> None:
+@st.fragment  # the view switch redraws this chart only
+def _chart(sc: str, k: float) -> None:
     view = st.segmented_control("View", [C.VIEW_RANGE, C.VIEW_TYPICAL], default=C.VIEW_RANGE,
                                 label_visibility="collapsed", key="overview_view", help=C.HINT["view"])
     series, paybacks = {}, {}
-    for sc in D.outlooks():
-        series[sc] = D.monthly(sc, 1.0, "cumulative_net")
-        be = D.row("break_even_summary", sc, 1.0)
-        paybacks[sc] = be["p50_month"] if be["prob_break_even_within_T"] >= 0.5 else None
-    fig = charts.running_balance(series, view != C.VIEW_TYPICAL, D.horizon(), paybacks, focus="expected")
+    for o in D.outlooks():
+        series[o] = D.monthly(o, k, "cumulative_net")
+        be = D.row("break_even_summary", o, k)
+        paybacks[o] = be["p50_month"] if be["prob_break_even_within_T"] >= 0.5 else None
+    fig = charts.running_balance(series, view != C.VIEW_TYPICAL, D.horizon(), paybacks, focus=sc)
     K.chart(fig, "overview_balance", "running_balance")
     K.insight_row(*EX.balance(series, paybacks, D.horizon()))
 
@@ -89,7 +90,7 @@ def _insights() -> None:
 
 
 def _flow() -> None:
-    items = logic.year_end_balances(1.0)
+    items = logic.year_end_balances(logic.sk()[1])
     with st.expander(C.SEE_3D, icon=":material/view_in_ar:"):
         c1, c2 = st.columns([3, 2])
         with c1:
@@ -102,10 +103,11 @@ def _flow() -> None:
 def render() -> None:
     K.page_header(logic.page_headline("overview"), logic.words("OVERVIEW_SUB"), C.PAGES["overview"][0])
     try:
-        _cards()
+        sc, k = K.scenario_bar(D.outlooks(), D.cautions())
+        _cards(sc, k)
         left, right = st.columns([2.3, 1], gap="medium")
         with left:
-            _chart()
+            _chart(sc, k)
         with right:
             _decide()
         _strip()

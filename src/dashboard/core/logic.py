@@ -23,13 +23,25 @@ MONEY_FIELDS = ("fixed_enablement_cost_per_month", "base_hourly_wage_staff", "ba
 
 
 def words(name: str) -> str:
-    """On-screen text that names whose figures these are: the example wording, or the 'your figures' wording
-    (copy.YOURS) while the visitor's own results are showing."""
-    return C.YOURS[name] if D.yours() is not None and name in C.YOURS else getattr(C, name)
+    """On-screen text that names whose figures these are: the example wording, the 'your figures' wording
+    (copy.YOURS) while the visitor's own results are showing, or the preset wording (copy.PRESET_WORDS)."""
+    if D.yours() is not None and name in C.YOURS:
+        return C.YOURS[name]
+    p = D.preset()
+    if p in C.PRESET_WORDS and name in C.PRESET_WORDS[p]:
+        return C.PRESET_WORDS[p][name]
+    return getattr(C, name)
 
 
-def overview_cards(scenario: str = "expected", k: float = 1.0) -> dict[str, str]:
+def sk(scenario: str | None = None, k: float | None = None) -> tuple[str, float]:
+    """The outlook and caution level to show: as given, else the scenario bar's (expected, standard outside a run)."""
+    from dashboard.core import state
+    return scenario or state.get("outlook"), float(state.get("caution") if k is None else k)
+
+
+def overview_cards(scenario: str | None = None, k: float | None = None) -> dict[str, str]:
     """Formatted values of the four Overview cards."""
+    scenario, k = sk(scenario, k)
     v = D.overview_kpis(scenario, k)
     return {"cost": T.money(v["cost"]), "benefit": T.money(v["benefit"]), "balance": T.money(v["balance"]),
             "payback": T.month(v["payback"], v["T"])}
@@ -55,13 +67,14 @@ def cost_slices(shares: pd.DataFrame) -> list[dict]:
 
 def lever_swings(n: int = 6) -> list[dict]:
     """Values for the depth bars: the n choices with the widest gap between 20% lower and 20% higher."""
-    s = D.table("sensitivity").sort_values("swing_cum_net_T", ascending=False).head(n)
+    s = D.sensitivity().sort_values("swing_cum_net_T", ascending=False).head(n)
     return [{"key": r.input, "label": C.LEVER.get(r.input, r.input), "value": float(r.swing_cum_net_T),
              "text": T.money(float(r.swing_cum_net_T))} for r in s.itertuples()]
 
 
-def card_status(scenario: str = "expected", k: float = 1.0) -> dict[str, tuple[str, str]]:
+def card_status(scenario: str | None = None, k: float | None = None) -> dict[str, tuple[str, str]]:
     """Status chip of each Overview card, chosen from the real results: (tone, plain words)."""
+    scenario, k = sk(scenario, k)
     v = D.overview_kpis(scenario, k)
     b = D.table("cost_breakdown")
     b = b[(b["scenario"] == scenario) & np.isclose(b["multiplier"], k)].set_index("line")
@@ -78,7 +91,7 @@ def findings() -> list[str]:
     """Three key-finding sentences from cost_breakdown.csv and sensitivity.csv (expected outlook, standard)."""
     b = D.table("cost_breakdown")
     b = b[(b["scenario"] == "expected") & np.isclose(b["multiplier"], 1.0)].set_index("line")
-    s = D.table("sensitivity").sort_values("swing_cum_net_T", ascending=False)
+    s = D.sensitivity().sort_values("swing_cum_net_T", ascending=False)
     first, second = (C.LEVER.get(x, x).lower() for x in s["input"].head(2))
     swing = float(s["swing_cum_net_T"].iloc[0]) / 2
     tech = float(b.loc[["hosting", "token_expenditure"], "p50_share_of_cost"].sum())
@@ -89,7 +102,7 @@ def findings() -> list[str]:
 
 def lever_phrases(n: int) -> list[str]:
     """'raising time saved per person' / 'lowering training hours per new user' for the top n levers."""
-    s = D.table("sensitivity").sort_values("swing_cum_net_T", ascending=False).head(n)
+    s = D.sensitivity().sort_values("swing_cum_net_T", ascending=False).head(n)
     out = []
     for r in s.itertuples():
         up = r.median_cum_net_T_high > r.median_cum_net_T_low
@@ -185,10 +198,11 @@ def payback_dots(k: float = 1.0) -> list[dict]:
 def ideas() -> list[str]:
     """'Ideas to consider' on The big picture: suggestions, each tied to a number in the saved results."""
     top = lever_swings(1)[0]
+    scenario, k = sk()
     b = D.table("cost_breakdown")
-    b = b[(b["scenario"] == "expected") & np.isclose(b["multiplier"], 1.0)].set_index("line")
-    tot = D.row("totals_summary", "expected", 1.0)
-    be = D.row("break_even_summary", "expected", 1.0)
+    b = b[(b["scenario"] == scenario) & np.isclose(b["multiplier"], k)].set_index("line")
+    tot = D.row("totals_summary", scenario, k)
+    be = D.row("break_even_summary", scenario, k)
     out = [C.IDEA_LEVER.format(lever=top["label"].lower(), swing=top["text"]),
            C.IDEA_TRAINING.format(share=T.share(float(b.loc["enablement", "p50_share_of_cost"]))),
            C.IDEA_CASH.format(peak=T.money(float(tot["peak_investment_p50"])))]
@@ -208,20 +222,21 @@ def page_headline(key: str) -> str:
 
 
 def _headline(key: str) -> str:
+    scenario, k = sk()
     if key == "overview":
-        be = D.row("break_even_summary", "expected", 1.0)
+        be = D.row("break_even_summary", scenario, k)
         head = C.HEAD_YOURS if D.yours() is not None else C.HEAD
         if float(be["prob_break_even_within_T"]) >= 0.5 and math.isfinite(float(be["p50_month"])):
             return head["overview_yes"].format(month=int(round(float(be["p50_month"]))))
         return head["overview_no"].format(months=int(be["T"]))
     if key == "costs":
         b = D.table("cost_breakdown")
-        b = b[(b["scenario"] == "expected") & np.isclose(b["multiplier"], 1.0)].set_index("line")
+        b = b[(b["scenario"] == scenario) & np.isclose(b["multiplier"], k)].set_index("line")
         if float(b.loc[["enablement", "integration"], "p50_share_of_cost"].sum()) >= 0.5:
             return C.HEAD["costs_people"]
         return C.HEAD["costs_other"].format(line=C.LINE[str(b["p50_share_of_cost"].idxmax())])
     if key == "timing":
-        rows = payback_dots(1.0)
+        rows = payback_dots(k)
         pays = [r for r in rows if r["month"] is not None]
         months = rows[0]["horizon"] if rows else 12
         if any(r["key"] == "expected" for r in pays):

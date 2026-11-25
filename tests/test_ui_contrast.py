@@ -39,7 +39,7 @@ CHECKS = [  # (name, page, selector, action)
     ("buttons", "your_company", '.stButton button p, [data-testid="stPopoverButton"] p', None),
     ("slider labels and value", "your_company", '[data-testid="stSlider"] [data-testid="stWidgetLabel"] p, [data-testid="stSliderThumbValue"]', None),
     ("drop-down list (open)", "your_company", '[role="option"], [role="option"] div, [role="option"] span', "select"),
-    ("trend pills, chosen and not", "forecast", '.st-key-fc_series button[data-variant] p', None),
+    ("trend pills, chosen and not", "forecast?trend=ai-total", '.st-key-_w_trend button[data-variant] p', None),
     ("outlook and caution choices", "costs", 'button[data-variant="segmented_control"] p', None),
 ]
 
@@ -98,7 +98,7 @@ def test_controls_are_readable(browser_app, theme):
     failures, seen = [], set()
     for name, page, sel, action in CHECKS:
         pg = browser.new_page(viewport={"width": 1440, "height": 900})
-        pg.goto(f"{base}/{page}?theme={theme}")
+        pg.goto(f"{base}/{page}{'&' if '?' in page else '?'}theme={theme}")
         pg.wait_for_selector(".aiwi-banner", timeout=120000)
         pg.wait_for_selector('[data-testid="stPlotlyChart"], [data-testid="stForm"]', timeout=120000)
         pg.wait_for_timeout(2000)

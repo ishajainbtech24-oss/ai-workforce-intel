@@ -109,7 +109,7 @@ def test_past_check_chart_draws_the_saved_predictions(name):
 @pytest.mark.parametrize("name", SEVEN)
 def test_page_is_plain_for_every_trend(name):
     at = AppTest.from_file(APP, default_timeout=120)
-    at.session_state["rel_series"] = name
+    at.session_state["trend"] = name
     at.session_state[f"rel_all_{name}"] = True
     at.run()
     at.switch_page("app_pages/reliability.py")

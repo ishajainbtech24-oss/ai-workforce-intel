@@ -69,7 +69,7 @@ def test_check_notes_are_not_counted_as_unusual_points():
 @pytest.mark.parametrize("name", SEVEN)
 def test_page_shows_the_notes_and_stays_plain(name):
     at = AppTest.from_file(APP, default_timeout=120)
-    at.session_state["data_series"] = name
+    at.session_state["trend"] = name
     at.run()
     at.switch_page("app_pages/data_used.py")
     at.run()

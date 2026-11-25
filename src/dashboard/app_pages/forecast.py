@@ -24,9 +24,7 @@ DEFAULT = "ppi_hosting_monthly"  # the same trend the Welcome page shows
 
 
 def _pick(series: list[str]) -> str:
-    name = st.pills(C.PICK_SERIES, series, selection_mode="single", default=DEFAULT if DEFAULT in series else series[0],
-                    format_func=lambda s: C.SERIES[s][0], key="fc_series", help=C.HINT["series"])
-    return name or (DEFAULT if DEFAULT in series else series[0])
+    return K.trend_picker(series)
 
 
 def _length(name: str, g: str, saved: int) -> int:

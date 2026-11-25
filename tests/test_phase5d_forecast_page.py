@@ -101,7 +101,7 @@ def _page(state: dict) -> AppTest:
 @pytest.mark.parametrize("name,n", [("ppi_hosting_monthly", 12), ("burst_tokens_chat_daily", 7),
                                     ("wildchat_conversations_daily", 14), ("eci_wages_quarterly", 4)])
 def test_page_shows_the_view_and_offers_the_same_numbers_to_download(name, n):
-    at = _page({"fc_series": name, f"fc_len_{name}": n})
+    at = _page({"trend": name, f"fc_len_{name}": n})
     assert not at.exception, [e.value for e in at.exception]
     assert len(at.get("plotly_chart")) == 1
     v = _view(name, n)

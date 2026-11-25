@@ -5,3 +5,4 @@ Every change to a forecast or cost figure shown in the app, with the value befor
 
 | Date | Workstream | What | Before | After | Why |
 |---|---|---|---|---|---|
+| 2026-11-25 | B | Scenario bar on Money pages; presets | Levers page always showed the expected outlook at the standard caution level | Levers follows the chosen outlook and caution; small and enterprise presets add new figures | The scenario bar must drive every Money page. The example company's figures at expected/standard are unchanged. |

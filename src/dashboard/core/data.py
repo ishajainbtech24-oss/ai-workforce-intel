@@ -30,6 +30,29 @@ def yours() -> dict | None:
         return None
 
 
+def preset() -> str:
+    """The company preset chosen in the scenario bar ('example', 'small' or 'enterprise')."""
+    from dashboard.core import state
+    return state.get("preset")
+
+
+def active() -> dict | None:
+    """The results every Money page shows: the visitor's own figures if entered, else a size preset (worked out once
+    per server and shared), else None for the saved example company."""
+    y = yours()
+    if y is not None:
+        return y
+    p = preset()
+    if p in ("small", "enterprise"):
+        try:
+            base, _ = example_inputs()
+        except Missing:
+            return None
+        from dashboard.core.presets import inputs_for
+        return run_all(inputs_for(p, base))
+    return None
+
+
 def clear_yours() -> None:
     """Back to the example company everywhere: drops the visitor's results and the form's values."""
     for key in [k for k in st.session_state if str(k).startswith("co_")]:
@@ -51,7 +74,7 @@ def _csv(path: str) -> pd.DataFrame:
 
 def table(name: str) -> pd.DataFrame:
     """outputs/phase4/tables/<name>.csv (raises Missing), or the visitor's own version of it (see `yours`)."""
-    y = yours()
+    y = active()
     if y is not None and name in y["tables"]:
         return y["tables"][name]
     p = root() / "outputs" / "phase4" / "tables" / f"{name}.csv"
@@ -143,7 +166,7 @@ def _payback_counts(scenario: str, k: float, root_str: str) -> tuple[list[int], 
 
 def payback_counts(scenario: str, k: float) -> tuple[list[int], int, int]:
     """Per-month counts of when the programme pays for itself, with the Phase 4 settings (5,000 runs)."""
-    y = yours()
+    y = active()
     if y is not None:
         return y["payback"][(scenario, float(k))]
     return _payback_counts(scenario, float(k), str(root()))
@@ -152,6 +175,34 @@ def payback_counts(scenario: str, k: float) -> tuple[list[int], int, int]:
 @st.cache_resource(show_spinner=False, max_entries=32)
 def _run_all_shared(frozen: tuple, n: int, root_str: str) -> dict:
     return _run_all(dict(frozen), n)
+
+
+def active_inputs() -> dict:
+    """Engine inputs behind what the Money pages show (the visitor's figures, a preset, or the example company)."""
+    y = active()
+    return dict(y["inputs"]) if y is not None else example_inputs()[0]
+
+
+def _frozen(inputs: dict) -> tuple:
+    return tuple(sorted((k, v) for k, v in inputs.items() if isinstance(v, (int, float, str, bool))))
+
+
+@st.cache_resource(show_spinner=False, max_entries=64)
+def _sensitivity_shared(frozen: tuple, scenario: str, k: float, root_str: str) -> pd.DataFrame:
+    from engine import sensitivity as S
+    inputs = dict(frozen)
+    return S.tornado(inputs, drivers(int(inputs["horizon_months"])), outlook_table(), scenario, k, N_SAVED, SEED)
+
+
+def sensitivity(scenario: str | None = None, k: float | None = None) -> pd.DataFrame:
+    """'What matters most' for the chosen outlook and caution level. The saved table covers the expected outlook at
+    the standard level; any other choice is worked out once per server (same engine, futures and settings)."""
+    from dashboard.core import state
+    scenario = scenario or state.get("outlook")
+    k = float(state.get("caution") if k is None else k)
+    if scenario == "expected" and k == 1.0:
+        return table("sensitivity")
+    return _sensitivity_shared(_frozen(active_inputs()), scenario, k, str(root()))
 
 
 def run_all(inputs: dict, n: int = N_SAVED) -> dict:

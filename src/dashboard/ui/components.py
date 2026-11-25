@@ -579,3 +579,82 @@ def steps(items: list[tuple[str, str]], title: str, anchor: str) -> None:
                    f'<div class="insight-text"><b>{html.escape(t)}</b><br>{html.escape(s)}</div></div>'
                    for n, (t, s) in enumerate(items))
     card_grid([body], "insight-grid stack")
+
+
+
+# ---------------------------------------------------------------- shared view state (scenario bar, trend picker)
+def _bound(make, name: str, **kw):
+    """A widget tied to the shared state: drawn from it each run, writing back on change. The widget keeps its own key
+    (Streamlit forgets widget values on pages that do not draw them; the shared key survives page changes)."""
+    from dashboard.core import state
+    wkey = f"_w_{name}"
+    st.session_state[wkey] = state.get(name)
+
+    def _save():
+        value = st.session_state.get(wkey)
+        state.set(name, value if value is not None else state.DEFAULTS[name])
+
+    return make(key=wkey, on_change=_save, **kw)
+
+
+def scenario_bar(outlooks: list[str], cautions: list[float]) -> tuple[str, float]:
+    """Every Money page: company preset, outlook and caution level in one bar. One source of truth in the session,
+    mirrored to the address so a shared link reproduces the view. Returns (outlook, caution level)."""
+    from dashboard.core import state
+    from dashboard.core import data as D
+    with st.container(key="aiwi_scenario"):
+        c0, c1, c2 = st.columns([1.25, 1.55, 1.5], gap="small")
+        with c0:
+            if D.yours() is not None:
+                st.markdown(f'<div class="scenario-yours"><span class="label">{html.escape(C.PRESET_PICK)}</span>'
+                            f'<b>{html.escape(C.SCENARIO_YOURS)}</b></div>', unsafe_allow_html=True)
+            else:
+                _bound(st.selectbox, "preset", label=C.PRESET_PICK, options=list(C.PRESET_LABEL),
+                       format_func=C.PRESET_LABEL.get, help=C.PRESET_HELP)
+        with c1:
+            _bound(st.segmented_control, "outlook", label=C.OUTLOOK_PICK, options=outlooks,
+                   format_func=C.OUTLOOK_SHORT.get, help=C.HINT["outlook"])
+        with c2:
+            _bound(st.segmented_control, "caution", label=C.CAUTION_PICK, options=cautions,
+                   format_func=C.CAUTION.get, help=C.CAUTION_HELP)
+    state.sync_url(("preset", "outlook", "caution"))
+    outlook = state.get("outlook") if state.get("outlook") in outlooks else "expected"
+    caution = float(state.get("caution")) if float(state.get("caution")) in cautions else 1.0
+    return outlook, caution
+
+
+def trend_picker(available: list[str]) -> str:
+    """The three Forecast pages: pick a group (Pay / Technology / AI usage), then a trend within it. Shared by the
+    three pages and mirrored to the address."""
+    from dashboard.core import state
+    group_of = {s: g for g, members in C.TREND_GROUPS.items() for s in members}
+    if state.get("trend") not in available:
+        state.set("trend", available[0])
+    groups = [g for g, members in C.TREND_GROUPS.items() if any(s in available for s in members)]
+    gkey = "_w_trend_group"
+    st.session_state[gkey] = group_of.get(state.get("trend"), groups[0])
+
+    def _group_changed():
+        g = st.session_state.get(gkey)
+        if g and group_of.get(state.get("trend")) != g:
+            state.set("trend", next(s for s in C.TREND_GROUPS[g] if s in available))
+
+    with st.container(key="aiwi_trend"):
+        st.segmented_control(C.PICK_GROUP, groups, key=gkey, on_change=_group_changed, help=C.HINT["series"])
+        members = [s for s in C.TREND_GROUPS[group_of.get(state.get("trend"), groups[0])] if s in available]
+        if len(members) > 1:
+            _bound(st.pills, "trend", label=C.PICK_SERIES, options=members, format_func=lambda s: C.SERIES[s][0],
+                   selection_mode="single", label_visibility="collapsed")
+    state.sync_url(("trend",))
+    return state.get("trend")
+
+
+def remember_tour() -> None:
+    """Set a small first-party cookie so the welcome tour is shown once per browser (no personal data)."""
+    embed("""<script>try{window.parent.document.cookie='aiwi_tour=seen; max-age=31536000; path=/; SameSite=Lax';}
+catch(e){}</script>""", 1)
+
+
+def error_state(title: str, body: str) -> None:
+    """What a visitor sees when a page fails to draw: plain words, no traceback."""
+    st.warning(f"**{title}**  \n{body}", icon=":material/report:")
